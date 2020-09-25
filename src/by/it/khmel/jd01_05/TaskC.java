@@ -9,10 +9,13 @@ public class TaskC {
 
         double[] array;
         array = step1();
+        System.out.println("Массив из 40-60 элементов");
         step2(array);
         double[] arrayres = step3(array);
+        System.out.println("Массив с элементами > 3,5");
         step2(arrayres);
         step4(arrayres);
+        System.out.println("Среднее геометрическое");
         System.out.println(step4(arrayres));
 
     }
@@ -52,13 +55,13 @@ public class TaskC {
 
         for (int i = 0; i < array.length; i++) {
 
-            if (array[i] < 3.5) {
+            if (array[i] > 3.5) {
                 m = m + 1;
             }
         }
         double[] resarray = new double[m];
         for (int i = 0; i < array.length; i++) {
-            if (array[i] < 3.5) {
+            if (array[i] > 3.5) {
                 resarray[j] = array[i];
                 j = j + 1;
             }
