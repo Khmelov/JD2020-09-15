@@ -1,4 +1,4 @@
-package by.it.khmel.jd01_06;
+    package by.it.khmel.jd01_06;
 
 class Poem {
     static final String text=
