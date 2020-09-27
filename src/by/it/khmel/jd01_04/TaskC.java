@@ -26,17 +26,5 @@ public class TaskC {
     }
 
     static void mergeSort(double[ ] array){
-        int j=0;
-        int l=0;
-        j=l;
-        for (int i = l+1; i <= array.length ; i++) {
-            if (array[i]<array[l]){
-                array[l]=array[i];
-                j=j+1;
-
-            }
-
-        }
-
     }
 }
