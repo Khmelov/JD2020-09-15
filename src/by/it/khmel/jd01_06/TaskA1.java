@@ -8,11 +8,11 @@ public class TaskA1 {
 
         StringBuilder text = new StringBuilder(Poem.text);
         Pattern pattern = Pattern.compile("[^а-яёА-ЯЁ]+");
-        Matcher matcher = pattern.matcher(text);
-        while (matcher.find()){
+       // Matcher matcher = pattern.matcher(text);
+       // while (matcher.find()){
 
-            int pos=matcher.start();
-            text.setCharAt(pos, '#');
+       //     int pos=matcher.start();
+        //    text.setCharAt(pos, '#');
             //if (matcher.end()-matcher.start()>6){
              //   text.setCharAt();
             }
@@ -31,5 +31,5 @@ public class TaskA1 {
         }
 
 
-    }
+   // }
 
