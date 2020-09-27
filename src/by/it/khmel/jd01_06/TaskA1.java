@@ -8,7 +8,9 @@ public class TaskA1 {
 
         StringBuilder text = new StringBuilder(Poem.text);
         Pattern pattern = Pattern.compile("[^а-яёА-ЯЁ]+");
-       // Matcher matcher = pattern.matcher(text);
+        System.out.println(pattern);
+        Matcher matcher = pattern.matcher(text);
+        System.out.println(matcher);
        // while (matcher.find()){
 
        //     int pos=matcher.start();
