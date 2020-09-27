@@ -9,7 +9,7 @@ public class TaskB1 {
 
 
     private static boolean check(String word) {
-        // boolean a=true;
+
         char first = word.charAt(0);
         char last = word.charAt(word.length() - 1);
         int f = vowels.indexOf(first);
