@@ -1,6 +1,6 @@
-package by.it._tasks_.jd01_06;
+package by.it.fedorinhyk.jd01_06;
 
-public class Poem {
+class Poem {
     static final String text=
             "У лукоморья дуб зелёный,\n" +
             "Златая цепь на дубе том.\n" +
