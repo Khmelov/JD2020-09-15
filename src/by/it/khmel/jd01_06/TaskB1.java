@@ -25,7 +25,7 @@ public class TaskB1 {
         Matcher matcher = pattern.matcher(Poem.text);
         while (matcher.find()) {
             String word = matcher.group();
-            if (check(word) == true) {
+                if (check(word) == true) {
                 System.out.println(word);
 
             }

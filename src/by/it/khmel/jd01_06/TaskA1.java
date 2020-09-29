@@ -5,7 +5,6 @@ import java.util.regex.Pattern;
 
 public class TaskA1 {
     public static void main(String[] args) {
-
         StringBuilder sb = new StringBuilder(Poem.text);
         Pattern pattern = Pattern.compile("[а-яА-ЯёЁ]{4,}");
         Matcher matcher = pattern.matcher(Poem.text);
@@ -19,3 +18,4 @@ public class TaskA1 {
         System.out.println(sb);
             }
         }
+

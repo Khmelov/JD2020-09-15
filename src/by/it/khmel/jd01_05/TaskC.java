@@ -24,14 +24,13 @@ public class TaskC {
 
         int n = (int) (random() * 20 + 40);
 
-
-        //  System.out.println(n);
         double[] array = new double[n];
         double x, z;
         int i = 0;
         for (x = 5.33; x <= 9; x = x + (9 - 5.33) / n) {
             if (i < n) {
                 z = pow((x * x + 4.5), 1 / 3.0);
+                array[i] = z;
                  array[i] = z;
                 i = i + 1;
             }
