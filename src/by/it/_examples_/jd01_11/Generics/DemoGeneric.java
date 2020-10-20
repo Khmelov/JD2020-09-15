@@ -3,7 +3,7 @@ package by.it._examples_.jd01_11.Generics;
 import java.util.ArrayList;
 
 public class DemoGeneric {
-    public static void main(String args[ ]) {
+    public static void main(String[] args) {
         ArrayList<String> list = new ArrayList<>();
         // ArrayList<int> b = new ArrayList<int>(); // ошибка компиляции
         list.add("Java"); /* компилятор "знает"

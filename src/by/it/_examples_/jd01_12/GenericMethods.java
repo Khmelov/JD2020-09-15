@@ -1,5 +1,6 @@
 package by.it._examples_.jd01_12;
 
+@SuppressWarnings({"SameParameterValue", "unchecked"})
 public class GenericMethods {
     //параметризированный метод с одним параметром (String==выход)
     static <T> String genericMethodString(T in) {

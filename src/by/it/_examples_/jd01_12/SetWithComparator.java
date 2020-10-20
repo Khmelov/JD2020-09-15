@@ -2,6 +2,7 @@ package by.it._examples_.jd01_12;
 
 import java.util.*;
 
+@SuppressWarnings("Convert2Lambda")
 public class SetWithComparator {
     public static void main(String[] args) {
         Comparator<Integer> c=new Comparator<Integer>() {
@@ -10,17 +11,17 @@ public class SetWithComparator {
                 return 0;
             }
         };
-        Set<Integer> hashset=new HashSet<Integer>();
-        Set<Integer> linkedset=new LinkedHashSet<>();
-        Set<Integer> treeset=new TreeSet<>(c);
-        treeset.add(5); hashset.add(5); linkedset.add(5);
-        treeset.add(4); hashset.add(4); linkedset.add(4);
-        treeset.add(3); hashset.add(3); linkedset.add(3);
-        treeset.add(2); hashset.add(2); linkedset.add(2);
-        treeset.add(1); hashset.add(1); linkedset.add(1);
+        Set<Integer> hashSet=new HashSet<>();
+        Set<Integer> linkedHashSet=new LinkedHashSet<>();
+        Set<Integer> treeSet=new TreeSet<>(c);
+        treeSet.add(5); hashSet.add(5); linkedHashSet.add(5);
+        treeSet.add(4); hashSet.add(4); linkedHashSet.add(4);
+        treeSet.add(3); hashSet.add(3); linkedHashSet.add(3);
+        treeSet.add(2); hashSet.add(2); linkedHashSet.add(2);
+        treeSet.add(1); hashSet.add(1); linkedHashSet.add(1);
 
-        System.out.println("linkedset="+linkedset);
-        System.out.println("hashset="+hashset);
-        System.out.println("treeset="+treeset);
+        System.out.println("linkedHashSet="+linkedHashSet);
+        System.out.println("hashSet="+hashSet);
+        System.out.println("treeSet="+treeSet);
     }
 }

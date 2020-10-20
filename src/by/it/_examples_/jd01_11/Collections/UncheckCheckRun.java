@@ -2,6 +2,7 @@ package by.it._examples_.jd01_11.Collections;
 
 import java.util.ArrayList;
 
+@SuppressWarnings("ALL")
 public class UncheckCheckRun {
     public static void main(String[ ] args) {
         ArrayList raw = new ArrayList() { // "сырая" коллекция – raw type

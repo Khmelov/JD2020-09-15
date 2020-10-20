@@ -4,7 +4,7 @@ public class Demo {
 
     public static class Calc<T extends Number> {
         private String name;
-        private T mark; // параметр поля
+        private final T mark; // параметр поля
         public Calc(T mark, String name) { // параметр конструктора
             this.name = name;
             this.mark = mark;

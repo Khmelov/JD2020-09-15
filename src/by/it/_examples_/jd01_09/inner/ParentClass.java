@@ -2,9 +2,8 @@ package by.it._examples_.jd01_09.inner;
 
 
 public class ParentClass {
-    // поля и конструкторы
-    private SubClass eng;
     // abstract, final, private, protected - допустимы
+    @SuppressWarnings("InnerClassMayBeStatic")
     class SubClass { // определение внутреннего (inner) класса
         // тут поля и методы
         void launch() {
@@ -14,7 +13,8 @@ public class ParentClass {
 
     public final void init() { // метод внешнего класса ParentClass
         System.out.println("init ParentClass");
-        eng = new SubClass();
+        // поля и конструкторы
+        SubClass eng = new SubClass();
         eng.launch();
     }
 }
