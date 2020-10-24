@@ -1,17 +1,14 @@
 package by.it.sheremet.jd01_06;
 
-import java.util.Arrays;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 public class TaskB2 {
    public static void main(String[] args) {
-       String text=Poem.text;
-       text=text.replaceAll("\\.\\.\\.","");
-       //System.out.println(text);
-       String [] sent=text.split("[.!?]");
-       //System.out.println(sent);
-       for (int i = 0; i < sent.length; i++) {
+      String text=Poem.text;
+      text=text.replaceAll("\\.\\.\\.","");
+     // System.out.println(text);
+      String [] sent=text.split("[.!?]");
+
+
+        for (int i = 0; i < sent.length; i++) {
            sent[i]=sent[i].replaceAll("[^А-ЯЁа-яё]+"," ");
            sent[i]=sent[i].trim();
            //System.out.println(sent[i]);

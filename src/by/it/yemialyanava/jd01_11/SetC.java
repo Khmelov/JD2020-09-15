@@ -32,7 +32,7 @@ public class SetC<T> implements Set<T> {
                 }
                 if (elementNotInCollection) {
                     size = size + c.size();
-                    elements[size++] = currentNewElement;
+                    elements[++size] = currentNewElement;
                 }
             }
         }

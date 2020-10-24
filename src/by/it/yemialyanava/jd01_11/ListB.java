@@ -85,7 +85,7 @@ public class ListB<T> implements List<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return null;
+        return iterator();
     }
 
     @Override

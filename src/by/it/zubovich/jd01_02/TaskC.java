@@ -28,4 +28,14 @@ public class TaskC {
         while (!minOk || !maxOk);
         return arr;
     }
+    static int step2(int[ ][ ] arr) {
+
+
+        return 0;
+    }
+    static int[ ][ ] step3(int[ ][ ] arr){
+
+
+        return arr;
+    }
 }

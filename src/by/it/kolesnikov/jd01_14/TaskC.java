@@ -8,12 +8,7 @@ public class TaskC {
    private static final String USER_DIR = "user.dir";
 
     public static void main(String[] args) {
-        String packageName = TaskC.class
-                .getPackage()
-                .getName()
-                .replace(".", File.separator)
-                .concat(File.separator);
-        System.out.println(packageName);
+
     }
 
     private static String getPath(Class<?> aClass) {

@@ -29,13 +29,15 @@ public class TaskA {
             }
         }
 
-        String filename = getPath(by.it.moiseyenko.jd01_15.TaskA.class) + MATRIX_TXT;
+        String filename = getPath(TaskA.class) + MATRIX_TXT;
         try (PrintWriter writer = new PrintWriter(filename)) {
             for (int[] row : array) {
                 for (int value : row) {
                     writer.printf("%3d ", value);
+                    System.out.printf("%3d ", value);
                 }
                 writer.println();
+                System.out.println();
             }
             Files.lines(Paths.get(filename))
                     .forEach(System.out::println);

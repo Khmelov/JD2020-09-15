@@ -17,6 +17,7 @@ public class TaskC {
                 System.out.print(n+" ");
 
             }
+            
 
             //return n ;
         }

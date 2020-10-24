@@ -27,7 +27,7 @@ public class Runner {
         list2.remove(1);
         System.out.println(list2);*/
 
-        ListB list3 = new ListB<>();
+        ListB list3 = new ListB();
         list3.add("one");
         list3.add("two");
         list3.add("tree");

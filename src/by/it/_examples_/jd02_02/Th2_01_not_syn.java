@@ -3,7 +3,9 @@ package by.it._examples_.jd02_02;
 public class Th2_01_not_syn {
 
     //переменная баланса
-    static Integer balance = 0;
+    volatile static Integer balance = 0;
+    private static final Object monitor="ff";
+    private static final Object mon="fв";
 
     //это касса. Просто добавляет в баланс единицу
     static class Cashier extends Thread {
@@ -14,9 +16,9 @@ public class Th2_01_not_syn {
         }
 
         @Override
-        public void run() {
+        public synchronized void run() {
             //не будет работать. Одновременный доступ.
-            balance += (calc());
+                balance += (calc());
         }
     }
 
