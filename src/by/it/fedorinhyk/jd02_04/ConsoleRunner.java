@@ -10,7 +10,7 @@ public class ConsoleRunner {
         for (; ; ) {
             String expression = sc.nextLine();
             if (expression.equals("end")) break;
-            if (expression.equals("printvar")) {
+            else if (expression.equals("printvar")) {
                 printer.printvar(Var.getVarMap());
                 continue;
             }
