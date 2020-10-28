@@ -1,15 +1,34 @@
 package by.it.lapkovskiy.jd02_02;
 
 class Supervisor extends Thread{
-    static int buyersInMarket = 0;
+    private static int TotalMarket = 0;
+    private static volatile int buyersEnterToMarket = 0;
+    private static volatile int buyersLeavedMarket = 0;
 
-    public static synchronized void upBuyers(){
-        buyersInMarket ++;
+    private static final int buyerTotal = 100;
+
+
+    public static synchronized void upTotal(int sum){
+        TotalMarket+=sum;
     }
-    public static synchronized void downBuyers(){
-        buyersInMarket --;
+    public static synchronized int GetTotal(){
+        return TotalMarket;
     }
-    public static synchronized int GetBuyers(){
-        return buyersInMarket;
+
+ static boolean marketIsOpened() {
+        return buyersEnterToMarket != buyerTotal;
+    }
+
+    static boolean marketIsClosed() {
+        return buyersLeavedMarket == buyerTotal;
+    }
+    static synchronized void addBuyer() {
+        buyersEnterToMarket++;
+    }
+
+    static void leaveBuyer() {
+        synchronized (Supervisor.class) {
+            buyersLeavedMarket++;
+        }
     }
 }

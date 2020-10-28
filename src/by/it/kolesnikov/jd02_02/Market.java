@@ -7,7 +7,7 @@ import java.util.List;
 public class Market {
     public static void main(String[] args){
         int buyerNumber=0;
-        System.out.println("Market opened");
+        System.out.println("Market is opened");
         List<Thread> threads = new ArrayList<>();
         for (int i = 1; i <=2 ; i++) {
             Cashier cashier=new Cashier(i);
@@ -31,6 +31,6 @@ public class Market {
                 throw new RuntimeException(e);
             }
         }
-        System.out.println("Market closed");
+        System.out.println("Market is closed");
     }
 }

@@ -9,27 +9,25 @@ import java.util.regex.Pattern;
  */
 
 public class Parser {
-
-    //Вычисление вычесленной готовой переменной.
     Var calc(String expression) {
-        String[] operand = expression.split(Patterns.OPERATION);
-        Var one = Var.createVar(operand[0]);
-        Var two = Var.createVar(operand[1]);
-        if (one == null || two == null)
-            return null; //TODO create error
-        Pattern p = Pattern.compile(Patterns.OPERATION);
-        Matcher m = p.matcher(expression);
-        if (m.find()) {
-            String operation = m.group();
+        String[] operands = expression.split(Patterns.OPERATION);
+        Var leftOperand = Var.createVar(operands[0]);
+        Var rightOperand = Var.createVar(operands[1]);
+        if (leftOperand == null || rightOperand == null)
+            return null; //TODO
+        Pattern pattern = Pattern.compile(Patterns.OPERATION);
+        Matcher matcher = pattern.matcher(expression);
+        if (matcher.find()) {
+            String operation = matcher.group();
             switch (operation) {
                 case "+":
-                    return one.add(two);
+                    return leftOperand.add(rightOperand);
                 case "-":
-                    return one.sub(two);
+                    return leftOperand.sub(rightOperand);
                 case "*":
-                    return one.mul(two);
+                    return leftOperand.mul(rightOperand);
                 case "/":
-                    return one.div(two);
+                    return leftOperand.div(rightOperand);
             }
         }
         return null;

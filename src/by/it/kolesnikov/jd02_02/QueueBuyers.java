@@ -7,7 +7,7 @@ public class QueueBuyers {
 
     private static final Object monitor = new Object();
 
-   static private Deque<Buyer> deque = new LinkedList<>();
+   static  Deque<Buyer> deque = new LinkedList<>();
 
     static void add(Buyer buyer) {
         synchronized (monitor) {

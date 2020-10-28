@@ -4,7 +4,6 @@ out
 *.DS_Store
 /*.xml
 /*/*.xml
-
 *.jar
 *.war
 *.ear
@@ -32,3 +31,4 @@ log.txt
 
 #user cfg
 /src/by/it/kolesnikov/training/
+/src/by/it/yemialyanava/home/*

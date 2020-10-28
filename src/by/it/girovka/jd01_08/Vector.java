@@ -16,7 +16,7 @@ class Vector extends Var {
     }
 
     public Vector(String strValue){
-        //...........
+
     }
 
     @Override
@@ -30,5 +30,6 @@ class Vector extends Var {
         }
         out.append('}');
         return out.toString();
+
     }
 }

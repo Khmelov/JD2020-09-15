@@ -30,7 +30,7 @@ public class Cashier implements Runnable {
                 Thread.yield();
             }
         }
-        System.out.printf("%s зактрыто\n",this);
+        System.out.printf("%s закрыто\n",this);
     }
 
     @Override

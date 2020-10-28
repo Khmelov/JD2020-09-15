@@ -7,10 +7,8 @@ package by.it.siarheikorbut.jd01_07;
 
 //Создание пустого абстрактного класса.
 public abstract class Var {
-
-    //Переопределение метода toString.
     @Override
     public String toString() {
-        return "Это класс Var";
+        return "Это Var";
     }
 }

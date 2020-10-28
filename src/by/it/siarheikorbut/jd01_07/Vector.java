@@ -1,5 +1,8 @@
 package by.it.siarheikorbut.jd01_07;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 /**
  * @author Siarhei Korbut
  * @see <a href="https://drive.google.com/file/d/1TJnuaS3yKKmJURuLfRdT_3q1cc7uf8oU/view?usp=sharing">Задание JD01_07 ( B )</a>
@@ -7,39 +10,36 @@ package by.it.siarheikorbut.jd01_07;
 
 //Создание дочернего от класса Var класса Vector
 public class Vector extends Var {
+    private static double[] value;
 
-    //Обьявление приватного финализированного одномерного массива value.
-    private final double[] value;
-
-    //Создание конструктора принимающего в себя массив value.
-    Vector(double[] value) {
-        this.value = value;
-    }
-
-    //Создание конструктора принимающего в себя экземпляр класса Vector.
-    Vector(Vector vector) {
-        this.value = vector.value;
-    }
-
-    //Создание конструктора принимающего в себя строку и преобразующего её в массив чисел.
-    Vector(String strVector) {
-        String[] s1 = strVector.replaceAll("\\{", "").replaceAll("}", "").split(",");
-        this.value = new double[s1.length];
-        for (int i = 0; i < s1.length; i++) {
-            value[i] = Double.parseDouble(s1[i].trim());
-        }
-    }
-
-    //Переопределение метода toString для вывода одномерного массива.
     @Override
     public String toString() {
-        StringBuilder sb = new StringBuilder("{");
-        String delimiter = "";
-        for (double element : value) {
-            sb.append(delimiter).append(element);
-            delimiter = ", ";
+        StringBuilder line = new StringBuilder("{");
+        for (int i = 0; i < value.length; i++) {
+            if (i == value.length - 1) {
+                line.append(value[i]).append("}");
+                continue;
+            }
+            line.append(value[i]).append(", ");
         }
-        sb.append("}");
-        return sb.toString();
+        return line.toString();
+    }
+
+    Vector(String strVector) {
+        Pattern pattern = Pattern.compile("[{}]");
+        Matcher matcher = pattern.matcher(strVector);
+        while (matcher.find()) {
+            strVector = matcher.replaceAll(" ");
+        }
+        for (int i = 0; i < strVector.trim().split(",").length; i++) {
+            value[i] = Double.parseDouble(strVector.trim().split(",")[i]);
+        }
+    }
+
+    Vector(Vector vector) {
+    }
+
+    Vector(double[] value) {
+        Vector.value = value;
     }
 }

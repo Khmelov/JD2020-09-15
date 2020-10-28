@@ -7,28 +7,22 @@ package by.it.siarheikorbut.jd01_07;
 
 //Создание дочернего от класса Var класса Scalar.
 public class Scalar extends Var {
+    double value;
 
-    //Обьявление приватной финализированной переменной value.
-    private final double value;
+    @Override
+    public String toString() {
+        return Double.toString(value);
+    }
 
-    //Создание конструктора принимающего в себя переменную value.
     Scalar(double value) {
         this.value = value;
     }
 
-    //Создание конструктора принимающего в себя экземпляр класса Scalar.
-    Scalar(Scalar scalar) {
-        this.value = scalar.value;
-    }
-
-    //Создание конструктора принимающего в себя строку и преобразующего её в число.
     Scalar(String strScalar) {
         this.value = Double.parseDouble(strScalar);
     }
 
-    //Переопределение метода toString.
-    @Override
-    public String toString() {
-        return Double.toString(value);
+    Scalar(Scalar scalar) {
+        this.value = scalar.value;
     }
 }

@@ -56,6 +56,7 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public String toString() {
+        if(pensioneer) return "Pensioner "+getName();
         return getName();
     }
 
@@ -67,32 +68,6 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public void putGoodsToBasket() {
-        switch (Helper.getRandom(5)) {
-            case 0:
-                basket.put(Goods.CHEESE.name(), Helper.getRandom(10));
-                System.out.println(this + " take:CHEESE:"+basket.get("CHEESE"));
-                break;
-            case 1:
-                basket.put(Goods.APPLE.name(), Helper.getRandom(10));
-                System.out.println(this + " take:APPLE:"+basket.get("APPLE"));
-                break;
-            case 2:
-                basket.put(Goods.ORANGE.name(), Helper.getRandom(10));
-                System.out.println(this + " take:ORANGE:"+basket.get("ORANGE"));
-                break;
-            case 3:
-                basket.put(Goods.SALT.name(), Helper.getRandom(10));
-                System.out.println(this + " take:SALT:"+basket.get("SALT"));
-                break;
-            case 4:
-                basket.put(Goods.WATER.name(), Helper.getRandom(10));
-                System.out.println(this + " take:WATER:"+basket.get("WATER"));
-                break;
-            case 5:
-                basket.put(Goods.JOY.name(), Helper.getRandom(10));
-                System.out.println(this + " take:JOY:"+basket.get("JOY"));
-                break;
-
-        }
+        Goods.getGood(basket,this.getName());
     }
 }

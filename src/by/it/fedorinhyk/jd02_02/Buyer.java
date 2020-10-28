@@ -24,7 +24,6 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
         enterToMarket();
         takeBasket();
         chooseGoods();
-        putGoodsToBasket();
         goToQueue();
         goOut();
         Supervisor.leaveBuyers();
@@ -47,6 +46,7 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
     @Override
     public void goToQueue() {
         System.out.println(this+" идет к кассе");
+        putGoodsToBasket();
         synchronized (this){
             waiting=true;
             QueueBuyers.add(this);
@@ -74,6 +74,7 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public void putGoodsToBasket() {
+        double sum=0;
         Set<Map.Entry<String, Double>> GoodsSet = Goods.getMap().entrySet();
         HashMap <String,Double> goodsBuyer = new HashMap<>();
         int goods = Helper.getRandom(1,4);
@@ -81,11 +82,13 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
         for (int i = 0; i < goods; i++) {
             Map.Entry<String, Double> entrygoods = iterator.next();
             goodsBuyer.put(entrygoods.getKey(),entrygoods.getValue());
-            System.out.println(this+" положил в корзину товар:"+"'"+
+            System.out.println(this+" выложил на кассу товар:"+"'"+
                     entrygoods.getKey()+"'"+"по цене:"+entrygoods.getValue());
             int timeout= Helper.getRandom(500,2000);
             Helper.timeout(timeout);
+            sum+=entrygoods.getValue();
         }
+        System.out.println(this+" ОБЩАЯ СУММА ЧЕКА:"+sum);
     }
     @Override
     public String toString() {

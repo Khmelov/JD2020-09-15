@@ -1,11 +1,14 @@
 package by.it.yemialyanava.jd02_02;
 
+import java.util.HashMap;
 import java.util.Map;
 
 class Buyer extends Thread implements IBuyer, IUseBasket {
+
     private boolean waiting;
 
     boolean pensioneer;
+    private Map<String, Double> myGoods = null;
 
     Buyer(int number, boolean pensionerLiYa) {
         this.pensioneer = pensionerLiYa;
@@ -17,6 +20,10 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
     public void setWaiting(boolean waiting) {
         this.waiting = waiting;
     }
+    public  Map<String, Double> getMyGoods(){
+        return myGoods;
+    }
+
 
     @Override
     public void run() {
@@ -39,8 +46,9 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
         int timeout = Helper.getRandom(500, 2000);
         if (pensioneer) {
             Helper.timeout(timeout + 1500);
+        }else{
+            Helper.timeout(timeout);
         }
-        Helper.timeout(timeout);
         putGoodsToBasket();
         System.out.println(this + " finish to choose goods");
     }
@@ -80,26 +88,21 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public void putGoodsToBasket() {
+        myGoods = new HashMap<>();
         Map<String, Double> goods = Good.getGoods();
         Object[] keys = goods.keySet().toArray();
         int goodsInBasket = Helper.getRandom(1, 4);
-        String[] resultProducts = new String[goodsInBasket];
+        //String[] resultProducts = new String[goodsInBasket];
         for (int i = 0; i < goodsInBasket; i++) {
             int randomGoodIndex = Helper.getRandom(0, keys.length - 1);
             String product = (String) keys[randomGoodIndex];
-            resultProducts[i] = product;
+            myGoods.put(product, goods.get(product));
+            //resultProducts[i] = product;
             if (pensioneer) {
                 Helper.timeout(500 + 1500);
+            } else{
+                Helper.timeout(500);
             }
-            Helper.timeout(500);
         }
-        StringBuilder purches = new StringBuilder();
-        double totalSumma = 0;
-        for (String resultProduct : resultProducts) {
-            totalSumma +=goods.get(resultProduct);
-            purches.append("\t").append(resultProduct).append(" ").append(goods.get(resultProduct)).append("\n");
-        }
-        purches.append("\t").append("total summa: ").append(totalSumma).append("\n");
-        System.out.println(this + " buy\n " + purches.toString());
     }
 }

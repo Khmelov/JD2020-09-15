@@ -14,7 +14,6 @@ class Supervisor {
     }
     static void leaveBuyers(){
         synchronized (Supervisor.class){
-
             buyersLeavedMarket++;
         }
     }

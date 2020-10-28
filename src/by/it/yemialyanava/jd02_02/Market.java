@@ -8,13 +8,6 @@ public class Market {
         int buyerNumber = 0;
         System.out.println("Market opened");
         List<Thread> threads = new ArrayList<>();
-        //List<Cashier> cashiers = new ArrayList<>();
-            /*for (int i = 1; i <= countCashier; i++) {
-                Cashier cashier = new Cashier(i);
-                Thread thread = new Thread(cashier);
-                threads.add(thread);
-                thread.start();
-            }*/
         int casherName = 1;
         while (Supervisor.marketIsOpened()) {
             int count = Helper.getRandom(2);
@@ -25,7 +18,8 @@ public class Market {
                 threads.add(buyer);
             }
             int countCashier;
-            int buyerDemandNewCasher = QueueBuyers.countBuyerInQueue() - (Supervisor.cashierWorkNow() * 5);
+            int commonBuyersInTwoQueue = QueueBuyers.countBuyerInQueue() + QueueBuyers.countBuyerInQueuePensioneer();
+            int buyerDemandNewCasher = commonBuyersInTwoQueue - (Supervisor.cashierWorkNow() * 5);
             int demandedCasher = buyerDemandNewCasher / 5 + 1;
             if (Supervisor.cashierWorkNow() + demandedCasher <= 5){
                 countCashier = demandedCasher;

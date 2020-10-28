@@ -21,10 +21,10 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
         choseGoods();
         putGoodsToBasket();
         goOut();
-        }
+    }
+
     @Override
     public void takeBasket(){
-
         System.out.println(this+" took basket");
     }
 

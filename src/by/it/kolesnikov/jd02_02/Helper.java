@@ -4,7 +4,7 @@ import java.util.Random;
 
 class Helper {
 
-    private static final int K_SPEED = 1;
+    private static final int K_SPEED = 100;
 
     private static Random random = new Random();
 

@@ -12,6 +12,7 @@ class Supervisor {
     private static final int buyerTotal = 100;
 
     static synchronized void addBuyer(){
+
         buyerEnterToMarket++;
     }
 
@@ -20,6 +21,12 @@ class Supervisor {
             buyerLeaveMarket++;
         }
     }
+
+    static synchronized int countActualNumberOfBuyer(){
+        int actualNumberBuyer = buyerEnterToMarket - buyerLeaveMarket;
+        return actualNumberBuyer;
+    }
+
 
     static synchronized void addCashier(){
         cashierWorking++;
