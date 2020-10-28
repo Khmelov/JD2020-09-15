@@ -33,7 +33,7 @@ abstract class Var implements Operation {
         else{
             Var var=varMap.get(strVar);
             if (Objects.isNull(var)) {
-                throw new CalcException("Невозможно создать:" + strVar);
+                throw new CalcException("Cant create:" + strVar);
             }
             return var;
         }
@@ -71,22 +71,22 @@ abstract class Var implements Operation {
 
     @Override
     public Var add(Var other) throws CalcException {
-        throw new CalcException("Операция сложения "+this+"+"+other+" невозможна");
+        throw new CalcException("Error "+this+"+"+other+" operation");
     }
 
     @Override
     public Var sub(Var other) throws CalcException {
-        throw new CalcException("Операция вычитания "+this+"-"+other+" невозможна");
+        throw new CalcException("Error "+this+"-"+other+" operation");
     }
 
     @Override
     public Var mul(Var other) throws CalcException {
-        throw new CalcException("Операция умножения "+this+"*"+other+" невозможна");
+        throw new CalcException("Error "+this+"*"+other+" operation");
     }
 
     @Override
     public Var div(Var other) throws CalcException {
-        throw new CalcException("Операция деления "+this+"/"+other+" невозможна");
+        throw new CalcException("Error "+this+"/"+other+" operation");
     }
 
     @Override

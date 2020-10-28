@@ -47,7 +47,7 @@ class Vector extends Var {
                 sum[i] += otherVector.value[i];
             }
             if (otherVector.value.length != value.length){
-                throw new CalcException("Длины векторов НЕ равны");
+                throw new CalcException("Wrong vectors");
             }
             return new Vector(sum);
         }
@@ -71,7 +71,7 @@ class Vector extends Var {
                 sub[i] -= otherVector.value[i];
             }
             if (otherVector.value.length != value.length){
-                throw new CalcException("Длины векторов НЕ равны");
+                throw new CalcException("Wrong vectors");
             }
             return new Vector(sub);
         }
@@ -104,7 +104,7 @@ class Vector extends Var {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             if (otherScalar.getValue()==0){
-                throw new CalcException("Деление на ноль");
+                throw new CalcException("Division by zero");
             }
             double[] div = Arrays.copyOf(value, value.length);
             for (int i = 0; i < div.length; i++) {

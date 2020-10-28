@@ -58,7 +58,7 @@ class Matrix extends Var {
                 }
             }
             if (otherMatrix.value.length != value.length){
-                throw new CalcException("Длины матриц НЕ равны");
+                throw new CalcException("Wrong matrix");
             }
             return new Matrix(sum);
         } else return super.add(other);
@@ -90,7 +90,7 @@ class Matrix extends Var {
                 }
             }
             if (otherMatrix.value.length != value.length) {
-                throw new CalcException("Длины матриц НЕ равны");
+                throw new CalcException("Wrong matrix");
             }
             return new Matrix(sub);
         } else return super.sub(other);
@@ -137,7 +137,7 @@ class Matrix extends Var {
                 }
             }
             if (otherMatrix.value.length != value.length) {
-                throw new CalcException("Длины матриц НЕ равны");
+                throw new CalcException("Wrong matrix");
             }
             return new Matrix(mulresult);
         } else return super.mul(other);
@@ -157,7 +157,7 @@ class Matrix extends Var {
                 }
             }
             if ( otherScalar.getValue()==0)
-                throw new CalcException("Деление на ноль");
+                throw new CalcException("Division by zero");
             return new Matrix(div);
         } else return super.div(other);
     }
