@@ -1,6 +1,6 @@
 package by.it.dobrodey.calc;
 
-import by.it.akhmelev.calculator.CalcException;
+
 
 
 import java.util.Scanner;
@@ -29,7 +29,7 @@ public class ConsoleRunner {
             try {
                 Var result = parser.calc(expression);
                 printer.print(result);
-            } catch (CalcException e) {
+            } catch (CalcException e ) {
                 String message = e.getMessage();
                 System.out.println(message);
             }

@@ -1,6 +1,5 @@
 package by.it.yemialyanava.Calculator;
-
-public class Scalar extends Var  {
+class Scalar extends Var  {
 
     private double value;
 

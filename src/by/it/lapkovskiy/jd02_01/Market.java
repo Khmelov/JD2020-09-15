@@ -12,7 +12,7 @@ public class Market {
         int buyerNumber = 0;
         System.out.println("Market opened");
         List<Buyer> buyers = new ArrayList<>();
-        for (int second = 0; second < 120; second++) {
+        for (int second = 0; second < 120 ; second++) {
             if ((second <= 30) || (second >= 60 && second <= 90)) {
                 cof = (second%60) + 10 - Supervisor.buyersInMarket;
             } else {

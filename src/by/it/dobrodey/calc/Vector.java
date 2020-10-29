@@ -1,6 +1,6 @@
 package by.it.dobrodey.calc;
 
-import by.it.akhmelev.calculator.CalcException;
+
 
 import java.util.Arrays;
 
@@ -48,7 +48,7 @@ public class Vector extends Var {
         String delimiter = "";
         for (double element : value) {
             out.append(delimiter).append(element);
-            delimiter = ", ";
+            delimiter = ",";
         }
         out.append('}');
         return out.toString();
@@ -79,7 +79,6 @@ public class Vector extends Var {
         } else
             return super.add(other);
     }
-
 
     @Override
     public Var sub(Var other) throws CalcException {

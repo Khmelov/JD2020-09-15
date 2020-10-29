@@ -1,6 +1,6 @@
 package by.it.dobrodey.calc;
 
-import by.it.akhmelev.calculator.CalcException;
+
 
 import java.util.Arrays;
 
@@ -13,6 +13,9 @@ public class Matrix extends Var {
      *   Переопределите метод String toString()так, чтобы он возвращал строку вида { { 1.0, 2.0 },  { 3.0, 4.0 } }
      */
     private final double[][]value;
+    public double[][] getValue() {
+        return value;
+    }
 
     public Matrix(double[ ][ ]  value){
         this.value = value;
@@ -60,7 +63,7 @@ public class Matrix extends Var {
             String delimiter="";
             for (int j = 0; j < value[0].length; j++) {
                 out.append(delimiter).append(value[i][j]);
-                delimiter=", ";
+                delimiter=",";
             }
             out.append("}");
             if(i< (value.length-1)){out.append(delimiter);}

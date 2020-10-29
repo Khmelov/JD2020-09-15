@@ -1,46 +1,95 @@
 package by.it.dobrodey.calc;
 
 
-import by.it.akhmelev.calculator.CalcException;
-
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class Parser {
     Var calc(String expression) throws CalcException {
-        //2=2 -> scalar==4
-        if (expression.isEmpty()) {
-            throw new CalcException("You don't enter anything");
-        }
-
+        //2*2 -> scalar==4
         expression.replaceAll("\\s+", "");
 
-        String[] parts = expression.split(by.it.akhmelev.calculator.Patterns.OPERATION, 2);
-        if (parts.length==1) return Var.createVar(parts[0]);
+        expression = removeBracket(expression);
+        System.out.println("expression=" + expression);
+        return getVar(expression);
+    }
 
-        Var right= Var.createVar(parts[1]);
-        if (expression.contains("=")) {
-            return Var.save(parts[0],right);
+    private Var getVar(String expression) throws CalcException {
+        List<String> operands = new ArrayList<>(
+                Arrays.asList(expression.split(Patterns.OPERATION))
+        );
+        List<String> operations = new ArrayList<>();
+
+        Matcher matcher = Pattern.compile(Patterns.OPERATION).matcher(expression);
+        while (matcher.find()) {
+            operations.add(matcher.group());
         }
+        while (!operations.isEmpty()) {
+            int index = getIndex(operations);
+            String operation = operations.remove(index);
+            String left = operands.remove(index);
+            String right = operands.remove(index);
+            Var res = oneCalc(left, operation, right);
+            operands.add(index, res.toString());
+        }
+        return Var.createVar(operands.get(0));
+    }
 
-        Var left= Var.createVar(parts[0]);
-        if (right == null || left == null) throw new CalcException("?");
-
-        Pattern patternOperation = Pattern.compile(Patterns.OPERATION);
-        Matcher matcherOperation = patternOperation.matcher(expression);
-        if (matcherOperation.find()) {
-            String operation = matcherOperation.group();
-            switch (operation) {
-                case "+":
-                    return left.add(right);
-                case "-":
-                    return left.sub(right);
-                case "*":
-                    return left.mul(right);
-                case "/":
-                    return left.div(right);
+    private String removeBracket(String expression) throws CalcException {
+        while (expression.contains("(")) {
+            Matcher matcher1 = Pattern.compile(Patterns.BRACKET).matcher(expression);
+            if (matcher1.find()) {
+                String a = matcher1.group().replaceAll("\\)", "");
+                a = a.replaceAll("\\(", "");
+                int pos = matcher1.start();
+                a = getVar(a).toString();
+                expression = expression.replaceFirst(Patterns.BRACKET, a);
             }
         }
-        return null;
+        return expression;
+    }
+
+    private Var oneCalc(String strLeft, String operation, String strRight) throws CalcException {
+        Var right = Var.createVar(strRight);
+        if (operation.equals("=")) {
+            return Var.save(strLeft, right);
+        }
+        Var left = Var.createVar(strLeft);
+
+        switch (operation) {
+            case "+":
+                return left.add(right);
+            case "-":
+                return left.sub(right);
+            case "*":
+                return left.mul(right);
+            case "/":
+                return left.div(right);
+        }
+        throw new CalcException("What");
+    }
+
+    private int getIndex(List<String> operations) {
+        int index = -1;
+        int pr = -1;
+        for (int i = 0; i < operations.size(); i++) {
+            String op = operations.get(i);
+            if (PR.get(op) > pr) {
+                index = i;
+                pr = PR.get(op);
+            }
+        }
+        return index;
+    }
+
+    private static final Map<String, Integer> PR = new HashMap<>();
+
+    static {
+        PR.put("=", 0);
+        PR.put("+", 1);
+        PR.put("-", 1);
+        PR.put("*", 2);
+        PR.put("/", 2);
     }
 }

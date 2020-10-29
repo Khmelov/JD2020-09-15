@@ -1,6 +1,6 @@
 package by.it.dobrodey.calc;
 
-import by.it.akhmelev.calculator.CalcException;
+
 
 class Scalar extends Var {
     /**

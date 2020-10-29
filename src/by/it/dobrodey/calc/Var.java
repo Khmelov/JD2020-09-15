@@ -1,7 +1,7 @@
 package by.it.dobrodey.calc;
 
 
-import by.it.akhmelev.calculator.CalcException;
+
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -83,7 +83,7 @@ abstract class Var implements Operation {
             for (String line : lines) {
                 parser.calc(line);
             }
-        } catch (IOException e) {
+        } catch (IOException | CalcException e) {
             throw new CalcException(e);
         }
 
