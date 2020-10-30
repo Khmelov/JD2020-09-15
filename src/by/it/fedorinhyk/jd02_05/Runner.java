@@ -28,17 +28,17 @@ public class Runner {
             if (lang.equals("ru")) {
                 DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM, new Locale("RU"));
                 String s = df.format(new Date());
-                System.out.println(res.get(data.DATA) + " " + s); continue;
+                System.out.println("Текущая дата" + " " + s); continue;
             }
             if (lang.equals("en")) {
                 DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM, new Locale("EN"));
                 String s = df.format(new Date());
-                System.out.println(res.get(data.DATA) + " " + s); continue;
+                System.out.println("The current date" + " " + s); continue;
             }
             if (lang.equals("be")) {
                 DateFormat df = DateFormat.getDateInstance(DateFormat.MEDIUM, new Locale("BE"));
                 String s = df.format(new Date());
-                System.out.println(res.get(data.DATA) + " " + s);
+                System.out.println("Сёняшнее чысло" + " " + s);
             }
             else if (lang.equals("end")){
                 break;
