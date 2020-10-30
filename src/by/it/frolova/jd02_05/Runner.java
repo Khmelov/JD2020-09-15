@@ -7,37 +7,41 @@ import java.util.Scanner;
 
 public class Runner {
     public static void main(String[] args) {
-        Lang manager = Lang.INSTANCE;
         Scanner sc = new Scanner(System.in);
-        Date date = new Date();
-        Locale locale = new Locale("en", "US");
         if (args.length == 2) {
-            locale = new Locale(args[0], args[1]);
-            manager.setLocale(locale);
-            print(manager);
-            printDate(date, locale);
+            printAll(args[0], args[1]);
         } else {
             for (; ; ) {
                 String inputLocale = sc.nextLine();
                 if (inputLocale.equals("end")) {
                     break;
-                } else if (inputLocale.equals("en")) {
-                    locale = new Locale("en", "US");
-                    manager.setLocale(locale);
-                } else if (inputLocale.equals("be")) {
-                    locale = new Locale("be", "BY");
-                    manager.setLocale(locale);
-                } else if (inputLocale.equals("ru")) {
-                    locale = new Locale("ru", "RU");
-                    manager.setLocale(locale);
                 } else {
-                    manager.setLocale(Locale.ENGLISH);
+                    printAll(inputLocale, null);
                 }
-
-                print(manager);
-                printDate(date, locale);
             }
         }
+    }
+
+    private static void printAll(String language, String country) {
+        Lang manager = Lang.INSTANCE;
+        Locale locale;
+        Date date = new Date();
+        if (country == null) {
+            if (language.equals("en")) {
+                locale = new Locale("en", "US");
+            } else if (language.equals("be")) {
+                locale = new Locale("be", "BY");
+            } else if (language.equals("ru")) {
+                locale = new Locale("ru", "RU");
+            } else {
+                locale = Locale.ENGLISH;
+            }
+        } else {
+            locale = new Locale(language, country);
+        }
+        manager.setLocale(locale);
+        print(manager);
+        printDate(date, locale);
     }
 
     private static void printDate(Date date, Locale locale) {
