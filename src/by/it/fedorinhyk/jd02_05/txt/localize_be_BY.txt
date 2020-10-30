@@ -2,3 +2,4 @@ message.hello=Прывітанне!
 message.question=Як справы?
 user.firstName=Віктар
 user.lastName=Федарынчык
+data.current=Сёняшнее чысло
