@@ -1,4 +1,4 @@
-package by.it.sheremet.jd02_02;
+package by.it.sheremet.jd02_03;
 
 import java.util.Map;
 import java.util.Objects;
@@ -19,7 +19,8 @@ class Cashier implements Runnable {
 
     @Override
     public void run() {
-        while (!Supervisor.marketIsClose()) {
+        while (!Supervisor.marketIsClosed()) {
+            Buyer buyer;
             if (QueueBuyers.buyerSize() > (number - 1) * 5) {
                 if (!work) {
                     System.out.printf("%s opened\n", this);
@@ -33,18 +34,18 @@ class Cashier implements Runnable {
                 continue;
             }
 
-                    Buyer buyer = QueueBuyers.extract();
+                    buyer = QueueBuyers.extract();
                     if (Objects.nonNull(buyer)) {
                         System.out.printf("%s start service for %s\n", this, buyer);
                         int t = Helper.getRandom(2000, 5000);
                         Helper.timeout(t);
-                        Map<String,Double> buyerBasket = buyer.getBasketGoods();
-                        double price=0;
-                        for (Map.Entry<String,Double> products:buyerBasket.entrySet()) {
+                        double price = 0;
+                        Map<String,Double> buyersBasket = buyer.getBasketGoods();
+                        for (Map.Entry<String,Double>products:buyersBasket.entrySet()) {
                             String product = products.getKey();
                             Double cost = products.getValue();
                             price += cost;
-                            System.out.println(buyer + " buy " + product + " for " + cost);
+                            System.out.println(buyer+" buy "+product+" for "+cost);
                         }
                         System.out.println(buyer+" total price: "+price);
                         System.out.printf("%s finish service for %s\n", this, buyer);
