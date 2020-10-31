@@ -8,10 +8,12 @@ public class ConsoleRunner {
         Scanner sc = new Scanner(System.in);
         Parser parser = new Parser();
         Printer printer = new Printer();
-
+        LangRunner langRunner = new LangRunner();
         for (; ; ) {
             String expression = sc.nextLine();
-            if (expression.equals("end")) {
+            if (expression.equals("en") || expression.equals("be") || expression.equals("ru")) {
+                langRunner.printAll(expression);
+            } else if (expression.equals("end")) {
                 break;
             } else {
                 Var result = parser.calc(expression);

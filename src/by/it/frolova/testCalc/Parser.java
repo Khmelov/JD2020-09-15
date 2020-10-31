@@ -5,7 +5,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Parser {
-
+    private static Lang manager = Lang.INSTANCE;
     private static Map<String, Var> varMap = new HashMap<>();
 
     static Var createVar(String strVar) throws CalcExceptions {
@@ -18,7 +18,7 @@ public class Parser {
         } else {
             Var var = varMap.get(strVar);
             if (Objects.isNull(var)) {
-                throw new CalcExceptions("Unknown variable: " + strVar);
+                throw new CalcExceptions(manager.get(Error.ERROR_UNKNOWN) + " " + strVar);
             }
             return var;
         }
