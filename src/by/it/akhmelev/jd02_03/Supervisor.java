@@ -13,18 +13,22 @@ class Supervisor {
     private static final int buyerTotal = 100;
 
     static void addBuyer() {
+
         buyersEnterToMarket.getAndIncrement();
     }
 
     static void leaveBuyer() {
+
         buyersLeavedMarket.getAndIncrement();
     }
 
     static boolean marketIsOpened() {
+
         return buyersEnterToMarket.get() != buyerTotal;
     }
 
     static boolean marketIsClosed() {
+
         return buyersLeavedMarket.get() == buyerTotal;
     }
 

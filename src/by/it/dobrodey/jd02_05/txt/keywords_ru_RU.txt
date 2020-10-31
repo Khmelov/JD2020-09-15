@@ -1,0 +1,8 @@
+message.welcome=Привет!
+message.question=Как дела?
+user.firstName=Ольга
+user.lastName=Добродей
+language.country=RU
+language.language=ru
+language.operassion=Русский язык
+message.data=Текущая дата: %s\n

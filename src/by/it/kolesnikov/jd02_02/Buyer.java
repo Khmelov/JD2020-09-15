@@ -8,17 +8,11 @@ import java.util.Map;
 
 class Buyer extends Thread implements IBuyer, IUseBasket {
 
-    private boolean waiting;
-
     Buyer(int number){
         this.setName("Buyer №"+number);
         Supervisor.addBuyer();
-        waiting =false;
     }
 
-    public void setWaiting(boolean waiting) {
-        this.waiting = waiting;
-    }
 
     @Override
     public void run() {
@@ -33,7 +27,6 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public void takeBasket(){
-
         System.out.println(this+" took basket");
     }
 
@@ -89,9 +82,8 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
     public void goToQueue() {
         System.out.println(this+" goes to queue");
         synchronized (this) {
-            waiting =true;
             QueueBuyers.add(this);
-            while(waiting)
+            QueueBuyers.countBuyers++;
             try {
                 this.wait();
             } catch (InterruptedException e) {

@@ -1,8 +1,5 @@
 package by.it.dobrodey.calc;
 
-
-import by.it.akhmelev.calculator.CalcException;
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
@@ -41,7 +38,7 @@ abstract class Var implements Operation {
         } else {
             Var var = varMap.get(strVar);
             if (Objects.isNull(var)) {
-                throw new CalcException("Unknow variable: " + strVar);
+                throw new CalcException(ConsoleRunner.manager.get(Message.unknowVariable) + strVar);
             }
             return var;
         }
@@ -90,29 +87,29 @@ abstract class Var implements Operation {
     }
 
     public String toString() {
-        return "abstract Var";
+        return ConsoleRunner.manager.get(Message.abstractVar);
     }
 
     @Override
     public Var add(Var other) throws CalcException {
-        throw new CalcException(String.format("Operation %s + %s impossible\n", this, other));
+        throw new CalcException(String.format(ConsoleRunner.manager.get(Message.OperationAddImpossible), this, other));
     }
 
     @Override
     public Var sub(Var other) throws CalcException {
-        throw new CalcException(String.format("Operation %s - %s impossible\n", this, other));
+        throw new CalcException(String.format(ConsoleRunner.manager.get(Message.OperationSubImpossible), this, other));
 
     }
 
     @Override
     public Var mul(Var other) throws CalcException {
-        throw new CalcException(String.format("Operation %s * %s impossible\n", this, other));
+        throw new CalcException(String.format(ConsoleRunner.manager.get(Message.OperationMultImpossible), this, other));
 
     }
 
     @Override
     public Var div(Var other) throws CalcException {
-        throw new CalcException(String.format("Operation %s / %s impossible\n", this, other));
+        throw new CalcException(String.format(ConsoleRunner.manager.get(Message.OperationDivImpossible), this, other));
             }
 }
 

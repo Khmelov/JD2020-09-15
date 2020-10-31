@@ -1,6 +1,6 @@
 package by.it.dobrodey.calc;
 
-import by.it.akhmelev.calculator.CalcException;
+
 
 import java.util.Arrays;
 
@@ -48,7 +48,7 @@ public class Vector extends Var {
         String delimiter = "";
         for (double element : value) {
             out.append(delimiter).append(element);
-            delimiter = ", ";
+            delimiter = ",";
         }
         out.append('}');
         return out.toString();
@@ -67,8 +67,7 @@ public class Vector extends Var {
         } else if (other instanceof Vector) {
             Vector otherVector = (Vector) other;
             if (otherVector.value.length != value.length) {
-                throw new CalcException("\n" +
-                        "incorrect vector format");
+                throw new CalcException(ConsoleRunner.manager.get(Message.IncorrectVectorFormat));
             }
             double[] sum = Arrays.copyOf(value, value.length);
             for (int i = 0; i < sum.length; i++) {
@@ -79,7 +78,6 @@ public class Vector extends Var {
         } else
             return super.add(other);
     }
-
 
     @Override
     public Var sub(Var other) throws CalcException {
@@ -94,8 +92,7 @@ public class Vector extends Var {
         } else if (other instanceof Vector) {
             Vector otherVector = (Vector) other;
             if (otherVector.value.length != value.length) {
-                throw new CalcException("\n" +
-                        "incorrect vector format");
+                throw new CalcException(ConsoleRunner.manager.get(Message.IncorrectVectorFormat));
             }
             double[] sub = Arrays.copyOf(value, value.length);
             for (int i = 0; i < sub.length; i++) {
@@ -120,8 +117,7 @@ public class Vector extends Var {
         } else if (other instanceof Vector) {
             Vector otherVector = (Vector) other;
             if (otherVector.value.length != value.length) {
-                throw new CalcException("\n" +
-                        "incorrect vector format");
+                throw new CalcException(ConsoleRunner.manager.get(Message.IncorrectVectorFormat));
             }
             double[] mult = Arrays.copyOf(value, value.length);
             double sum = 0;
@@ -140,7 +136,7 @@ public class Vector extends Var {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             if (otherScalar.getValue() == 0) {
-                throw new CalcException(" division by zero");
+                throw new CalcException(ConsoleRunner.manager.get(Message.divisionByZero));
             }
             double[] divr = Arrays.copyOf(this.value, this.value.length);
             for (int i = 0; i < divr.length; i++) {

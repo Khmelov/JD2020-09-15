@@ -100,10 +100,8 @@ public class TaskB {
             }
         }
         else {
-
             System.out.println("так как а = 0, уравнение не имеет решения");
             System.out.println("корней нет");
         }
-
     }
 }

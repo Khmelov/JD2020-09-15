@@ -1,6 +1,5 @@
 package by.it.lapkovskiy.calculator;
 
-import java.util.HashSet;
 import java.util.Scanner;
 
 public class ConsoleRunner  {
@@ -12,7 +11,7 @@ public class ConsoleRunner  {
             String expression = sc.nextLine();
             if (expression.equals("end")) break;
             try {
-                if(parser.CheckBracket(expression)){
+                if(parser.checkBracket(expression)){
                 Var result = parser.calc(expression);
                 printer.print(result);
                 }

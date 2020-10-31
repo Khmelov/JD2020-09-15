@@ -32,19 +32,15 @@ import java.util.Scanner;
 
 */
 class TaskC3 {
-    private static double gE = 9.81;
-    private static double gM = 3.86;
-
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         System.out.println("Ввод:");
         int weight = (int) sc.nextDouble();
-        System.out.println("Вывод:" + "\n" + getWeight(weight));
+        System.out.println("Вывод:\n" + getWeight(weight));
     }
-
     static double getWeight(int weight) {
+        double gE = 9.81;
+        double gM = 3.86;
         return Math.round((double) weight / gE * gM * 100.0) / 100.0;
     }
 }
-
-
