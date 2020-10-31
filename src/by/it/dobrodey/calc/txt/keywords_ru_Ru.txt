@@ -1,0 +1,17 @@
+message.filenotFound=Файл не найден
+message.error=Ошибка
+message.notCompatibleMatrixSize=не правильный размер матрицы
+message.notCompatibleMatrixOrVector size=не правильный размер матрицы или вектора
+message.unknowVariable=Неизвестная переменная
+message.divisionByZero=деление на ноль
+message.fileError=НЕПРАВИЛЬНЫЙ ФАЙЛ
+message.abstractVar=абстрактная переменная
+message.OperationAddImpossible=Операция %s + %s невозможна\n
+message.OperationSubImpossible=Операция %s - %s невозможна\n
+message.OperationMultImpossible=Операция %s * %s невозможна\n
+message.OperationDivImpossible=Операция %s / %s невозможна\n
+message.IncorrectVectorFormat=неправильный формат вектора
+message.operassion=Русский язык
+message.input=Введите переменную
+
+
