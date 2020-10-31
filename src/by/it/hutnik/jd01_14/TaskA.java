@@ -53,8 +53,5 @@ class TaskA {
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        ;
-//
-//        System.out.println(dir(TaskA.class));
     }
 }

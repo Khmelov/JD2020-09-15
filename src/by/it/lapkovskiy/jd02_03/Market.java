@@ -5,11 +5,13 @@ import java.util.concurrent.*;
 public class Market {
     public static Semaphore baskets;
     public static Semaphore goIn;
+    public static Semaphore goInQueue;
     static int buyerNumber = 0;
 
     public static void main(String[] args) {
         baskets = new Semaphore(50);
         goIn = new Semaphore(20);
+        goInQueue = new Semaphore(30);
         System.out.println("Market opened");
 
         ExecutorService executorService = Executors.newFixedThreadPool(5);

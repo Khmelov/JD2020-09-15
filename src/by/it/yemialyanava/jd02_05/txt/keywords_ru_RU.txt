@@ -1,0 +1,5 @@
+message.welcome=Привет!
+message.question=Как дела?
+user.firstName=Татьяна
+user.lastName=Емельянова
+message.currentDate=текущая дата:

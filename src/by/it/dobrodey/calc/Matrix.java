@@ -125,7 +125,7 @@ public class Matrix extends Var {
         }else if (other instanceof Matrix){
             Matrix otherMatrix = (Matrix) other;
             if(otherMatrix.value.length!= this.value.length||otherMatrix.value[0].length!= this.value[0].length){
-                throw new CalcException("not compatible matrix size");
+                throw new CalcException(ConsoleRunner.manager.get(Message.notCompatibleMatrixSize)+" ");
             }
             double [][] matrixSub = new double[this.value.length][this.value[0].length];
             for (int i = 0; i < this.value.length; i++) {
@@ -159,8 +159,8 @@ public class Matrix extends Var {
             return result;
         } else if (other instanceof Vector){
             Vector otherVector = (Vector) other;
-            if(otherVector.getValue().length!= value[0].length){throw new CalcException("\n" +
-                    "not compatible matrix or vector size");}
+            if(otherVector.getValue().length!= value[0].length){
+                throw new CalcException(ConsoleRunner.manager.get(Message.notCompatibleMatrixOrVectorSize));}
             double[][] matrixMul = new double[this.value.length][this.value[0].length];
             for (int i = 0; i < this.value.length; i++) {
                 matrixMul[i] = Arrays.copyOf(this.value[i], this.value[i].length);
@@ -177,8 +177,8 @@ public class Matrix extends Var {
 
         }else if (other instanceof Matrix){
             Matrix otherMatrix = (Matrix) other;
-            if (otherMatrix.value.length!= value[0].length){throw new CalcException("\n" +
-                    "not compatible matrix size");}
+            if (otherMatrix.value.length!= value[0].length)
+            {throw new CalcException(ConsoleRunner.manager.get(Message.notCompatibleMatrixSize));}
             double [][] matrixMul = new double[this.value.length][this.value[0].length];
             for (int i = 0; i < this.value.length; i++) {
                 matrixMul[i]= Arrays.copyOf(this.value[i],this.value[i].length);
@@ -200,7 +200,7 @@ public class Matrix extends Var {
     public Var div(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
-            if(otherScalar.getValue() == 0) {throw new CalcException(" division by zero");}
+            if(otherScalar.getValue() == 0) {throw new CalcException(ConsoleRunner.manager.get(Message.divisionByZero));}
             double[][] matrixDiv = new double[this.value.length][this.value[0].length];
             for (int i = 0; i < this.value.length; i++) {
                 matrixDiv[i] = Arrays.copyOf(this.value[i], this.value[i].length);

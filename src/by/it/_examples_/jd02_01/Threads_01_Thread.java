@@ -9,7 +9,7 @@ class Threads_01_Thread {
                 System.out.println(this.getName()+"Цикл №"+i);
                 try {
                     sleep((int)(Math.random()*1000)); // остановка на 0..999 миллисекунд
-                    yield(); //так можно указать, что поток желает временно отдать
+                    //yield(); //так можно указать, что поток желает временно отдать
                              //управление для выполнения других конкуррентных потоков
                 } catch (InterruptedException e) {
                     System.err.print(e.toString());
