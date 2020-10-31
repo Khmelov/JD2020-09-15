@@ -18,4 +18,11 @@ class Helper {
             throw new RuntimeException(e);
         }
     }
+    static void basket() {
+        HashMap<String, Integer> good = new HashMap();
+        good.put("milk", 1);
+        good.put("bread", 2);
+        good.put("fish", 3);
+        good.put("water", 4);
+    }
 }

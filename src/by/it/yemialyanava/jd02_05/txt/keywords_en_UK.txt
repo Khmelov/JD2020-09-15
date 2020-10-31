@@ -1,0 +1,5 @@
+message.welcome=Welcome!
+message.question=How are you?
+user.firstName=Tatsiana
+user.lastName=Yemialyanava
+message.currentDate=current date:

@@ -14,6 +14,7 @@ public class TaskC3 {
         String input = sc.nextLine();
         char [] arr = input.toCharArray();
 
+
         Map<Character, Character> bracketsMap = new HashMap<>();
         bracketsMap.put('[', ']');
         bracketsMap.put('(', ')');

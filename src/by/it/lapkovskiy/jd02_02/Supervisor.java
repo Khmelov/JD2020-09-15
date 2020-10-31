@@ -19,6 +19,10 @@ class Supervisor extends Thread{
         return buyersEnterToMarket != buyerTotal;
     }
 
+ static int inCountBuyersMarket() {
+        return buyersEnterToMarket -buyersLeavedMarket;
+    }
+
     static boolean marketIsClosed() {
         return buyersLeavedMarket == buyerTotal;
     }

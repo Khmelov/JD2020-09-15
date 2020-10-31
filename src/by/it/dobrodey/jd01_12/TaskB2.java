@@ -31,17 +31,21 @@ public class TaskB2 {
         int n = 0;
         Iterator<String> it = peoples.iterator();
         while (peoples.size() != 1) {
-            while (it.hasNext()){
+            while (it.hasNext()) {
                 it.next();
-                if(n==1){it.remove();n = 0;continue;}
-                n=1;
+                if (n == 1) {
+                    it.remove();
+                    n = 0;
+                    continue;
+                }
+                n = 1;
             }
             it = peoples.iterator();
         }
         String result = peoples.toString();
         result = result.replaceAll("\\[", "");
         result = result.replaceAll("]", "");
-        return peoples.toString();
+        return result;
     }
 
 

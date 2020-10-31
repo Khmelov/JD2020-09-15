@@ -59,6 +59,7 @@ public class Cashier implements Runnable {
                 System.out.printf("%" + (number) * 30 + "s", this + "----------------");
                 System.out.printf("%" + (6 - number) * 30 + "s", "");
                 System.out.printf("%10s  %s\n", "Queue:" + QueueBuyers.getBuyerSize(),"TotalMarket:"+Supervisor.GetTotal());
+                System.out.println(QueueBuyers.getBuyerSize());
 
                 System.out.printf("%" + (number) * 30 + "s\n", buyer + " bought");
                 int total = 0;
