@@ -42,11 +42,11 @@ public class Matrix extends Var {
         for (int i = 0; i < value.length; i++) {
             st=st.concat("{");
             for (int j = 0; j < value[i].length-1; j++) {
-                st=st.concat(value[i][j]+", ");
+                st=st.concat(value[i][j]+",");
             }
             st+=value[i][value[i].length-1]+"}";
             if(i ==value.length-1) break;
-            st=st.concat(", ");
+            st=st.concat(",");
         }
         st+="}";
         return st;

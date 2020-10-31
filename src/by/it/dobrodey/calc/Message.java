@@ -1,6 +1,5 @@
 package by.it.dobrodey.calc;
 
-import com.sun.org.apache.xpath.internal.objects.XString;
 
 public interface Message {
     String filenotFound = "message.filenotFound";
