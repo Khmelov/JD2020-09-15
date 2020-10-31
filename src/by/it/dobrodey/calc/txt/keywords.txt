@@ -1,0 +1,17 @@
+message.filenotFound=File not found
+message.error=ERROR:
+message.notCompatibleMatrixSize=not compatible matrix size
+message.notCompatibleMatrixOrVectorSize=not compatible matrix or vector size
+message.unknowVariable=Unknow variable:
+message.divisionByZero=division by zero
+message.fileError=FILE ERROR:
+message.abstractVar=abstract Var
+message.OperationAddImpossible=Operation %s + %s impossible\n
+message.OperationSubImpossible=Operation %s - %s impossible\n
+message.OperationMultImpossible=Operation %s * %s impossible\n
+message.OperationDivImpossible=Operation %s / %s impossible\n
+message.IncorrectVectorFormat=incorrect vector format
+message.operassion=English language
+message.input=Input variable
+
+

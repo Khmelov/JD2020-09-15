@@ -1,0 +1,15 @@
+message.filenotFound=Файл не найден
+message.error=Памылка
+message.notCompatibleMatrixSize=не правільны памер матрыцы
+message.notCompatibleMatrixOrVectorSize=не правільны памер матрыцы або вектара
+message.unknowVariable=Не вядомая пераменная
+message.divisionByZero=дзяленне на нуль
+message.fileError=ПАМЫЛКОВЫ ФАЙЛ
+message.abstractVar=абстрактная переменная
+message.OperationAddImpossible=Аперацыя %s + %s немагчыма\n
+message.OperationSubImpossible=Аперацыя %s - %s немагчыма\n
+message.OperationMultImpossible=Аперацыя %s * %s немагчыма\n
+message.OperationDivImpossible=Аперацыя %s / %s немагчыма\n
+message.IncorrectVectorFormat=памылковы фармат вектара
+message.operassion=Беларуская мова
+message.input=Увядзіце зменную

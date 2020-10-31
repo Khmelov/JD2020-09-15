@@ -10,20 +10,14 @@ public class QueueBuyers {
     private static final LinkedBlockingDeque<Buyer> deque = new LinkedBlockingDeque<>(30);
 
     static void add(Buyer buyer) {
-        synchronized (monitor) {
             deque.addLast(buyer);
-        }
     }
     static void addPensioner(Buyer buyer) {
-        synchronized (monitor) {
             deque.addFirst(buyer);
-        }
     }
 
     static Buyer extract() throws InterruptedException {
-        synchronized (monitor) {
-            return deque.take();
-        }
+            return deque.pop();
     }
     static int getBuyerSize(){
         synchronized (monitor){

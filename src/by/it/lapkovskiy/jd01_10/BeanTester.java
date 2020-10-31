@@ -1,6 +1,5 @@
 package by.it.lapkovskiy.jd01_10;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 public class BeanTester {
@@ -15,6 +14,7 @@ public class BeanTester {
                 System.out.println(d);
             }
             catch (Exception e){
+                e.printStackTrace();
             }
         }
     }

@@ -28,7 +28,7 @@ public class Vector extends Var {
     public String toString() {
         String st = "{";
         for (int i = 0; i < value.length-1; i++) {
-            st+= value[i]+", ";
+            st+= value[i]+",";
         }
         st+=value[value.length-1]+"}";
         return st;
