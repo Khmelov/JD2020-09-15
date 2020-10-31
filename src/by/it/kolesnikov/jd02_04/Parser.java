@@ -1,11 +1,12 @@
-package by.it.kolesnikov.calculator;
+package by.it.kolesnikov.jd02_04;
 
-
+import java.io.PrintWriter;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class Parser {
+
     private static final Map<String, Integer> prior = new HashMap<>() {
         {
             this.put("+", 1);
@@ -32,21 +33,21 @@ class Parser {
             Var result = oneOperation(left, right, operation);
             operands.add(index,result.toString());
         }
-        return Var.createVar(operands.get(0));
+return Var.createVar(operands.get(0));
     }
 
     private Var oneOperation(String strLeft, String strRight, String operation) {
-        Var right =Var.createVar(strRight);
+        Var right = Var.createVar(strRight);
         if (operation.equals("=")) {
             return right;
         }
         Var left = Var.createVar(strLeft);
-        switch(operation){
-            case "+": return left.add(right);
-            case "-": return left.sub(right);
-            case "*": return left.mul(right);
-            case "/": return left.div(right);
-        }
+            switch(operation){
+                case "+": return left.add(right);
+                case "-": return left.sub(right);
+                case "*": return left.mul(right);
+                case "/": return left.div(right);
+            }
         return right;
     }
 
