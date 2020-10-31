@@ -3,7 +3,7 @@ package by.it.frolova.testCalc;
 import java.util.Scanner;
 
 public class ConsoleRunner {
-    public static void main(String[] args) throws CalcExceptions {
+    public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
         Parser parser = new Parser();
@@ -11,13 +11,18 @@ public class ConsoleRunner {
         LangRunner langRunner = new LangRunner();
         for (; ; ) {
             String expression = sc.nextLine();
-            if (expression.equals("en") || expression.equals("be") || expression.equals("ru")) {
-                langRunner.printAll(expression);
-            } else if (expression.equals("end")) {
-                break;
-            } else {
-                Var result = parser.calc(expression);
-                printer.print(result);
+            try {
+                if (expression.equals("en") || expression.equals("be") || expression.equals("ru")) {
+                    langRunner.printAll(expression);
+                } else if (expression.equals("end")) {
+                    break;
+                } else {
+                    Var result = parser.calc(expression);
+                    printer.print(result);
+                }
+            }catch (CalcExceptions e){
+                String message = e.getMessage();
+                System.out.println(message);
             }
         }
     }
