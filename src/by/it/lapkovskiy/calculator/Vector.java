@@ -16,6 +16,7 @@ public class Vector extends Var {
     Vector(String strVector){
         strVector = strVector.replace("{","");
         strVector = strVector.replace("}","");
+        strVector = strVector.replace(" ","");
         String[] arr = strVector.split(",");
         double[] arrDouble = new double[arr.length];
         for (int i = 0; i < arr.length; i++) {
@@ -28,7 +29,7 @@ public class Vector extends Var {
     public String toString() {
         String st = "{";
         for (int i = 0; i < value.length-1; i++) {
-            st+= value[i]+",";
+            st+= value[i]+", ";
         }
         st+=value[value.length-1]+"}";
         return st;
@@ -44,7 +45,7 @@ public class Vector extends Var {
             return new Vector(sum);
         }
         else if(other instanceof Vector){
-            if(((Vector) other).value.length!=value.length) throw new CalcException(" length not eq");
+            if(((Vector) other).value.length!=value.length) throw new CalcException(ConsoleRunner.rasMan.get(Message.length_not_equals));
             double[] arr = new double[((Vector) other).value.length];
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = value[i] + ((Vector) other).value[i];
@@ -66,7 +67,7 @@ public class Vector extends Var {
             return new Vector(sub);
         }
         else if(other instanceof Vector){
-            if(((Vector) other).value.length!=value.length) throw new CalcException(" length not eq");
+            if(((Vector) other).value.length!=value.length) throw new CalcException(ConsoleRunner.rasMan.get(Message.length_not_equals));
             double[] arr = new double[((Vector) other).value.length];
             for (int i = 0; i < arr.length; i++) {
                 arr[i] = value[i] - ((Vector) other).value[i];
@@ -88,7 +89,7 @@ public class Vector extends Var {
             return new Vector(sub);
         }
         else if(other instanceof Vector){
-            if(((Vector) other).value.length!=value.length) throw new CalcException(" length not eq");
+            if(((Vector) other).value.length!=value.length) throw new CalcException(ConsoleRunner.rasMan.get(Message.length_not_equals));
             double arr = 0;
             for (int i = 0; i < value.length; i++) {
                 arr += value[i] * ((Vector) other).value[i];

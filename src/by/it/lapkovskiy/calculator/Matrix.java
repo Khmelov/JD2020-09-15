@@ -42,11 +42,11 @@ public class Matrix extends Var {
         for (int i = 0; i < value.length; i++) {
             st=st.concat("{");
             for (int j = 0; j < value[i].length-1; j++) {
-                st=st.concat(value[i][j]+",");
+                st=st.concat(value[i][j]+", ");
             }
             st+=value[i][value[i].length-1]+"}";
             if(i ==value.length-1) break;
-            st=st.concat(",");
+            st=st.concat(", ");
         }
         st+="}";
         return st;
@@ -93,7 +93,7 @@ public class Matrix extends Var {
             return super.sub(this);
         }
         else if(other instanceof Matrix){
-            if(((Matrix) other).value[0].length!= value.length) throw new CalcException(" length not eq");
+            if(((Matrix) other).value[0].length!= value.length) throw new CalcException(ConsoleRunner.rasMan.get(Message.length_not_equals));
             double [][] sub = new double[this.value.length][this.getValue()[0].length];
             for (int i = 0; i < value.length; i++) {
                 for (int j = 0; j < value[i].length; j++) {
@@ -125,7 +125,7 @@ public class Matrix extends Var {
             return new Vector(resultVector);
         }
         else if(other instanceof Matrix){
-            if(((Matrix) other).value[0].length!= value.length) throw new CalcException(" length not eq");
+            if(((Matrix) other).value[0].length!= value.length) throw new CalcException(ConsoleRunner.rasMan.get(Message.length_not_equals));
             double[][] resultMatrix = new double[((Matrix) other).value[0].length][this.value.length];
             for (int i = 0; i < this.value.length; ++i)
                 for (int j = 0; j < ((Matrix) other).value.length; ++j)

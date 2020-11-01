@@ -1,0 +1,9 @@
+message.error=Памылка
+message.bracket_error_not_found=Дужка не знойдзена
+message.unidentified_operation=Неапазнаная аперацыя
+message.division_by_zero=Дзяленне на нуль
+message.length_not_equals=Даўжыня не роўная
+message.unknown_variable=Невядомая пераменная
+message.operation=аперацыя
+message.impossible=немагчыма
+message.abstract_var=Абстрактная пераменная

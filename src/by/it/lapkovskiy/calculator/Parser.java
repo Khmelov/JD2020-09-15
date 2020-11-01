@@ -46,7 +46,7 @@ class Parser {
             if (brackets[i] == '{' || brackets[i] == '(' || brackets[i] == '[') stack.push(brackets[i]);
             else {
                 if (stack.isEmpty()) {
-                    System.out.println("Bracket Error excess:"+(Character)brackets[i]+" in "+i);
+                    System.out.println(ConsoleRunner.rasMan.get(Message.bracket_error_not_found) +":"+(Character)brackets[i]+" in "+i);
                     return false;
                 }
                 if (brackets[i] == '}' && stack.peek() == '{') {
@@ -56,7 +56,7 @@ class Parser {
                 } else if (brackets[i] == ']' && stack.peek() == '[') {
                     stack.pop();
                 } else {
-                    System.out.println("Bracket Error excess:"+(Character)brackets[i]+" in "+i);
+                    System.out.println(ConsoleRunner.rasMan.get(Message.bracket_error_not_found) +":"+(Character)brackets[i]+" in "+i);
                     return false;
                 }
             }
@@ -73,7 +73,7 @@ class Parser {
                         case '[' : b=']';
                             break;
                     }
-                    System.out.println("Bracket Error excess:"+b);
+                    System.out.println(ConsoleRunner.rasMan.get(Message.bracket_error_not_found) +":"+b);
                     return false;
                 }
             }
@@ -124,7 +124,7 @@ class Parser {
             case "/":
                 return left.div(right);
         }
-        throw new CalcException("buu!!");
+        throw new CalcException(ConsoleRunner.rasMan.get(Message.unidentified_operation));
     }
 
     private int getIndex(List<String> operations) {
