@@ -1,4 +1,4 @@
-package by.it.sheremet.culculator;
+package by.it.sheremet.culc;
 
 
 import org.junit.Test;
