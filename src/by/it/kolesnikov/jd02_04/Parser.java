@@ -11,7 +11,7 @@ class Parser {
         {
             this.put("+", 1);
             this.put("-", 1);
-            this.put("*", 2);
+            this.put("*", 1);
             this.put("/", 2);
         }
     };
@@ -19,7 +19,6 @@ class Parser {
     Var calc(String expression){
         List<String> operands = new ArrayList<>(Arrays.asList(expression.split(Patterns.OPERATION)));
         List<String> operations = new ArrayList<>();
-        expression.replaceAll("\\s+", "");
         expression=expression.replace(" ", "");
         Matcher match = Pattern.compile(Patterns.OPERATION).matcher(expression);
         while (match.find()){
@@ -56,9 +55,10 @@ return Var.createVar(operands.get(0));
         int pr=-1;
         for (int i = 0; i < operations.size(); i++) {
             String op = operations.get(i);
-            if(prior.get(op)>pr)
-                pr=prior.get(op);
-            index=i;
+            if(prior.get(op)>pr) {
+                pr = prior.get(op);
+                index = i;
+            }
         }
         return index;
     }
