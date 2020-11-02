@@ -36,17 +36,5 @@ public class InOut {
                 System.out.println("");
         }
     }
-//        static double findMin(double[ ] arr){
-//            if (0 == arr.length){
-//                return Integer.MIN_VALUE;
-//            } else {
-//                double min = arr[0];
-//                for (double v : arr) {
-//                    if (min>v) min=v;
-//                    System.out.println(v);
-//                }
-//                return min;
-//            }
-//        }
 
 }

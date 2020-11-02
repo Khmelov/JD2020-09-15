@@ -14,7 +14,7 @@ public class TaskA {
     }
     public static void main(String[] args) {
         printMulTable();
-        System.out.println("Введите через пробел цифры для постоения массива:");
+        System.out.println("\nВведите через пробел цифры для постоения массива и нажмите <Enter>:");
         Scanner sc = new Scanner(System.in);
         String s = sc.nextLine();
         buildOneDimArray(s);
@@ -25,6 +25,7 @@ public class TaskA {
         double last = array[array.length-1];
         InOut.printArray(array,"V", 5);
         Helper.sort(array);
+        System.out.println();
         InOut.printArray(array, "V", 4);
         for (int i = 0; i < array.length; i++) {
             if (array[i] == first) {

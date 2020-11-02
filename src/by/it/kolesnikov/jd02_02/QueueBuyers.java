@@ -8,6 +8,7 @@ public class QueueBuyers {
     private static final Object monitor = new Object();
 
    static  Deque<Buyer> deque = new LinkedList<>();
+   static volatile int countBuyers=0;
 
     static void add(Buyer buyer) {
         synchronized (monitor) {

@@ -1,0 +1,5 @@
+message.welcome=Привiтанне!
+message.question=Как дзялы?
+user.firstName=Таццяна
+user.lastName=Емяльянава
+message.currentDate=сенняшняя дата:

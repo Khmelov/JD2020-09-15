@@ -4,7 +4,7 @@ import java.util.Random;
 
 class Helper {
 
-    private static final int K_SPEED = 1000;
+    private static final int K_SPEED = 100;
     private  static Random random = new Random();
     static int getRandom (int min, int max){
         return min + random.nextInt(max - min + 1);

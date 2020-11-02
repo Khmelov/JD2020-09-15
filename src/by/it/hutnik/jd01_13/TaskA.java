@@ -10,11 +10,9 @@ public class TaskA {
             if (Math.random()>0.5)
                 new HashMap<String, String>(null);
             else
-                Integer.parseInt("Привет");
-
+                Integer.parseInt("привет");
         } catch (NumberFormatException | NullPointerException e) {
-            Class<? extends RuntimeException> aClass = e.getClass();
-            String exceptionName = aClass.getName();
+            String exceptionName = e.getClass().getName();
             StackTraceElement[] stackTrace =e.getStackTrace();
             for (StackTraceElement traceElement : stackTrace) {
                 String methodName = traceElement.getMethodName();
@@ -24,7 +22,6 @@ public class TaskA {
                     System.out.printf(" name: %s\n class: %s\n line:%d\n", exceptionName, className, lineNumber);
                     break;
                 }
-
             }
         }
     }

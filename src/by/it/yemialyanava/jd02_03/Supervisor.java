@@ -10,10 +10,18 @@ class Supervisor {
     private static final AtomicInteger buyerEnterToMarket = new AtomicInteger(0);
     private static final AtomicInteger buyerLeaveMarket = new AtomicInteger(0);
     private static final AtomicInteger cashierWorking = new AtomicInteger(0);
+    private static volatile double totalMoneyForAllDay = 0;
 
     private static final int buyerTotal = 100;
 
+    static synchronized void setTotalMoneyForAllDay(double summa){
+        totalMoneyForAllDay = totalMoneyForAllDay + summa;
 
+    }
+    static synchronized double getTotalMoneyForAllDay(){
+
+        return totalMoneyForAllDay;
+    }
 
     static void addBuyer(){
         buyerEnterToMarket.getAndIncrement();

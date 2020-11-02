@@ -12,32 +12,26 @@ public class Cashier implements Runnable {
 
     @Override
     public void run() {
-        System.out.printf("%s opened\n", this);
-
+        System.out.println(this + " is opened");
         while (!Supervisor.marketIsClosed()) {
-           Buyer buyer = QueueBuyers.extract();
-            if (Objects.nonNull(buyer)) {
+            Buyer buyer = QueueBuyers.extract();
+            if (buyer != null) {
                 System.out.printf("%s started service for %s\n", this, buyer);
                 int t = Helper.getRandom(2000, 5000);
                 Helper.timeOut(t);
                 System.out.printf("%s finished service for %s\n", this, buyer);
-                synchronized (buyer){
-                    buyer.setWaiting(false);
+                synchronized (buyer) {
                     buyer.notify();
                 }
-
             } else {
                 Thread.yield();
             }
         }
-
-
-        System.out.printf("%s closed\n", this);
+        System.out.println(this+" is closed");
     }
 
     @Override
     public String toString() {
-
         return name;
     }
 }
