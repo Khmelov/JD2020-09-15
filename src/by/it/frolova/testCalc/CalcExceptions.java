@@ -1,7 +1,7 @@
 package by.it.frolova.testCalc;
 
 public class CalcExceptions extends Exception {
-   private static Lang manager = Lang.INSTANCE;
+    private static Lang manager = Lang.INSTANCE;
 
     public CalcExceptions() {
         super();

@@ -5,7 +5,6 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Parser {
-    private static Lang manager = Lang.INSTANCE;
     private final Map<String, Var> varMap;
     private final VarCreator varCreator;
 
@@ -41,24 +40,29 @@ public class Parser {
     }
 
     private Var calcSimpleExpr(String expression) throws CalcExceptions {
+        try {
+            List<String> operands = new ArrayList<>(Arrays.asList(expression.split(Patterns.OPERATION)));
+            List<String> operations = new ArrayList<>();
+            Pattern patterns = Pattern.compile(Patterns.OPERATION);
+            Matcher matcher = patterns.matcher(expression);
+            while (matcher.find()) {
+                operations.add(matcher.group());
+            }
 
-        List<String> operands = new ArrayList<>(Arrays.asList(expression.split(Patterns.OPERATION)));
-        List<String> operations = new ArrayList<>();
-        Pattern patterns = Pattern.compile(Patterns.OPERATION);
-        Matcher matcher = patterns.matcher(expression);
-        while (matcher.find()) {
-            operations.add(matcher.group());
-        }
+            while (!operations.isEmpty()) {
 
-        while (!operations.isEmpty()) {
-            int index = getIndex(operations);
-            String operation = operations.remove(index);
-            String leftOperand = operands.remove(index);
-            String rightOperand = operands.remove(index);
-            Var interResult = calcValue(leftOperand, operation, rightOperand);
-            operands.add(index, interResult.toString());
+                int index = getIndex(operations);
+                String operation = operations.remove(index);
+                String leftOperand = operands.remove(index);
+                String rightOperand = operands.remove(index);
+                Var interResult = calcValue(leftOperand, operation, rightOperand);
+                operands.add(index, interResult.toString());
+
+            }
+            return varCreator.createVar(operands.get(0));
+        } catch (IndexOutOfBoundsException e) {
+            throw new CalcExceptions(Lang.INSTANCE.get(Error.ERROR_UNKNOWN));
         }
-        return varCreator.createVar(operands.get(0));
     }
 
     private int getIndex(List<String> operations) {
