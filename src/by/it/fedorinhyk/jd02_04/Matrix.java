@@ -1,8 +1,8 @@
-package by.it.fedorinhyk.calc;
+package by.it.fedorinhyk.jd02_04;
 
 import java.util.Arrays;
 
-class Matrix extends CreateVar {
+class Matrix extends Var {
     public double[][] value;
 
     Matrix(double[][] value) {
@@ -33,7 +33,7 @@ class Matrix extends CreateVar {
     }
 
     @Override
-    public CreateVar add(CreateVar other) throws CalcException {
+    public Var add(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double[][] sum = new  double[this.value.length][this.value[0].length];
@@ -58,14 +58,14 @@ class Matrix extends CreateVar {
                 }
             }
             if (otherMatrix.value.length != value.length){
-                throw new CalcException("Длины матриц НЕ равны");
+                throw new CalcException("Wrong matrix");
             }
             return new Matrix(sum);
         } else return super.add(other);
     }
 
     @Override
-    public CreateVar sub(CreateVar other) throws CalcException {
+    public Var sub(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double [][] sub = new double[this.value.length][this.value[0].length];
@@ -90,14 +90,14 @@ class Matrix extends CreateVar {
                 }
             }
             if (otherMatrix.value.length != value.length) {
-                throw new CalcException("Длины матриц НЕ равны");
+                throw new CalcException("Wrong matrix");
             }
             return new Matrix(sub);
         } else return super.sub(other);
     }
 
     @Override
-    public CreateVar mul(CreateVar other) throws CalcException {
+    public Var mul(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double[][] mul = new double[this.value.length][this.value[0].length];
@@ -137,14 +137,14 @@ class Matrix extends CreateVar {
                 }
             }
             if (otherMatrix.value.length != value.length) {
-                throw new CalcException("Длины матриц НЕ равны");
+                throw new CalcException("Wrong matrix");
             }
             return new Matrix(mulresult);
         } else return super.mul(other);
     }
 
     @Override
-    public CreateVar div(CreateVar other) throws CalcException {
+    public Var div(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double[][] div = new double[this.value.length][this.value[0].length];
@@ -157,7 +157,7 @@ class Matrix extends CreateVar {
                 }
             }
             if ( otherScalar.getValue()==0)
-                throw new CalcException("Деление на ноль");
+                throw new CalcException("Division by zero");
             return new Matrix(div);
         } else return super.div(other);
     }

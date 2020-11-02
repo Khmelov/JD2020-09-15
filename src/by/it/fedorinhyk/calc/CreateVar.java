@@ -4,11 +4,11 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Objects;
 
-abstract class Var implements Operation {
+abstract class CreateVar implements Operation {
 
-    private static Map<String, Var> varMap= new HashMap<>();
+    private static Map<String, CreateVar> varMap= new HashMap<>();
 
-    static Var createVar(String strVar) throws CalcException{
+    static CreateVar createVar(String strVar) throws CalcException{
         if (strVar.matches(Patterns.SCALAR)){
             return new Scalar(strVar);
         }
@@ -19,7 +19,7 @@ abstract class Var implements Operation {
             return new Matrix(strVar);
         }
         else{
-            Var var=varMap.get(strVar);
+            CreateVar var=varMap.get(strVar);
             if (Objects.isNull(var)) {
                 System.out.println("Unknow variable: " + strVar);
             }
@@ -27,32 +27,32 @@ abstract class Var implements Operation {
         }
     }
 
-    public static Var save(String name, Var value){
+    public static CreateVar save(String name, CreateVar value){
         varMap.put(name, value);
         return value;
     }
 
-    public static Map <String,Var> getVarMap(){
+    public static Map <String, CreateVar> getVarMap(){
         return varMap;
     }
 
     @Override
-    public Var add(Var other) throws CalcException {
+    public CreateVar add(CreateVar other) throws CalcException {
         throw new CalcException("Операция сложения "+this+"+"+other+" невозможна");
     }
 
     @Override
-    public Var sub(Var other) throws CalcException {
+    public CreateVar sub(CreateVar other) throws CalcException {
         throw new CalcException("Операция вычитания "+this+"-"+other+" невозможна");
     }
 
     @Override
-    public Var mul(Var other) throws CalcException {
+    public CreateVar mul(CreateVar other) throws CalcException {
         throw new CalcException("Операция умножения "+this+"*"+other+" невозможна");
     }
 
     @Override
-    public Var div(Var other) throws CalcException {
+    public CreateVar div(CreateVar other) throws CalcException {
         throw new CalcException("Операция деления "+this+"/"+other+" невозможна");
     }
 }

@@ -1,8 +1,8 @@
-package by.it.fedorinhyk.calc;
+package by.it.fedorinhyk.jd02_04;
 
 import java.util.Arrays;
 
-class Vector extends CreateVar {
+class Vector extends Var {
     private double[] value;
 
     public double[] getValue() {
@@ -31,7 +31,7 @@ class Vector extends CreateVar {
     }
 
     @Override
-    public CreateVar add(CreateVar other) throws CalcException {
+    public Var add(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double[] sum = Arrays.copyOf(value, value.length);
@@ -47,7 +47,7 @@ class Vector extends CreateVar {
                 sum[i] += otherVector.value[i];
             }
             if (otherVector.value.length != value.length){
-                throw new CalcException("Длины векторов НЕ равны");
+                throw new CalcException("Wrong vectors");
             }
             return new Vector(sum);
         }
@@ -55,7 +55,7 @@ class Vector extends CreateVar {
     }
 
     @Override
-    public CreateVar sub(CreateVar other) throws CalcException {
+    public Var sub(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double[] sub = Arrays.copyOf(value, value.length);
@@ -71,7 +71,7 @@ class Vector extends CreateVar {
                 sub[i] -= otherVector.value[i];
             }
             if (otherVector.value.length != value.length){
-                throw new CalcException("Длины векторов НЕ равны");
+                throw new CalcException("Wrong vectors");
             }
             return new Vector(sub);
         }
@@ -79,7 +79,7 @@ class Vector extends CreateVar {
     }
 
     @Override
-    public CreateVar mul(CreateVar other) throws CalcException {
+    public Var mul(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double[] mul = Arrays.copyOf(value, value.length);
@@ -100,11 +100,11 @@ class Vector extends CreateVar {
     }
 
     @Override
-    public CreateVar div(CreateVar other) throws CalcException {
+    public Var div(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             if (otherScalar.getValue()==0){
-                throw new CalcException("Деление на ноль");
+                throw new CalcException("Division by zero");
             }
             double[] div = Arrays.copyOf(value, value.length);
             for (int i = 0; i < div.length; i++) {

@@ -1,6 +1,6 @@
-package by.it.fedorinhyk.calc;
+package by.it.fedorinhyk.jd02_04;
 
-class Scalar extends CreateVar {
+class Scalar extends Var {
 
     private double value;
 
@@ -19,7 +19,7 @@ class Scalar extends CreateVar {
     }
 
     @Override
-    public CreateVar add(CreateVar other) throws CalcException {
+    public Var add(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double sum = this.value + ((Scalar) other).value;
             return new Scalar(sum);
@@ -28,7 +28,7 @@ class Scalar extends CreateVar {
     }
 
     @Override
-    public CreateVar sub(CreateVar other) throws CalcException {
+    public Var sub(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double sub = this.value - ((Scalar) other).value;
             return new Scalar(sub);
@@ -37,7 +37,7 @@ class Scalar extends CreateVar {
     }
 
     @Override
-    public CreateVar mul(CreateVar other) throws CalcException {
+    public Var mul(Var other) throws CalcException {
         if (other instanceof Scalar) {
             double mul = this.value * ((Scalar) other).value;
             return new Scalar(mul);
@@ -46,10 +46,10 @@ class Scalar extends CreateVar {
     }
 
     @Override
-    public CreateVar div(CreateVar other) throws CalcException {
+    public Var div(Var other) throws CalcException {
         if (other instanceof Scalar) {
             if (((Scalar) other).value==0) {
-                throw new CalcException("Деление на ноль");
+                throw new CalcException("Division by zero");
             }
             double div = this.value / ((Scalar) other).value;
             return new Scalar(div);
