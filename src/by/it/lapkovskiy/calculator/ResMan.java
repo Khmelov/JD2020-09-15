@@ -1,11 +1,11 @@
-package by.it.lapkovskiy.jd02_05;
+package by.it.lapkovskiy.calculator;
 
 import java.util.Locale;
 import java.util.ResourceBundle;
 
 public enum ResMan {
     INSTANCE;
-    public static final String DEFAULT_LANGUAGE = "by.it.lapkovskiy.jd02_05.res.language";
+    public static final String DEFAULT_LANGUAGE = "by.it.lapkovskiy.calculator.res.language";
     private Locale locale;
     private ResourceBundle resourceBundle;
 
