@@ -1,4 +1,4 @@
-package by.it.zubovich.jd02_02;
+package by.it.zubovich.jd02_03;
 
 import java.util.Objects;
 
