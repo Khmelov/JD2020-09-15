@@ -5,30 +5,18 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Parser {
+    private final Map<String, Var> varMap;
+    private final VarCreator varCreator;
 
-    private static Map<String, Var> varMap = new HashMap<>();
-
-    static Var createVar(String strVar) throws CalcExceptions {
-        if (strVar.matches(Patterns.SCALAR)) {
-            return new Scalar(strVar);
-        } else if (strVar.matches(Patterns.VECTOR)) {
-            return new Vector(strVar);
-        } else if (strVar.matches(Patterns.MATRIX)) {
-            return new Matrix(strVar);
-        } else {
-            Var var = varMap.get(strVar);
-            if (Objects.isNull(var)) {
-                throw new CalcExceptions("Unknown variable: " + strVar);
-            }
-            return var;
-        }
+    public Parser() {
+        varMap = new HashMap<>();
+        varCreator = new VarCreator(varMap);
     }
 
-    public static Var save(String name, Var value) throws CalcExceptions {
+    private Var save(String name, Var value) {
         varMap.put(name, value);
         return value;
     }
-
 
     Var calc(String expression) throws CalcExceptions {
         String expr = expression.replaceAll("\\s+", "");
@@ -36,7 +24,6 @@ public class Parser {
     }
 
     private Var calcExpr(String expression) throws CalcExceptions {
-
         if (!Pattern.compile(Patterns.PARENTHESES_REGEX).matcher(expression).matches()) {
             return calcSimpleExpr(expression);
         } else {
@@ -53,24 +40,29 @@ public class Parser {
     }
 
     private Var calcSimpleExpr(String expression) throws CalcExceptions {
+        try {
+            List<String> operands = new ArrayList<>(Arrays.asList(expression.split(Patterns.OPERATION)));
+            List<String> operations = new ArrayList<>();
+            Pattern patterns = Pattern.compile(Patterns.OPERATION);
+            Matcher matcher = patterns.matcher(expression);
+            while (matcher.find()) {
+                operations.add(matcher.group());
+            }
 
-        List<String> operands = new ArrayList<>(Arrays.asList(expression.split(Patterns.OPERATION)));
-        List<String> operations = new ArrayList<>();
-        Pattern patterns = Pattern.compile(Patterns.OPERATION);
-        Matcher matcher = patterns.matcher(expression);
-        while (matcher.find()) {
-            operations.add(matcher.group());
-        }
+            while (!operations.isEmpty()) {
 
-        while (!operations.isEmpty()) {
-            int index = getIndex(operations);
-            String operation = operations.remove(index);
-            String leftOperand = operands.remove(index);
-            String rightOperand = operands.remove(index);
-            Var interResult = calcValue(leftOperand, operation, rightOperand);
-            operands.add(index, interResult.toString());
+                int index = getIndex(operations);
+                String operation = operations.remove(index);
+                String leftOperand = operands.remove(index);
+                String rightOperand = operands.remove(index);
+                Var interResult = calcValue(leftOperand, operation, rightOperand);
+                operands.add(index, interResult.toString());
+
+            }
+            return varCreator.createVar(operands.get(0));
+        } catch (IndexOutOfBoundsException e) {
+            throw new CalcExceptions(Lang.INSTANCE.get(Error.ERROR_UNKNOWN));
         }
-        return createVar(operands.get(0));
     }
 
     private int getIndex(List<String> operations) {
@@ -87,12 +79,12 @@ public class Parser {
     }
 
     private Var calcValue(String leftOperand, String operation, String rightOperand) throws CalcExceptions {
-        Var right = createVar(rightOperand);
+        Var right = varCreator.createVar(rightOperand);
         if (operation.equals("=")) {
             return save(leftOperand, right);
         }
 
-        Var left = createVar(leftOperand);
+        Var left = varCreator.createVar(leftOperand);
 
         switch (operation) {
             case "-":
