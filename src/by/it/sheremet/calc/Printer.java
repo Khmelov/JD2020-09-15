@@ -1,4 +1,4 @@
-package by.it.sheremet.culculator;
+package by.it.sheremet.calc;
 
 class Printer {
     void print(Var result){

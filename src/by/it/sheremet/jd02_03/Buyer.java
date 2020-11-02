@@ -1,34 +1,42 @@
-package by.it.sheremet.jd02_02;
+package by.it.sheremet.jd02_03;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.Semaphore;
 
-public class Buyer extends Thread implements Ibuyer, IUseBasket  {
+public class Buyer extends Thread implements Ibuyer, IUseBasket {
+    private static Semaphore semaphore = new Semaphore(20, true);
 
     private boolean waiting;
-
     private Map<String,Double> basketGoods = null;
 
     public Buyer(Integer number) {
         this.setName("Buyer №" + number);
         Supervisor.addBuyer();
         waiting = false;
-
-    }
-    public void setWaiting(boolean waiting){
-        this.waiting=waiting;
     }
 
+    public void setWaiting(boolean waiting) {
+        this.waiting = waiting;
+    }
     public Map<String,Double> getBasketGoods(){
         return basketGoods;
     }
 
-
     @Override
     public void run() {
         enterToMarket();
-        takeBasket();
-        chooseGoods();
+        try {
+            semaphore.acquire();
+            //System.out.println(this + " ======start to semaphore======");
+            takeBasket();
+            chooseGoods();
+           // System.out.println(this+ " +++++++++++finish to semaphore++++++++++++");
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        } finally {
+            semaphore.release();
+        }
         goToQueue();
        // putGoodsToBasket();
         goOut();
@@ -54,16 +62,18 @@ public class Buyer extends Thread implements Ibuyer, IUseBasket  {
 
     @Override
     public void putGoodsToBasket() {
-       basketGoods = new HashMap<>();
+        basketGoods = new HashMap<>();
         Map<String,Double> goods = Good.getGoods();
-        int putInBasket =Helper.getRandom(1,4);
+        int putInBasket = Helper.getRandom(1,4);
         Object [] keys = goods.keySet().toArray();
+
         for (int i = 0; i < putInBasket; i++) {
             int randomGood = Helper.getRandom(0, keys.length - 1);
-            String key = (String) keys[randomGood];
-            double value = goods.get(key);
+            String key =(String) keys[randomGood];
+            Double value =goods.get(key);
             basketGoods.put(key, goods.get(key));
             System.out.println(this+" put "+key+" to basket, cost "+value);
+
         }
     }
 
