@@ -23,7 +23,7 @@ public class Cashier implements Runnable{
                 System.out.printf("%s started service for %s\n", this, buyer);;
                 int t = Helper.getRandom(2000, 5000);
                 Helper.timeout(t);
-                System.out.printf("%finished service for %s\n", this, buyer);;
+                System.out.printf("%s finished service for %s\n", this, buyer);;
                 synchronized (buyer) {
                     buyer.setWaiting(false);
                     buyer.notify();

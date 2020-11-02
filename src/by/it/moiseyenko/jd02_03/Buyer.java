@@ -42,6 +42,11 @@ class Buyer  extends Thread implements IBuyer, IUseBasket {
     }
 
     @Override
+    public void putGoodsToBasket() {
+        System.out.println(this + " put goods to basket");
+    }
+
+    @Override
     public void goToQueue() {
         System.out.println(this + " go to queue");
         synchronized (this) {
@@ -59,10 +64,7 @@ class Buyer  extends Thread implements IBuyer, IUseBasket {
 
     }
 
-    @Override
-    public void putGoodsToBasket() {
-        System.out.println(this + " put goods to basket");
-    }
+
     @Override
     public void goOut(){
         System.out.println(this + " leave the Market");

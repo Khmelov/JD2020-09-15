@@ -10,7 +10,7 @@ import static org.junit.Assert.fail;
 public class Runner {
     public static void main(String[] args) {
         Set<Integer> hashSet =  new HashSet<>();
-        SetC<Integer> s = new SetC<~>();
+        SetC<Integer> s = new SetC<>();
 
         for (int i = 0; i < 10; i++) {
             hashSet.add((i * 2));
