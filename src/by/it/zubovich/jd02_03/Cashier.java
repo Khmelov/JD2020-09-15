@@ -7,7 +7,7 @@ public class Cashier implements Runnable {
     private final String name;
 
     public Cashier(String number) {
-        name = "\tCashier №: " + number;
+        name = "\tCashier № " + number;
     }
 
     @Override

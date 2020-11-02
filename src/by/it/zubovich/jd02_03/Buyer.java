@@ -4,7 +4,7 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
     private boolean waiting;
 
     Buyer(int number) {
-        this.setName("Buyer № " + number + ":");
+        this.setName("Buyer № " + number);
         Manager.addBuyer();
         waiting = false;
     }
@@ -15,7 +15,6 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
 
     @Override
     public void run() {
-        //Manager.buyersInMarket++;
         enterToMarket();
         takeBasket();
         chooseGoods();
@@ -23,7 +22,6 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
         goToQueue();
         goOut();
         Manager.leftBuyer();
-        //Manager.buyersInMarket--;
     }
 
     @Override

@@ -1,33 +1,34 @@
 package by.it.zubovich.jd02_03;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 class Manager {
     private Manager() {
-
     }
 
     static final int K_SPEED = 100;
-    private static volatile int buyersEnterToMarket = 0;
-    private static volatile int buyersLeftMarket = 0;
+    private static final AtomicInteger buyersEnterToMarket = new AtomicInteger(0);
+    private static final AtomicInteger buyersLeftMarket = new AtomicInteger(0);
+
     private static final int buyerTotal = 100;
 
-    static synchronized void addBuyer() {
+    static void addBuyer() {
 
-        buyersEnterToMarket++;
+        buyersEnterToMarket.getAndIncrement();
     }
 
     static void leftBuyer() {
-        synchronized (Manager.class) {
-            buyersLeftMarket++;
-        }
+
+        buyersLeftMarket.getAndIncrement();
     }
 
     static boolean marketIsOpened() {
 
-        return buyersEnterToMarket != buyerTotal;
+        return buyersEnterToMarket.get() != buyerTotal;
     }
 
     static boolean marketIsClosed() {
 
-        return buyersLeftMarket == buyerTotal;
+        return buyersLeftMarket.get() == buyerTotal;
     }
 }

@@ -1,22 +1,21 @@
 package by.it.zubovich.jd02_03;
 
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.concurrent.BlockingDeque;
+import java.util.concurrent.LinkedBlockingDeque;
 
 public class QueueBuyers {
 
-    private static final Object monitor = new Object();
-    private static final Deque<Buyer> deque = new LinkedList<>();
+    private static final BlockingDeque<Buyer> deque= new LinkedBlockingDeque<>(30);
 
     static void add(Buyer buyer) {
-        synchronized (monitor) {
-            deque.addLast(buyer);
+        try {
+            deque.putLast(buyer);
+        }catch (InterruptedException e){
+            throw new RuntimeException(e);
         }
     }
 
-    protected static Buyer extract() {
-        synchronized (monitor) {
-            return deque.pollFirst();
-        }
+    static Buyer extract() {
+        return deque.pollFirst();
     }
 }
