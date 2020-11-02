@@ -1,4 +1,4 @@
-package by.it.sheremet.culc;
+package by.it.sheremet.calc;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 
 class Parser {
     Var calc(String expression) throws CalcException {
-        //2*2 -> scalar==4
+
         expression.replaceAll("\\s+", "");
         expression = removeBracket(expression);
         return getVar(expression);
@@ -31,7 +31,7 @@ class Parser {
             operands.add(index, res.toString());
         }
 
-        return Var.createVar(operands.get(0));
+        return CreateVar.createVar(operands.get(0));
     }
 
     private String removeBracket(String expression) throws CalcException {
@@ -49,11 +49,11 @@ class Parser {
     }
 
     private Var oneCalc(String strLeft, String operation, String strRight) throws CalcException {
-        Var right = Var.createVar(strRight);
+        Var right = CreateVar.createVar(strRight);
         if (operation.equals("=")) {
             return Var.save(strLeft, right);
         }
-        Var left = Var.createVar(strLeft);
+        Var left = CreateVar.createVar(strLeft);
 
         switch (operation) {
             case "+":
@@ -65,7 +65,7 @@ class Parser {
             case "/":
                 return left.div(right);
         }
-        throw new CalcException("What");
+        throw new CalcException("buu!!");
     }
 
     private int getIndex(List<String> operations) {

@@ -1,4 +1,4 @@
-package by.it.sheremet.culc;
+package by.it.sheremet.calc;
 
 import java.util.Arrays;
 
@@ -150,7 +150,7 @@ class Matrix extends Var {
         } else if (other instanceof Vector){
             Vector otherVector = (Vector) other;
             if(otherVector.getValue().length!= value[0].length){
-                throw new CalcException();
+                throw new CalcException("Operation error ");
             }
             double[][] matrixMul = new double[this.value.length][this.value[0].length];
             for (int i = 0; i < this.value.length; i++) {
@@ -169,7 +169,7 @@ class Matrix extends Var {
         }else if (other instanceof Matrix){
             Matrix otherMatrix = (Matrix) other;
             if (otherMatrix.value.length!= value[0].length)
-            {throw new CalcException();
+            {throw new CalcException("Operation error ");
             }
             double [][] matrixMul = new double[this.value.length][this.value[0].length];
             for (int i = 0; i < this.value.length; i++) {

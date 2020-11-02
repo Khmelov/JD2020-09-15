@@ -1,4 +1,4 @@
-package by.it.sheremet.culc;
+package by.it.sheremet.calc;
 
 import java.util.Arrays;
 
@@ -82,7 +82,7 @@ class Vector extends Var {
         } else if (other instanceof Vector) {
             Vector otherVector = (Vector) other;
             if (otherVector.value.length != value.length) {
-                throw new CalcException();
+                throw new CalcException("Operation error ");
             }
             double[] sub = Arrays.copyOf(value, value.length);
             for (int i = 0; i < sub.length; i++) {
@@ -107,7 +107,7 @@ class Vector extends Var {
         } else if (other instanceof Vector) {
             Vector otherVector = (Vector) other;
             if (otherVector.value.length != value.length) {
-                throw new CalcException();
+                throw new CalcException("Operation error ");
             }
             double[] mult = Arrays.copyOf(value, value.length);
             double sum = 0;
@@ -126,7 +126,7 @@ class Vector extends Var {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             if (otherScalar.getValue() == 0) {
-                throw new CalcException();
+                throw new CalcException("Operation error ");
             }
             double[] divr = Arrays.copyOf(this.value, this.value.length);
             for (int i = 0; i < divr.length; i++) {

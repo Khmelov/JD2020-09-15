@@ -1,4 +1,4 @@
-package by.it.sheremet.culc;
+package by.it.sheremet.calc;
 
 interface Operation {
     Var add(Var other) throws CalcException;

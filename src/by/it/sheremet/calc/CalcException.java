@@ -1,4 +1,4 @@
-package by.it.sheremet.culc;
+package by.it.sheremet.calc;
 
 public class CalcException extends Exception {
 

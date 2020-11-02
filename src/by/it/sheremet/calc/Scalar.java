@@ -1,4 +1,4 @@
-package by.it.sheremet.culc;
+package by.it.sheremet.calc;
 
 class Scalar extends Var {
     private double value;
@@ -62,7 +62,7 @@ class Scalar extends Var {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             if(otherScalar.value == 0) {
-                throw new CalcException();
+                throw new CalcException(" division by zero");
             }
             double div = this.value / otherScalar.value;
             Scalar result = new Scalar(div);

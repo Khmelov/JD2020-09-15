@@ -1,16 +1,17 @@
-package by.it.sheremet.culc;
+package by.it.sheremet.calc;
 
 import java.util.Scanner;
 
 public class ConsoleRunner {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CalcException {
         Scanner sc = new Scanner(System.in);
         Parser parser = new Parser();
         Printer printer = new Printer();
+        Logger logger = Logger.GET;
         try {
             Var.load();
         } catch (CalcException e) {
-            System.out.println("File not found");
+            System.out.println();
         }
         for (; ; ) {
             String expression = sc.nextLine();
@@ -20,6 +21,7 @@ public class ConsoleRunner {
                 printer.print(result);
             } catch (CalcException e) {
                 String message = e.getMessage();
+                logger.log(message);
                 System.out.println(message);
             }
         }
