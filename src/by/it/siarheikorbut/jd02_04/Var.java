@@ -1,4 +1,4 @@
-package by.it.siarheikorbut.calc;
+package by.it.siarheikorbut.jd02_04;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -7,7 +7,7 @@ abstract class Var implements Operation {
 
     private static final Map<String, Var> vars = new HashMap<>();
 
-    static void saveVar(String name, Var var) throws CalcException {
+    static void saveVar(String name, Var var) {
         vars.put(name, var);
     }
 
@@ -45,4 +45,5 @@ abstract class Var implements Operation {
     public Var div(Var other) throws CalcException {
         throw new CalcException("Операция деления " + this + " / " + other + " невозможна!");
     }
+
 }

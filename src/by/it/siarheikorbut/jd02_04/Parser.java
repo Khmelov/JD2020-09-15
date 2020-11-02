@@ -1,4 +1,4 @@
-package by.it.siarheikorbut.calc;
+package by.it.siarheikorbut.jd02_04;
 
 import java.util.*;
 import java.util.regex.Matcher;
@@ -6,25 +6,25 @@ import java.util.regex.Pattern;
 
 class Parser {
 
-    private final static Map<String,Integer> priorityMap = new HashMap<String, Integer>() {
+    private final static Map<String, Integer> priorityMap = new HashMap<>() {
         {
-            this.put("=",0);
-            this.put("+",1);
-            this.put("-",1);
-            this.put("/",2);
-            this.put("*",2);
+            this.put("=", 0);
+            this.put("+", 1);
+            this.put("-", 1);
+            this.put("/", 2);
+            this.put("*", 2);
         }
     };
 
     Var calc(String expression) throws CalcException {
-        expression= expression.replace(" ","");
+        expression = expression.replace(" ", "");
         List<String> operands = new ArrayList<>(Arrays.asList(expression.split(Patterns.OPERATION)));
         List<String> operations = new ArrayList<>();
         Matcher matcher1 = Pattern.compile(Patterns.OPERATION).matcher(expression);
-        while(matcher1.find()) {
+        while (matcher1.find()) {
             operations.add(matcher1.group());
         }
-        while (operations.size()>0) {
+        while (operations.size() > 0) {
             int index = getIndexCurrentOperation(operations);
             String operation = operations.remove(index);
             String left = operands.remove(index);
@@ -32,7 +32,6 @@ class Parser {
             Var result = oneOperation(left, operation, right);
             operands.add(index, result.toString());
         }
-
         return Var.createVar(operands.get(0));
     }
 
@@ -59,19 +58,15 @@ class Parser {
         throw new CalcException("ERROR");
     }
 
-
-
-
     private int getIndexCurrentOperation(List<String> operation) {
         int index = -1;
         int priority = -1;
         for (int i = 0; i < operation.size(); i++) {
-            String opertion = operation.get(i);
-            if(priorityMap.get(opertion)>priority){
-                priority = priorityMap.get(opertion);
+            String operations = operation.get(i);
+            if (priorityMap.get(operations) > priority) {
+                priority = priorityMap.get(operations);
                 index = i;
             }
-
         }
         return index;
     }

@@ -1,4 +1,4 @@
-package by.it.siarheikorbut.calc;
+package by.it.siarheikorbut.jd02_04;
 
 class Scalar extends Var {
     private final double value;

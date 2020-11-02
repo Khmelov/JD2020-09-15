@@ -1,31 +1,26 @@
-package by.it.siarheikorbut.calc;
+package by.it.siarheikorbut.jd02_04;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class Matrix extends Var {
 
-    private double[][] value;
+    private final double[][] value;
 
-    Matrix(double[][] value) throws CalcException {
+    Matrix(double[][] value) {
         double[][] tempArr = new double[value.length][value[0].length];
         for (int i = 0; i < value.length; i++) {
-            for (int j = 0; j < value[0].length; j++) {
-                tempArr[i][j] = value[i][j];
-            }
+            System.arraycopy(value[i], 0, tempArr[i], 0, value[0].length);
         }
         this.value = tempArr;
     }
 
-    Matrix(Matrix matrix) throws CalcException {
+    Matrix(Matrix matrix) {
         double[][] tempArr = new double[matrix.value.length][matrix.value[0].length];
         for (int i = 0; i < tempArr.length; i++) {
-            for (int j = 0; j < tempArr.length; j++) {
-                tempArr[i][j] = matrix.value[i][j];
-            }
+            System.arraycopy(matrix.value[i], 0, tempArr[i], 0, tempArr.length);
         }
         this.value = tempArr;
-
     }
 
     Matrix(String strMatrix) {
@@ -92,14 +87,12 @@ class Matrix extends Var {
     public Var add(Var other) throws CalcException {
         if (other instanceof Matrix) {
             double[][] temp = ((Matrix) other).getValue();
-            if (value[0].length!=temp[0].length){
+            if (value[0].length != temp[0].length) {
                 throw new CalcException("Недопустимый размер матриц!");
             }
             double[][] result = new double[value.length][value[0].length];
             for (int i = 0; i < result.length; i++) {
-                for (int j = 0; j < result.length; j++) {
-                    result[i][j] = value[i][j];
-                }
+                System.arraycopy(value[i], 0, result[i], 0, result.length);
             }
             for (int i = 0; i < result.length; i++) {
                 for (int j = 0; j < result.length; j++) {
@@ -110,9 +103,7 @@ class Matrix extends Var {
         } else if (other instanceof Scalar) {
             double[][] result = new double[value.length][value[0].length];
             for (int i = 0; i < result.length; i++) {
-                for (int j = 0; j < result.length; j++) {
-                    result[i][j] = value[i][j];
-                }
+                System.arraycopy(value[i], 0, result[i], 0, result.length);
             }
             for (int i = 0; i < result.length; i++) {
                 for (int j = 0; j < result.length; j++) {
@@ -129,19 +120,16 @@ class Matrix extends Var {
         return value;
     }
 
-
     @Override
     public Var sub(Var other) throws CalcException {
         if (other instanceof Matrix) {
             double[][] temp = ((Matrix) other).getValue();
-            if (value[0].length!=temp[0].length){
+            if (value[0].length != temp[0].length) {
                 throw new CalcException("Недопустимый размер матриц!");
             }
             double[][] result = new double[value.length][value[0].length];
             for (int i = 0; i < result.length; i++) {
-                for (int j = 0; j < result.length; j++) {
-                    result[i][j] = value[i][j];
-                }
+                System.arraycopy(value[i], 0, result[i], 0, result.length);
             }
             for (int i = 0; i < result.length; i++) {
                 for (int j = 0; j < result.length; j++) {
@@ -152,9 +140,7 @@ class Matrix extends Var {
         } else if (other instanceof Scalar) {
             double[][] result = new double[value.length][value[0].length];
             for (int i = 0; i < result.length; i++) {
-                for (int j = 0; j < result.length; j++) {
-                    result[i][j] = value[i][j];
-                }
+                System.arraycopy(value[i], 0, result[i], 0, result.length);
             }
             for (int i = 0; i < result.length; i++) {
                 for (int j = 0; j < result.length; j++) {
@@ -173,9 +159,7 @@ class Matrix extends Var {
             double[][] result = new double[value.length][value[0].length];
             double[][] temp = new double[value.length][value[0].length];
             for (int i = 0; i < result.length; i++) {
-                for (int j = 0; j < result.length; j++) {
-                    result[i][j] = value[i][j];
-                }
+                System.arraycopy(value[i], 0, result[i], 0, result.length);
             }
             for (int i = 0; i < result.length; i++) {
                 for (int j = 0; j < result.length; j++) {
@@ -189,9 +173,7 @@ class Matrix extends Var {
             double[][] result = new double[value.length][value[0].length];
             double[] temp = new double[value.length];
             for (int i = 0; i < result.length; i++) {
-                for (int j = 0; j < result.length; j++) {
-                    result[i][j] = value[i][j];
-                }
+                System.arraycopy(value[i], 0, result[i], 0, result.length);
             }
             for (int i = 0; i < result.length; i++) {
                 for (int j = 0; j < result.length; j++) {
@@ -202,9 +184,7 @@ class Matrix extends Var {
         } else if (other instanceof Scalar) {
             double[][] result = new double[value.length][value[0].length];
             for (int i = 0; i < result.length; i++) {
-                for (int j = 0; j < result.length; j++) {
-                    result[i][j] = value[i][j];
-                }
+                System.arraycopy(value[i], 0, result[i], 0, result.length);
             }
             for (int i = 0; i < result.length; i++) {
                 for (int j = 0; j < result.length; j++) {
