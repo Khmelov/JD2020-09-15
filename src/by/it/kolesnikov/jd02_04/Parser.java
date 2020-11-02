@@ -7,14 +7,13 @@ import java.util.regex.Pattern;
 
 class Parser {
 
-    private static final Map<String, Integer> prior = new HashMap<>() {
-        {
-            this.put("+", 1);
-            this.put("-", 1);
-            this.put("*", 1);
-            this.put("/", 2);
-        }
-    };
+    private static final Map<String, Integer> prior = new HashMap<>();
+    static {
+        prior.put("+", 1);
+        prior.put("-", 1);
+        prior.put("*", 2);
+        prior.put("/", 2);
+    }
 
     Var calc(String expression){
         List<String> operands = new ArrayList<>(Arrays.asList(expression.split(Patterns.OPERATION)));
@@ -24,18 +23,18 @@ class Parser {
         while (match.find()){
             operations.add(match.group());
         }
-        while (operations.size()>0) {
+        while (!operations.isEmpty()) {
             int index = getCurrentIndexOperation(operations);
             String operation = operations.remove(index);
             String left = operands.remove(index);
             String right = operands.remove(index);
-            Var result = oneOperation(left, right, operation);
+            Var result = oneOperation(left, operation, right);
             operands.add(index,result.toString());
         }
 return Var.createVar(operands.get(0));
     }
 
-    private Var oneOperation(String strLeft, String strRight, String operation) {
+    private Var oneOperation(String strLeft, String operation, String strRight) {
         Var right = Var.createVar(strRight);
         if (operation.equals("=")) {
             return right;

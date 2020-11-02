@@ -9,9 +9,9 @@ public class ParserTest {
 
     @Test
     public void CheckScalar(){
-        double expected = 10;
+        double expected = 18;
      Parser parser = new Parser();
-     Var a = parser.calc("2+4-8/-2");
+     Var a = parser.calc("2+4*3-8/-2");
         double actual = Double.parseDouble(a.toString());
         assertEquals(expected, actual, 1e-8);
     }

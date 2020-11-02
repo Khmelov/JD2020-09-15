@@ -47,8 +47,9 @@ class Scalar extends Var {
     public Var mul(Var other) {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar)other;
-            double result = this.value*otherScalar.value;
-            return new Scalar (result);
+            double sum = this.value*otherScalar.value;
+            Scalar result = new Scalar(sum);
+            return result;
         }
         else return other.mul(this);
     }
