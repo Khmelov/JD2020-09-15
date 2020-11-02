@@ -1,4 +1,4 @@
-user.firstName=Александр
-user.lastName=Хмелев
-message.welcome=Привет!
-message.question=Как дела?
+user.firstName = Мария
+user.lastName = Архипова
+message.welcome = Привет!
+message.question= Как дела?

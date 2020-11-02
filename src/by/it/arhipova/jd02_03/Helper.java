@@ -1,4 +1,4 @@
-package by.it.arhipova.jd02_02;
+package by.it.arhipova.jd02_03;
 
 import java.util.Random;
 

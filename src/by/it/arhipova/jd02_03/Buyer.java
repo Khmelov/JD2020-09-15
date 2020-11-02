@@ -1,17 +1,17 @@
-package by.it.arhipova.jd02_02;
+package by.it.arhipova.jd02_03;
 
 public class Buyer extends Thread implements IBuyer {
 
-    private boolean waiting;
+    private boolean waitState;
 
-    public Buyer(int number) {
-
-        super("Buyer № " + number + " ");
-        Supervisor.addBuyer();
+    public void setWaitState(boolean waitState) {
 
     }
-    public void setWaiting(boolean waiting) {
-        this.waiting = waiting;
+
+     Buyer(int number) {
+         this.setName("Buyer №" + number);
+         Supervisor.addBuyer();
+         waitState = false;
     }
 
     @Override
@@ -45,20 +45,19 @@ public class Buyer extends Thread implements IBuyer {
 
     @Override
     public void goToQueue() {
-        System.out.println(this + " go to queue");
-        synchronized (this) {
-            waiting = true;
             QueueBuyers.add(this);
-            while (waiting)
+            waitState = true;
+            while(waitState)
             try {
+                System.out.println(this + " go to queue");
                 this.wait();
+                System.out.println(this + " leave queue");
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
 
-        System.out.println(this + " leave queue");
-    }
+
 
     @Override
     public void goOut() {

@@ -8,18 +8,18 @@ public class Shop {
         System.out.println("Shop opened");
         int number = 0;
 
-        List<Buyer> threads = new ArrayList<>();
+        List<Thread> threads = new ArrayList<>();
         for (int i = 0; i < 2; i++) {
             Cashier cashier = new Cashier(i);
             Thread thread = new Thread(cashier);
-
+            threads.add(thread);
             thread.start();
 
         }
 
-        while (Supervisor.marketIsOpened()){
+        while (Supervisor.shopIsOpened()){
             int count = Helper.getRandom(0, 2);
-            for (int i = 0; i < count && Supervisor.marketIsOpened(); i++) {
+            for (int i = 0; i < count && Supervisor.shopIsOpened(); i++) {
                 Buyer buyer = new Buyer(++number);
                 buyer.start();
                 threads.add(buyer);
@@ -27,7 +27,7 @@ public class Shop {
             Helper.sleep(1000);
         }
         Helper.sleep(2000);
-        for (Buyer buyer : threads) {
+        for (Thread buyer : threads) {
             try {
                 buyer.join();
             } catch (InterruptedException e) {
