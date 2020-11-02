@@ -1,0 +1,4 @@
+user.firstname=Валерий
+user.lastname=Колесников
+message.welcome=Добро пожаловать!
+message.question=Как поживаешь?
