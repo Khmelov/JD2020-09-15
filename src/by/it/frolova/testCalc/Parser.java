@@ -6,29 +6,18 @@ import java.util.regex.Pattern;
 
 public class Parser {
     private static Lang manager = Lang.INSTANCE;
-    private static Map<String, Var> varMap = new HashMap<>();
+    private final Map<String, Var> varMap;
+    private final VarCreator varCreator;
 
-    static Var createVar(String strVar) throws CalcExceptions {
-        if (strVar.matches(Patterns.SCALAR)) {
-            return new Scalar(strVar);
-        } else if (strVar.matches(Patterns.VECTOR)) {
-            return new Vector(strVar);
-        } else if (strVar.matches(Patterns.MATRIX)) {
-            return new Matrix(strVar);
-        } else {
-            Var var = varMap.get(strVar);
-            if (Objects.isNull(var)) {
-                throw new CalcExceptions(manager.get(Error.ERROR_UNKNOWN) + " " + strVar);
-            }
-            return var;
-        }
+    public Parser() {
+        varMap = new HashMap<>();
+        varCreator = new VarCreator(varMap);
     }
 
-    public static Var save(String name, Var value) throws CalcExceptions {
+    private Var save(String name, Var value) {
         varMap.put(name, value);
         return value;
     }
-
 
     Var calc(String expression) throws CalcExceptions {
         String expr = expression.replaceAll("\\s+", "");
@@ -36,7 +25,6 @@ public class Parser {
     }
 
     private Var calcExpr(String expression) throws CalcExceptions {
-
         if (!Pattern.compile(Patterns.PARENTHESES_REGEX).matcher(expression).matches()) {
             return calcSimpleExpr(expression);
         } else {
@@ -70,7 +58,7 @@ public class Parser {
             Var interResult = calcValue(leftOperand, operation, rightOperand);
             operands.add(index, interResult.toString());
         }
-        return createVar(operands.get(0));
+        return varCreator.createVar(operands.get(0));
     }
 
     private int getIndex(List<String> operations) {
@@ -87,12 +75,12 @@ public class Parser {
     }
 
     private Var calcValue(String leftOperand, String operation, String rightOperand) throws CalcExceptions {
-        Var right = createVar(rightOperand);
+        Var right = varCreator.createVar(rightOperand);
         if (operation.equals("=")) {
             return save(leftOperand, right);
         }
 
-        Var left = createVar(leftOperand);
+        Var left = varCreator.createVar(leftOperand);
 
         switch (operation) {
             case "-":

@@ -3,6 +3,7 @@ package by.it.frolova.testCalc;
 import java.util.Scanner;
 
 public class ConsoleRunner {
+    private static final Logger logger = Logger.INSTANCE;
     public static void main(String[] args) {
 
         Scanner sc = new Scanner(System.in);
@@ -23,6 +24,7 @@ public class ConsoleRunner {
             }catch (CalcExceptions e){
                 String message = e.getMessage();
                 System.out.println(message);
+                logger.log(message);
             }
         }
     }
