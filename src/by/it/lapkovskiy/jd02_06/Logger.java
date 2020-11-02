@@ -1,7 +1,5 @@
 package by.it.lapkovskiy.jd02_06;
 
-import javafx.scene.input.DataFormat;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
