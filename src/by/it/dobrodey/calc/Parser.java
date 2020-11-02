@@ -31,8 +31,7 @@ class Parser {
             Var res = oneCalc(left, operation, right);
             operands.add(index, res.toString());
         }
-
-        return Var.createVar(operands.get(0));
+        return CreateVar.createVar(operands.get(0));
     }
 
     private String removeBracket(String expression) throws CalcException {
@@ -50,11 +49,11 @@ class Parser {
     }
 
     private Var oneCalc(String strLeft, String operation, String strRight) throws CalcException {
-        Var right = Var.createVar(strRight);
+        Var right = CreateVar.createVar(strRight);
         if (operation.equals("=")) {
             return Var.save(strLeft, right);
         }
-        Var left = Var.createVar(strLeft);
+        Var left = CreateVar.createVar(strLeft);
 
         switch (operation) {
             case "+":
