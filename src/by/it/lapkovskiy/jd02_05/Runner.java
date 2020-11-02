@@ -1,7 +1,5 @@
 package by.it.lapkovskiy.jd02_05;
 
-import javafx.scene.input.DataFormat;
-
 import java.io.IOException;
 import java.text.DateFormat;
 import java.util.Date;
