@@ -3,11 +3,11 @@ package by.it.siarheikorbut.calc;
 import java.util.HashMap;
 import java.util.Map;
 
-public abstract class Var implements Operation {
+abstract class Var implements Operation {
 
     private static final Map<String, Var> vars = new HashMap<>();
 
-    static void saveVar(String name, Var var) {
+    static void saveVar(String name, Var var) throws CalcException {
         vars.put(name, var);
     }
 
@@ -45,5 +45,4 @@ public abstract class Var implements Operation {
     public Var div(Var other) throws CalcException {
         throw new CalcException("Операция деления " + this + " / " + other + " невозможна!");
     }
-
 }

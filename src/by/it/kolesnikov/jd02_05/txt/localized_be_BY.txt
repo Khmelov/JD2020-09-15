@@ -1,0 +1,4 @@
+user.firstname=Валерый
+user.lastname=Калеснікаў
+message.welcome=Прывітанне!
+message.question=Як пажываеш?

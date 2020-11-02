@@ -1,0 +1,9 @@
+message.error=Error
+message.bracket_error_not_found=Not found bracket
+message.unidentified_operation=Unidentified operation
+message.division_by_zero=Division by zero
+message.length_not_equals=Length not equals
+message.unknown_variable=Unknown variable
+message.operation=operation
+message.impossible=impossible
+message.abstract_var=Abstract var

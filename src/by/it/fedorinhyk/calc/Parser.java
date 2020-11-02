@@ -4,18 +4,18 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 class Parser {
-    Var calc(String expression) throws CalcException{
+    CreateVar calc(String expression) throws CalcException{
         expression.replaceAll("\\s+","");
 
         String[] parts = expression.split(Patterns.OPERATION, 2);
-        if (parts.length==1) return Var.createVar(parts[0]);
+        if (parts.length==1) return CreateVar.createVar(parts[0]);
 
-        Var right= Var.createVar(parts[1]);
+        CreateVar right= CreateVar.createVar(parts[1]);
         if (expression.contains("=")){
-            return Var.save(parts[0],right);
+            return CreateVar.save(parts[0],right);
         }
 
-        Var left= Var.createVar(parts[0]);
+        CreateVar left= CreateVar.createVar(parts[0]);
         if (right==null || left==null) return null;
 
         Pattern patternOperation = Pattern.compile(Patterns.OPERATION);

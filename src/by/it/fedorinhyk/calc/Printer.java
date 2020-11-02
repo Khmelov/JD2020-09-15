@@ -5,18 +5,18 @@ import java.util.Map;
 import java.util.Set;
 
 public class Printer {
-    void print(Var result) {
+    void print(CreateVar result) {
         if (result != null) {
             System.out.println(result);
         }
     }
 
-    public void printvar(Map<String, Var> value) {
-        Map<String, Var> hashmap;
+    public void printvar(Map<String, CreateVar> value) {
+        Map<String, CreateVar> hashmap;
         hashmap = value;
-        Set<Map.Entry<String, Var>> set = hashmap.entrySet();
-        Iterator<Map.Entry<String, Var>> iterator = set.iterator();
-        while (iterator.hasNext()) { Map.Entry<String, Var> map = iterator.next();
+        Set<Map.Entry<String, CreateVar>> set = hashmap.entrySet();
+        Iterator<Map.Entry<String, CreateVar>> iterator = set.iterator();
+        while (iterator.hasNext()) { Map.Entry<String, CreateVar> map = iterator.next();
             System.out.println(map.getKey()+"="+map.getValue());
         }
     }

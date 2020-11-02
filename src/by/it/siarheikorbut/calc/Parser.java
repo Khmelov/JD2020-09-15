@@ -4,14 +4,15 @@ import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Parser {
-    private final static Map<String,Integer> priorityMap = new HashMap<>() {
+class Parser {
+
+    private final static Map<String,Integer> priorityMap = new HashMap<String, Integer>() {
         {
-            this.put("=", 0);
-            this.put("+", 1);
-            this.put("-", 1);
-            this.put("/", 2);
-            this.put("*", 2);
+            this.put("=",0);
+            this.put("+",1);
+            this.put("-",1);
+            this.put("/",2);
+            this.put("*",2);
         }
     };
 
@@ -58,15 +59,19 @@ public class Parser {
         throw new CalcException("ERROR");
     }
 
+
+
+
     private int getIndexCurrentOperation(List<String> operation) {
         int index = -1;
         int priority = -1;
         for (int i = 0; i < operation.size(); i++) {
-            String option = operation.get(i);
-            if(priorityMap.get(option)>priority){
-                priority = priorityMap.get(option);
+            String opertion = operation.get(i);
+            if(priorityMap.get(opertion)>priority){
+                priority = priorityMap.get(opertion);
                 index = i;
             }
+
         }
         return index;
     }

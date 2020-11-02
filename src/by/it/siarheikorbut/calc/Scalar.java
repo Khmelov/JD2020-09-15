@@ -1,6 +1,6 @@
 package by.it.siarheikorbut.calc;
 
-public class Scalar extends Var {
+class Scalar extends Var {
     private final double value;
 
     public double getValue() {
@@ -58,6 +58,9 @@ public class Scalar extends Var {
     @Override
     public Var div(Var other) throws CalcException {
         if (other instanceof Scalar) {
+            if (((Scalar) other).value == 0) {
+                throw new CalcException("Деление на ноль!");
+            }
             double result = this.value / ((Scalar) other).value;
             return new Scalar(result);
         } else if (other instanceof Vector) {

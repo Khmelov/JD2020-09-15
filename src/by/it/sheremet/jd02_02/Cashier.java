@@ -1,5 +1,6 @@
 package by.it.sheremet.jd02_02;
 
+import java.util.Map;
 import java.util.Objects;
 
 class Cashier implements Runnable {
@@ -37,6 +38,15 @@ class Cashier implements Runnable {
                         System.out.printf("%s start service for %s\n", this, buyer);
                         int t = Helper.getRandom(2000, 5000);
                         Helper.timeout(t);
+                        Map<String,Double> buyerBasket = buyer.getBasketGoods();
+                        double price=0;
+                        for (Map.Entry<String,Double> products:buyerBasket.entrySet()) {
+                            String product = products.getKey();
+                            Double cost = products.getValue();
+                            price += cost;
+                            System.out.println(buyer + " buy " + product + " for " + cost);
+                        }
+                        System.out.println(buyer+" total price: "+price);
                         System.out.printf("%s finish service for %s\n", this, buyer);
                         synchronized (buyer) {
                             buyer.setWaiting(false);
