@@ -14,7 +14,7 @@ public enum Logger {
     private static final String SRC = "src";
     public static final String LOG_TXT = "log.txt";
 
-    public void log(String logtxt) {
+    public void log(String logtxt) throws CalcExceptions {
 
         Date date = new Date();
         String filename = getPath(Logger.class);
@@ -22,7 +22,7 @@ public enum Logger {
             printWriter.printf("Action: %s Time: %s\n",
                     logtxt, printDate(date));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new CalcExceptions("File ERROR",e);
         }
     }
 

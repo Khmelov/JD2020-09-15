@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class ConsoleRunner {
     private static final Logger logger = Logger.INSTANCE;
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CalcExceptions {
 
         Scanner sc = new Scanner(System.in);
         Parser parser = new Parser();
