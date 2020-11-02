@@ -2,7 +2,7 @@ package by.it.fedorinhyk.calc;
 
 import java.util.Arrays;
 
-class Matrix extends Var {
+class Matrix extends CreateVar {
     public double[][] value;
 
     Matrix(double[][] value) {
@@ -33,7 +33,7 @@ class Matrix extends Var {
     }
 
     @Override
-    public Var add(Var other) throws CalcException {
+    public CreateVar add(CreateVar other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double[][] sum = new  double[this.value.length][this.value[0].length];
@@ -65,7 +65,7 @@ class Matrix extends Var {
     }
 
     @Override
-    public Var sub(Var other) throws CalcException {
+    public CreateVar sub(CreateVar other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double [][] sub = new double[this.value.length][this.value[0].length];
@@ -97,7 +97,7 @@ class Matrix extends Var {
     }
 
     @Override
-    public Var mul(Var other) throws CalcException {
+    public CreateVar mul(CreateVar other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double[][] mul = new double[this.value.length][this.value[0].length];
@@ -144,7 +144,7 @@ class Matrix extends Var {
     }
 
     @Override
-    public Var div(Var other) throws CalcException {
+    public CreateVar div(CreateVar other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double[][] div = new double[this.value.length][this.value[0].length];

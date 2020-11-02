@@ -2,7 +2,7 @@ package by.it.fedorinhyk.calc;
 
 import java.util.Arrays;
 
-class Vector extends Var {
+class Vector extends CreateVar {
     private double[] value;
 
     public double[] getValue() {
@@ -31,7 +31,7 @@ class Vector extends Var {
     }
 
     @Override
-    public Var add(Var other) throws CalcException {
+    public CreateVar add(CreateVar other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double[] sum = Arrays.copyOf(value, value.length);
@@ -55,7 +55,7 @@ class Vector extends Var {
     }
 
     @Override
-    public Var sub(Var other) throws CalcException {
+    public CreateVar sub(CreateVar other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double[] sub = Arrays.copyOf(value, value.length);
@@ -79,7 +79,7 @@ class Vector extends Var {
     }
 
     @Override
-    public Var mul(Var other) throws CalcException {
+    public CreateVar mul(CreateVar other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double[] mul = Arrays.copyOf(value, value.length);
@@ -100,7 +100,7 @@ class Vector extends Var {
     }
 
     @Override
-    public Var div(Var other) throws CalcException {
+    public CreateVar div(CreateVar other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             if (otherScalar.getValue()==0){

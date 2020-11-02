@@ -1,11 +1,11 @@
 package by.it.fedorinhyk.calc;
 
 interface Operation {
-    Var add(Var other) throws CalcException;
+    CreateVar add(CreateVar other) throws CalcException;
 
-    Var sub(Var other) throws CalcException;
+    CreateVar sub(CreateVar other) throws CalcException;
 
-    Var mul(Var other) throws CalcException;
+    CreateVar mul(CreateVar other) throws CalcException;
 
-    Var div(Var other) throws CalcException;
+    CreateVar div(CreateVar other) throws CalcException;
 }
