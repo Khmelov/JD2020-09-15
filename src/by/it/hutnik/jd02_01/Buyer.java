@@ -6,69 +6,64 @@ import java.util.Map;
 class Buyer extends Thread implements IBuyer, IUseBasket {
 
     public Buyer(int number) {
-
-        super("Покупатель №" + number);
+        super("Покупатель №_" + number);
     }
-
     @Override
     public void run() {
+//      Supervisor.BUYERS_IN_SHOP++; //добавился покупатель
         enterToMarket(); //вошел в магазин (мгновенно)
-        chooseGoods(); //выбрал товар (от 0,5 до 2 секунд)
-        goOut(); //отправился на выход(мгновенно)
         takeBasket(); //взял корзину
+        chooseGoods(); //выбрал товар (от 0,5 до 2 секунд)
         putGoodsToBasket(); //положил выбранный товар в корзину
+        goOut(); //отправился на выход(мгновенно)
         Supervisor.BUYERS_IN_SHOP--;
     }
 
     @Override
     public void enterToMarket() {
-
-        System.out.printf("%s вошёл в магазин", this);
+        System.out.printf("%s вошёл в магазин. \n", this);
     }
 
     @Override
     public void chooseGoods() {
-        System.out.printf("%s начал выбирать товар\n", this);
-        int srok = Helper.getRandom(500, 2000);
+
+        System.out.printf("%s начал выбирать товар.\n", this);
+        int vremya = Helper.getRandom(500, 2000);
         Thread.yield();
-        Helper.mySleep(srok);
-        System.out.printf("%s закончил выбирать товар\n", this);
-    }
+        Helper.vremyaStop(vremya);
+        }
 
     @Override
     public void goOut() {
-        System.out.printf("%s вышел из магазина\n", this);
-
+            System.out.printf("%s вышел из магазина.\n", this);
     }
 
     @Override
     public String toString() {
-
         return this.getName();
     }
 
     @Override
     public void takeBasket() {
-        System.out.printf("%s взял корзину\n", this);
+        System.out.printf("%s взял корзину.\n", this);
     }
 
     @Override
     public void putGoodsToBasket() {
-        int tovary = Helper.getRandom(0, 4);
+        int tovary = Helper.getRandom(1, 4);
         int count = 0;
-        Map<String, Integer> perechen = new HashMap<>();
-        perechen.put("хлеб", 3);
-        perechen.put("молоко", 2);
-        perechen.put("сыр", 7);
-        perechen.put("творог", 5);
-        for(Map.Entry<String, Integer>entry: perechen.entrySet()){
+        Map<String, String> vybor = new HashMap<>();
+        vybor.put("МОЛОКО", "= 98 коп.");
+        vybor.put("ХЛЕБ", "= 1 руб. 26 коп.");
+        vybor.put("СЫР", "= 3 руб. 74 коп.");
+        vybor.put("ТВОРОГ", "= 2 руб. 12 коп.");
+        for(Map.Entry<String, String> entry: vybor.entrySet()){
             if(count == tovary)
                 break;
-            System.out.printf("%s положил в корзину\n", this, entry.getKey());
-            count++;
+                System.out.println(this + " положил " + "в корзину " + entry.getKey() + " " + entry.getValue());
+                count++;
         }
-        Helper.mySleep(Helper.getRandom(500, 2000));
+        System.out.printf("%s закончил выбирать товар.\n", this);
+        Helper.vremyaStop(Helper.getRandom(500, 2000));
     }
-
-
 }

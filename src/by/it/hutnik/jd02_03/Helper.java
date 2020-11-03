@@ -1,4 +1,4 @@
-package by.it.hutnik.jd02_01;
+package by.it.hutnik.jd02_03;
 
 import java.util.Random;
 
@@ -8,6 +8,7 @@ class Helper {
         return min + random.nextInt(max - min + 1); // вoзвращение случайного челого числа int
     }
     static int getRandom(int max) {
+
         return getRandom(0, max);
     }
     static void vremyaStop(int milisek) {

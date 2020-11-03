@@ -1,11 +1,13 @@
 package by.it.hutnik.jd02_01;
 
+
+
 import java.util.ArrayList;
 
 class Market {
 
       public static void main(String[] args) {
-        System.out.println("Market opened");
+        System.out.println("Магазин открыт");
         ArrayList<Buyer> buyers = new ArrayList<>();
         int number = 0;
         for (int timeSecond = 1; timeSecond <= 120; timeSecond++) {
@@ -16,11 +18,12 @@ class Market {
                 buyers.add(buyer);
                 Supervisor.BUYERS_IN_SHOP++;
             }
-            Helper.mySleep(1000);
+            Helper.vremyaStop(1000);
         }
         while (Supervisor.BUYERS_IN_SHOP>0){
             Thread.yield();
         }
-        System.out.println("Market closed");
+        System.out.println("Магазин закрыт");
     }
 }
+
