@@ -139,7 +139,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var div(Var other) {
+    public Var div(Var other) throws CalcExceptions {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double[][] div = new double[value.length][value[0].length];
@@ -154,7 +154,7 @@ public class Matrix extends Var {
         try {
             return super.div(other);
         } catch (CalcExceptions calcExceptions) {
-            throw new RuntimeException(calcExceptions);
+            throw new CalcExceptions(Lang.INSTANCE.get(Error.ERROR_IMPOSSIBLE));
         }
     }
 

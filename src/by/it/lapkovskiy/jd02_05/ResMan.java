@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 
 public enum ResMan {
     INSTANCE;
+    public static final String DEFAULT_LANGUAGE = "by.it.lapkovskiy.jd02_05.res.language";
     private Locale locale;
     private ResourceBundle resourceBundle;
 
@@ -14,7 +15,7 @@ public enum ResMan {
     }
 
     public void setLocale(Locale locale) {
-       resourceBundle = ResourceBundle.getBundle("by.it.lapkovskiy.jd02_05.res.language",locale);
+       resourceBundle = ResourceBundle.getBundle(DEFAULT_LANGUAGE,locale);
     }
     public String get(String key){
        return resourceBundle.getString(key);

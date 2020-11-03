@@ -19,7 +19,7 @@ public abstract class Var implements Operation {
         } else {
             Var var = varMap.get(strVar);
             if (Objects.isNull(var)) {
-                throw new CalcException("Unknown variable: " + strVar);
+                throw new CalcException(ConsoleRunner.rasMan.get(Message.unknown_variable)+": " + strVar);
             }
             return var;
         }
@@ -33,26 +33,30 @@ public abstract class Var implements Operation {
 
     @Override
     public Var add(Var other) throws CalcException {
-        throw new CalcException(String.format("Operation %s + %s impossible\n", this, other));
+        throw new CalcException(String.format(""+ConsoleRunner.rasMan.get(Message.operation)+" %s + %s "
+                +ConsoleRunner.rasMan.get(Message.impossible)+"\n", this, other));
     }
 
     @Override
     public Var sub(Var other) throws CalcException {
-        throw new CalcException(String.format("Operation %s - %s impossible\n", this, other));
+        throw new CalcException(String.format(""+ConsoleRunner.rasMan.get(Message.operation)+" %s - %s " +
+                ConsoleRunner.rasMan.get(Message.impossible)+"\n", this, other));
     }
 
     @Override
     public Var mul(Var other) throws CalcException {
-        throw new CalcException(String.format("Operation %s * %s impossible\n", this, other));
+        throw new CalcException(String.format(""+ConsoleRunner.rasMan.get(Message.operation)+" %s * %s " +
+                ConsoleRunner.rasMan.get(Message.impossible)+"\n", this, other));
     }
 
     @Override
     public Var div(Var other) throws CalcException {
-        throw new CalcException(String.format("Operation %s / %s impossible\n", this, other));
+        throw new CalcException(String.format(""+ConsoleRunner.rasMan.get(Message.operation)+" %s / %s " +
+                ConsoleRunner.rasMan.get(Message.impossible)+"\n", this, other));
     }
 
     @Override
     public String toString() {
-        return "abstract Var";
+        return ConsoleRunner.rasMan.get(Message.abstract_var);
     }
 }

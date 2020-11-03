@@ -1,19 +1,28 @@
 package by.it.sheremet.jd02_02;
 
+import java.util.HashMap;
 import java.util.Map;
 
 public class Buyer extends Thread implements Ibuyer, IUseBasket  {
 
     private boolean waiting;
 
+    private Map<String,Double> basketGoods = null;
+
     public Buyer(Integer number) {
         this.setName("Buyer №" + number);
         Supervisor.addBuyer();
         waiting = false;
+
     }
     public void setWaiting(boolean waiting){
         this.waiting=waiting;
     }
+
+    public Map<String,Double> getBasketGoods(){
+        return basketGoods;
+    }
+
 
     @Override
     public void run() {
@@ -45,18 +54,17 @@ public class Buyer extends Thread implements Ibuyer, IUseBasket  {
 
     @Override
     public void putGoodsToBasket() {
+       basketGoods = new HashMap<>();
         Map<String,Double> goods = Good.getGoods();
-        int putInBasket = Helper.getRandom(1,4);
-        Object [] keys= goods.keySet().toArray();
-        double sum = 0;
+        int putInBasket =Helper.getRandom(1,4);
+        Object [] keys = goods.keySet().toArray();
         for (int i = 0; i < putInBasket; i++) {
             int randomGood = Helper.getRandom(0, keys.length - 1);
-            String key =(String) keys[randomGood];
-            Double value =goods.get(key);
-            sum+=value;
-            System.out.println(this+ " put " + key + " to basket, cost " +value);
+            String key = (String) keys[randomGood];
+            double value = goods.get(key);
+            basketGoods.put(key, goods.get(key));
+            System.out.println(this+" put "+key+" to basket, cost "+value);
         }
-        System.out.println(this+ " Total price "+sum);
     }
 
     @Override

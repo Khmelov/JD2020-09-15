@@ -15,7 +15,7 @@ public class Runner {
     }
 
     public static void main(String[] args) {
-        for (int i = 1; i < 2001; i++) {
+        for (int i = 1; i < 10; i++) {
             new Th("Thread"+i).start();
         }
 

@@ -1,0 +1,4 @@
+user.firstName = Максiм
+user.lastName = Гутнiк
+message.welcome = Привiтанне!
+message.question = Як справы?
