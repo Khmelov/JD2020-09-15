@@ -13,8 +13,8 @@ class Supervisor {
 
     private static final int buyerTotal = 100;
 
-    static void addBuyer() {
-        buyersEnterToMarket.getAndDecrement();
+    static synchronized void addBuyer() {
+        buyersEnterToMarket.getAndIncrement();
     }
 
     static void leaveBuyer() { buyersLeavedMarket.getAndIncrement();
