@@ -59,15 +59,15 @@ class Parser {
             Var res = oneCalc(left, operation, right);
             operands.add(index, res.toString());
         }
-        return Var.createVar(operands.get(0));
+        return VarCreator.createVar(operands.get(0));
     }
 
     private Var oneCalc(String strLeft, String operation, String strRight) throws CalcException {
-        Var right = Var.createVar(strRight);
+        Var right = VarCreator.createVar(strRight);
         if (operation.equals("=")) {
             return Var.save(strLeft, right);
         }
-        Var left = Var.createVar(strLeft);
+        Var left = VarCreator.createVar(strLeft);
 
         switch (operation){
                 case "+":

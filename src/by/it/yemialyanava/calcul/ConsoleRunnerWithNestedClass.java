@@ -1,30 +1,21 @@
 package by.it.yemialyanava.calcul;
 
-import by.it.yemialyanava.calcul.builder.FullReport;
-import by.it.yemialyanava.calcul.builder.Report;
-import by.it.yemialyanava.calcul.builder.ReportBuilder;
-
 import java.util.Scanner;
 
-public class ConsoleRunner {
-    public static Lang manager = Lang.UK;
+public class ConsoleRunnerWithNestedClass {
+    /*public static Lang manager = Lang.UK;
 
     public static void main(String[] args) {
-        ReportBuilder reportBuilder = new FullReport();
-        reportBuilder.createNewReport();
-        reportBuilder.buildHead();
-        reportBuilder.buildTimeOfRun();
         Scanner scan = new Scanner(System.in);
         Parser parser = new Parser();
         Printer printer = new Printer();
         try {
             Var.load();
         } catch (CalcException e) {
-            Logger.INSTANCE.log(ConsoleRunner.manager.get(MessagesNames.MISSING_FILE));
+            Logger.INSTANCE.log(by.it.yemialyanava.calcul.ConsoleRunner.manager.get(MessagesNames.MISSING_FILE));
         }
         for (; ; ) {
             String expression = scan.nextLine();
-            Logger.INSTANCE.log(expression);
             if (expression.equals("end")) {
                 break;
             }
@@ -46,19 +37,13 @@ public class ConsoleRunner {
                 try {
                     Var result = parser.calcWithBrackets(expression);
                     printer.print(result);
-                    reportBuilder.buildInformationPart(expression, result.toString());
                 } catch (CalcException e) {
                     String message = e.getMessage();
                     System.out.println(message);
-                    Logger.INSTANCE.log(message);
-                    reportBuilder.buildInformationOfError(e);
-                } finally {
-                    reportBuilder.buildTimeOfEnd();
-                    Report report = reportBuilder.getReport();
-                    report.toString();
-                    Logger.INSTANCE.log(report.toString());
+                    LoggerInNestedClass.getInstance(message);
                 }
             }
         }
-    }
+    }*/
 }
+

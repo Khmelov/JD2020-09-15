@@ -6,12 +6,14 @@ public class Printer {
     void print(Var result){
         if (result!=null){
             System.out.println(result);
+            Logger.INSTANCE.log(result.toString());
         }
     }
     static void printVar(HashMap<String, Var> varMap){
         Set<Map.Entry<String, Var>> entries = varMap.entrySet();
         for (Map.Entry<String, Var> entry : entries){
             System.out.println(entry.getKey().toString() + "=" + entry.getValue().toString());
+            Logger.INSTANCE.log(entry.getKey().toString() + "=" + entry.getValue().toString());
         }
     }
     static  void sortVar(HashMap<String, Var> varMap){
@@ -26,6 +28,7 @@ public class Printer {
         Set<Map.Entry<String, Var>> entries = treeMap.entrySet();
         for (Map.Entry<String, Var> entry : entries){
             System.out.println(entry.getKey().toString() + "=" + entry.getValue().toString());
+            Logger.INSTANCE.log(entry.getKey().toString() + "=" + entry.getValue().toString());
         }
     }
 }
