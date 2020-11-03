@@ -1,0 +1,4 @@
+user.firstName = Максим
+user.lastName = Гутник
+message.welcome = Привет!
+message.question = Как дела?

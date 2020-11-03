@@ -1,9 +1,15 @@
-package by.it.hutnik.jd02_02;
+package by.it.hutnik.jd02_03;
 
 import java.util.HashMap;
 import java.util.Map;
 
 class Buyer extends Thread implements IBuyer, IUseBasket {
+
+    private boolean waitState = false;
+
+    public void setWaitState(boolean waitState){
+        this.waitState = waitState;
+    }
 
     public Buyer(int number) {
 
@@ -42,13 +48,16 @@ class Buyer extends Thread implements IBuyer, IUseBasket {
     public void goToQueue() {
         synchronized (this){
             QueueBuyers.add(this);
+            waitState = true;
+            while (waitState)
             try{
                 System.out.println(this + " стал в очередь");
-                wait();
+                this.wait();
                 System.out.println(this + " вышел из очереди");
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
+
         }
     }
 

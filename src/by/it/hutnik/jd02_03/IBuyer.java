@@ -1,4 +1,4 @@
-package by.it.hutnik.jd02_02;
+package by.it.hutnik.jd02_03;
 
 interface IBuyer {
     void enterToMarket(); //вошел в магазин (мгновенно)

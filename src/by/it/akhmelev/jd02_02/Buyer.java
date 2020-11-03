@@ -1,13 +1,27 @@
 package by.it.akhmelev.jd02_02;
 
-class Buyer extends Thread implements IBuyer {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+class Buyer extends Thread implements IBuyer, IUseBascket {
 
     private boolean waiting;
 
-    Buyer(int number) {
+    private final List<Map.Entry<String, Integer>> goodsInBascket = new ArrayList<>();
+
+    public List<Map.Entry<String, Integer>> getGoodsInBascket(){
+        return goodsInBascket;
+    }
+
+    public void setWait(boolean wait){
+        waiting = wait;
+    }
+
+    public Buyer(int number) {
         this.setName("Buyer №" + number);
-        Supervisor.addBuyer();
         waiting = false;
+        Dispatcher.buyerEnterToMarket();
     }
 
     public void setWaiting(boolean waiting) {

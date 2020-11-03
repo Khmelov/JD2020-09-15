@@ -1,4 +1,4 @@
-package by.it.hutnik.jd01;
+package by.it.hutnik.jd01_01;
 
 public class Main {
 

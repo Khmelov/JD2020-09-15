@@ -1,4 +1,4 @@
-package by.it.hutnik.jd01;
+package by.it.hutnik.jd01_01;
 //напишите тело main программы которая выводит на экран 5 строк
 //"Я начинаю изучать Java!"
 public class TaskA2 {

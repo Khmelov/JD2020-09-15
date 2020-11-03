@@ -1,38 +1,43 @@
 package by.it.hutnik.jd02_02;
 
 
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Market {
+class Market {
 
-//    public static void main(String[] args) {
-//        Supervisor.buyersInMarket=0;
-//        for (int i = 0; i < 1000; i++) {
-//            main1(args);
-//        }
-//    }
+      public static void main(String[] args) {
+        System.out.println("Магазин открыт");
+        int number = 0;
+        List<Thread> threads = new ArrayList<>();
+          for (int i = 1; i <= 2; i++) {
+              Cassir cassir = new Cassir(i);
+              Thread thread = new Thread(cassir);
+              threads.add(thread);
+              thread.start();
 
-    public static void main(String[] args) {
-        int buyerNumber=0;
-        System.out.println("Market opened");
-        List<Buyer> buyers=new ArrayList<>();
-        for (int second = 0; second < 120; second++) {
-            int count= Helper.getRandom(2);
-            for (int i = 0; i < count; i++) {
-                Buyer buyer = new Buyer(++buyerNumber);
+          }
+
+
+          while (Supervisor.marketOpen()){
+            int countBuyer = Helper.getRandom(2);
+            for (int i = 0; i < countBuyer; i++) {
+                Buyer buyer = new Buyer(++number);
                 buyer.start();
-                buyers.add(buyer);
+                threads.add(buyer);
+                Supervisor.BUYERS_IN_SHOP++;
             }
-            Helper.timeout(1000);
+            Helper.vremyaStop(1000);
         }
-        for (Buyer buyer : buyers) {
+        for (Thread b: threads){
             try {
-                buyer.join();
+                b.join();
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
         }
-        System.out.println("Market closed");
+        System.out.println("Магазин закрыт");
     }
 }
+

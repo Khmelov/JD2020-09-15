@@ -1,4 +1,4 @@
-package by.it.hutnik.jd01;
+package by.it.hutnik.jd01_01;
 /*
 Ускорение свободного падения на Земле и Марсе таково:
 Марс   3.86
