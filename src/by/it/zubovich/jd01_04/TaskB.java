@@ -4,56 +4,47 @@ import java.util.Scanner;
 
 public class TaskB {
     public static void main(String[] args) {
-
-        System.out.println("Введите количество людей для рачета ЗП");
+        System.out.println("введите число людей:");
         Scanner scNumber = new Scanner(System.in);
-        Scanner scZp = new Scanner(System.in);
-        Scanner scNameEmployee = new Scanner(System.in);
-        int ppl = scNumber.nextInt();
-        String[] arr = new String[ppl];
-        int i = 1;
-        while (ppl >= i) {
-            System.out.println("Введите Фамилию человека под номером " + i);
-            String namePpl = scNameEmployee.nextLine();
-            arr[i - 1] = namePpl;
-            i++;
-        }
-        System.out.println("Список претендентов на ЗП");
+        int strNumber = scNumber.nextInt();
+        int[][] salary = new int[strNumber][4];
+        String[] lastName = new String[strNumber];
 
-        int[] arrZp = new int[ppl * 5];
-        int r = 0;
-        arrZp[0] = r;
-        for (String s : arr) {
-            System.out.println("Вводите ЗП за каждый из 4х кварталов для " + "\"" + s + "\"" + " и нажимайте Enter");
-            int totalLine = 0;
-            for (int j = 0; j < 4; j++) {
-                int zp = scZp.nextInt();
-                arrZp[r] = zp;
-                r++;
-                totalLine += zp;
-            }
-            arrZp[r] = totalLine;
-            r++;
-            System.out.println(totalLine);
+        for (int i = 0; i < strNumber; i++) {
+            System.out.println("введите фамилию:");
+            Scanner scPeople = new Scanner(System.in);
+            lastName[i] = scPeople.nextLine();
         }
 
-        for (String i1 : arr) {
-            System.out.print(i1 + ": ");
-            for (int i2 : arrZp) {
-                System.out.print(" " + i2 + " ");
-
+        for (int i = 0; i < strNumber; i++) {
+            System.out.println("введите зарплату для " + lastName[i] + ":");
+            Scanner sc = new Scanner(System.in);
+            String[] arrForSalary = sc.nextLine().split(" ");
+            int[] arrSalaryPeople = new int[arrForSalary.length];
+            for (int j = 0; j < arrForSalary.length; j++) {
+                arrSalaryPeople[j] = Integer.parseInt(arrForSalary[j]);
             }
-            System.out.println();
-
-
-
-//            for (int i2 = 0; i2 <= arrZp.length-1; i2++) {
-//                if (((arrZp[i2]+1) % 5) == 0) {
-//                    System.out.print(" " + i2 + " ");
-//                }
-//            }
-            }
-
+            salary[i] = arrSalaryPeople;
         }
+        //вывод квартальной зарплаты
+        String fr = "---------------------------------------------------";
+        System.out.printf("%-51s%n%9s%9s%9s%9s%9s%6s%n%-51s", fr, "Фамилия",
+                "Квартал1", "Квартал2", "Квартал3", "Квартал4", "Итого", fr);
+        for (int i = 0; i < strNumber; i++) {
+            int sumTotal = salary[i][0] + salary[i][1] + salary[i][2] + salary[i][3];
+            System.out.printf("%n%8s: %-9d%-9d%-9d%-9d%-6d", lastName[i], salary[i][0],
+                    salary[i][1], salary[i][2], salary[i][3], sumTotal);
+        }
+        //находим итого
+        int total = 0;
+        for (int[] hints : salary) {
+            for (int anInt : hints) {
+                total += anInt;
+            }
+        }
+        //вывод в консоль итого и среднее в конце таблицы
+        System.out.printf("%n%-51s%n%-10s%-9d", fr, "Итого", total);
+        double avgOfTotal = (double) total / (strNumber * 4);
+        System.out.printf("%n%-10s%-9.4f%n", "Средняя", avgOfTotal);
     }
-
+}

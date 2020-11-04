@@ -18,7 +18,9 @@ public class Runner {
         System.out.println(min);
         double max = Helper.findMax(array);
         System.out.println(max);
-        double[][] matrix = {{1, 2, 3}, {4, 5, 6}};
+        double[][] matrix = {
+                {1, 2, 3},
+                {4, 5, 6}};
         double[] vector = {7, 8, 9};
         double[][] matrixLeft = {
                 {10, 11, 12},
