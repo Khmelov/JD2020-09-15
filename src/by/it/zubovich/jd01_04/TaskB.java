@@ -28,12 +28,12 @@ public class TaskB {
         }
         //вывод квартальной зарплаты
         String fr = "---------------------------------------------------";
-        System.out.printf("%-51s%n%9s%9s%9s%9s%9s%6s%n%-51s", fr, "Фамилия",
+        System.out.printf("%-51s%n%8s %9s%9s%9s%9s%6s%n%-51s", fr, "Фамилия",
                 "Квартал1", "Квартал2", "Квартал3", "Квартал4", "Итого", fr);
         for (int i = 0; i < strNumber; i++) {
-            int sumTotal = salary[i][0] + salary[i][1] + salary[i][2] + salary[i][3];
+            int sumHalfTotal = salary[i][0] + salary[i][1] + salary[i][2] + salary[i][3];
             System.out.printf("%n%8s: %-9d%-9d%-9d%-9d%-6d", lastName[i], salary[i][0],
-                    salary[i][1], salary[i][2], salary[i][3], sumTotal);
+                    salary[i][1], salary[i][2], salary[i][3], sumHalfTotal);
         }
         //находим итого
         int total = 0;

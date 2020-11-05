@@ -9,8 +9,6 @@ public class Scalar extends Var {
 //        return value;
 //    }
 
-
-
     Scalar(double value) {
         this.value = value;
     }
