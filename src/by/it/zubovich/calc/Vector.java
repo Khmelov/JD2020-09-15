@@ -1,4 +1,4 @@
-package by.it.zubovich.jd01_07;
+package by.it.zubovich.calc;
 
 import java.util.Arrays;
 

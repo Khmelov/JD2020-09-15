@@ -5,16 +5,17 @@ import java.util.Scanner;
 public class TaskB {
     public static void main(String[] args) {
         System.out.println("введите число людей:");
+
         Scanner scNumber = new Scanner(System.in);
         int strNumber = scNumber.nextInt();
-        int[][] salary = new int[strNumber][4];
         String[] lastName = new String[strNumber];
 
-        for (int i = 0; i < strNumber; i++) {
+        for (int i = 0; i < lastName.length; i++) {
             System.out.println("введите фамилию:");
             Scanner scPeople = new Scanner(System.in);
             lastName[i] = scPeople.nextLine();
         }
+        int[][] salary = new int[strNumber][4];
 
         for (int i = 0; i < strNumber; i++) {
             System.out.println("введите зарплату для " + lastName[i] + ":");

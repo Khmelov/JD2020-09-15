@@ -1,12 +1,13 @@
-package by.it.zubovich.jd01_08;
+package by.it.zubovich.jd01_08.old;
 
 public class Runner {
     private static void print(Var var) {
-        System.out.println(var);}
+        System.out.println(var);
+    }
 
     public static void main(String[] args) {
         Var s = new Scalar(3.0);
-        Var v = new Vector(new double[]{1,2,3}); // закомментируйте вектор и/или
+        Var v = new Vector(new double[]{1, 2, 3}); // закомментируйте вектор и/или
         Var m = new Matrix("{{1,2,3},{4,5,6},{7,8,9}}");// матрицу, если вы их не реализовали
         /* Уровень сложности A (калькулятор) */
         print(s.add(s)); //выведет в консоль 6.0
@@ -25,31 +26,4 @@ public class Runner {
         print(m.mul(m)); //{{30.0, 36.0, 42.0}, {66.0, 81.0, 96.0}, {102.0, 126.0, 150.0}}
         print(m.mul(v)); //{14.0, 32.0, 50.0}
     }
-    /*public static void main(String[] args) {
-        /////////////////////////////////////////
-        Scalar sNum = new Scalar(3.1415);
-        System.out.println("\n" + sNum.toString());
-        Scalar sVar = new Scalar(sNum);
-        System.out.println(sVar.toString());
-        Scalar sStr = new Scalar("3.1415");
-        System.out.println(sStr.toString() + "\n");
-        /////////////////////////////////////////
-        Vector vArr = new Vector(new double[]{1.0, 2.0, 4.0});
-        System.out.println(vArr.toString());
-        Vector vVar = new Vector(vArr);
-        System.out.println(vVar.toString());
-        Vector vStr = new Vector("{1.0, 2.0, 4.0}");
-        System.out.println(vStr.toString() + "\n");
-        ///////////////////////////////////////
-        Matrix mArr = new Matrix(new double[][]{
-                {1.0,2.0},
-                {3.0,4.0}
-        });
-        System.out.println(mArr.toString());
-        Matrix mVar = new Matrix(mArr);
-        System.out.println(mVar.toString());
-        Matrix mStr = new Matrix("{{ 1.0, 2.0 },{ 3.0, 4.0 }}");
-        System.out.println(mStr.toString());
-
-    }*/
 }

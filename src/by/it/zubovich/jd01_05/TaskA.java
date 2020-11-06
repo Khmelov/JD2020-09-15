@@ -23,7 +23,7 @@ public class TaskA {
         double a = 1.21;
         double b = 0.371;
         double y = tan(pow (a + b, 2)) - cbrt(a + 1.5) + a * pow(b, 5) - b / (log(a * a));
-        System.out.println("y= " + y);
+        System.out.println("y = " + y);
     }
     private static void step3() {
         double stepA = 3.75;

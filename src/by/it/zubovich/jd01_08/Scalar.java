@@ -2,74 +2,62 @@ package by.it.zubovich.jd01_08;
 
 public class Scalar extends Var {
 
-    final double value;
+    private final double value;
 
-//    public double getValue(){
-//
-//        return value;
-//    }
-
-
+    public double getValue() {
+        return value;
+    }
 
     Scalar(double value) {
         this.value = value;
     }
 
-    Scalar(Scalar scalar) {
+    public Scalar(Scalar scalar) {
         this.value = scalar.value;
     }
 
-    Scalar(String strScalar) {
+    public Scalar(String strScalar) {
         this.value = Double.parseDouble(strScalar);
+    }
+
+    @Override
+    public String toString() {
+        return Double.toString(value);
     }
 
     @Override
     public Var add(Var other) {
         if (other instanceof Scalar) {
-            double sum = this.value + ((Scalar) other).value;
+            Scalar otherScalar = (Scalar) other;
+            double sum = this.value + otherScalar.value;
             return new Scalar(sum);
-        }
-        else {
-            return other.add(this);
-        }
-
+        } else return other.add(this);
     }
 
     @Override
     public Var sub(Var other) {
         if (other instanceof Scalar) {
-            double sub = this.value - ((Scalar) other).value;
+            Scalar otherScalar = (Scalar) other;
+            double sub = this.value - otherScalar.value;
             return new Scalar(sub);
-        } else {
-            return new Scalar(-1).mul(other).add(this);
-        }
+        } else return other.sub(this).mul(new Scalar(-1));
     }
 
     @Override
     public Var mul(Var other) {
-            if (other instanceof Scalar) {
-                double mul = this.value * ((Scalar) other).value;
-                return new Scalar(mul);
-            }
-            else {
-                return other.mul(this);
-            }
+        if (other instanceof Scalar) {
+            Scalar otherScalar = (Scalar) other;
+            double mul = this.value * otherScalar.value;
+            return new Scalar(mul);
+        } else return other.mul(this);
     }
 
     @Override
     public Var div(Var other) {
         if (other instanceof Scalar) {
-            double div = this.value / ((Scalar) other).value;
+            Scalar otherScalar = (Scalar) other;
+            double div = this.value / otherScalar.value;
             return new Scalar(div);
-        }
-
-            return super.div(this);
-
-    }
-
-    @Override
-    public String toString(){
-
-        return Double.toString(value);
+        } else return super.div(other);
     }
 }
