@@ -1,11 +1,11 @@
-package by.it.zubovich.jd01_09;
+package by.it.zubovich.jd01_09.old;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class Parser {
     Var calc(String expression){
-        String[] operand = expression.split(Patterns.OPERATION,2);
+        String[] operand = expression.split(Patterns.OPERATION);
         Var one = Var.createVar(operand[0]);
         Var two = Var.createVar(operand[1]);
         if (one == null || two == null){
