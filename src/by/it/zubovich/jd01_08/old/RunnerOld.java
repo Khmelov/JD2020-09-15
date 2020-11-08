@@ -1,4 +1,4 @@
-package by.it.zubovich.jd01_08;
+package by.it.zubovich.jd01_08.old;
 
 public class RunnerOld {
     public static void main(String[] args) {
