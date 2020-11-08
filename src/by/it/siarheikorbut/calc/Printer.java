@@ -1,9 +1,16 @@
 package by.it.siarheikorbut.calc;
 
-public class Printer {
-    void print(Var variable) {
-        if (variable != null) {
-            System.out.println(variable);
+class Printer {
+    void print(Var var) {
+        if (var != null) {
+            System.out.println(var);
         }
+    }
+
+    String printToLog(Var var) throws CalcException {
+        if (var != null) {
+            return var.toString();
+        }
+        throw new CalcException();
     }
 }

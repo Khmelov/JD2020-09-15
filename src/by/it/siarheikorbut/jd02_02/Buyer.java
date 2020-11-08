@@ -1,54 +1,82 @@
 package by.it.siarheikorbut.jd02_02;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
-public class Buyer extends Thread implements IUseBasket, IBuyer {
-    public Buyer(int number) {
-        super("Buyer " + number);
-        Dispatcher.buyerEnterToMarket();
-        isWait = false;
-    }
+public class Buyer extends Thread implements IBuyer, IUseBasket {
+
+    private boolean pensioner = false;
 
     private boolean isWait;
 
-    public boolean isWait() {
-        return isWait;
+    private final List<Map.Entry<String, Integer>> goodsInBasket = new ArrayList<>();
+
+    public List<Map.Entry<String, Integer>> getGoodsInBasket() {
+        return goodsInBasket;
     }
 
     public void setWait(boolean wait) {
         isWait = wait;
     }
 
+    public void setPensioner() {
+        pensioner = true;
+        System.out.printf("\t%s is pensioner \n", this);
+    }
+
+    public Buyer(int number) {
+        super("Buyer №" + number);
+        isWait = false;
+        Dispatcher.buyerEnterToMarket();
+    }
+
     @Override
     public void run() {
-        enterStore();
+        if (Helper.getRandom(1, 4) == 1) {
+            setPensioner();
+        }
+        enterToMarket();
         takeBasket();
-        chooseGoods();
-        putGoodsToBasket();
+        int numberOfGoods = Helper.getRandom(1, 4);
+        for (int i = 1; i <= numberOfGoods; i++) {
+            chooseGoods();
+            putGoodsToBasket();
+        }
         goToQueue();
-        leaveStore();
+        goOut();
         Dispatcher.buyerLeaveMarket();
     }
 
     @Override
-    public void enterStore() {
-        System.out.printf("%s enter the market\n", this);
+    public void enterToMarket() {
+        System.out.printf("%s enter to market\n", this);
     }
 
     @Override
     public void chooseGoods() {
-        System.out.printf("%s started to choose the goods\n", this);
-        Helper.mySleep(Helper.getRandom(500, 2000));
-        System.out.printf("%s finished choosing the goods\n", this);
+        System.out.printf("%s started to choose\n", this);
+        int goodInPrice = MarketHelper.priceGoodSize();
+        int numberGood = Helper.getRandom(1, goodInPrice);
+        Map.Entry<String, Integer> randomGood = MarketHelper.takeOneRandomGood(numberGood);
+        System.out.printf("%s take %s for price %d\n", this, randomGood.getKey(), randomGood.getValue());
+        int timeout;
+        if (pensioner) {
+            timeout = (int) (Helper.getRandom(500, 2000) * 1.5);
+        } else {
+            timeout = Helper.getRandom(500, 2000);
+        }
+        Helper.mySleep(timeout);
+        System.out.printf("%s finished to choose\n", this);
+        goodsInBasket.add(randomGood);
     }
 
     @Override
     public void goToQueue() {
         System.out.printf("%s go to queue\n", this);
-        Dispatcher.increaseCountBuyersInQueue();
-        System.out.printf("Amount of buyers in the queue : %d\n", Dispatcher.countBuyersInQueue);
         synchronized (this) {
-            QueueBuyers.add(this);
+            if (!pensioner) QueueBuyers.add(this);
+            else QueueBuyersPensioneer.addPensioneer(this);
             isWait = true;
             while (isWait) {
                 try {
@@ -61,34 +89,38 @@ public class Buyer extends Thread implements IUseBasket, IBuyer {
     }
 
     @Override
-    public void leaveStore() {
-        System.out.printf("%s leave the market\n", this);
-    }
-
-    @Override
-    public String toString() {
-        return this.getName();
+    public void goOut() {
+        System.out.printf("%s left market\n", this);
     }
 
     @Override
     public void takeBasket() {
-        Helper.mySleep(Helper.getRandom(500, 2000));
         System.out.printf("%s take basket\n", this);
+        int timeout;
+        if (pensioner) {
+            timeout = (int) (Helper.getRandom(500, 2000) * 1.5);
+        } else {
+            timeout = Helper.getRandom(500, 2000);
+        }
+        Helper.mySleep(timeout);
     }
 
     @Override
     public void putGoodsToBasket() {
-        System.out.printf("%s started to put goods to the basket\n", this);
-        int count = 0;
-        int amountOfGoods = Helper.getRandom(1, 4);
-        for (Map.Entry<String, String> entry : goods.entrySet()) {
-            if (count == amountOfGoods) {
-                break;
-            }
-            System.out.printf("%s put %s with price %s to his basket\n", this, entry.getValue(), entry.getKey());
-            count++;
+        // TODO перенести goodsInBasket.add(randomGood) из chooseGoods сюда
+        System.out.printf("%s put good to basket\n", this);
+        int timeout;
+        if (pensioner) {
+            timeout = (int) (Helper.getRandom(500, 2000) * 1.5);
+        } else {
+            timeout = Helper.getRandom(500, 2000)
+            ;
         }
-        Helper.mySleep(Helper.getRandom(500, 2000));
-        System.out.printf("%s finished putting goods to the basket\n", this);
+        Helper.mySleep(timeout);
+    }
+
+    @Override
+    public String toString() {
+        return (this.getName());
     }
 }

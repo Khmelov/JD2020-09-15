@@ -1,73 +1,69 @@
 package by.it.siarheikorbut.jd01_14;
 
 import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
+import java.util.Objects;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * @author Siarhei Korbut
+ * @see <a href="https://drive.google.com/file/d/1HyLarqxY-TWlB5f_c1_zolEUaMh5gd7T/view?usp=sharing">Задание JD01_14</a>
+ */
+
 public class TaskB {
 
-    private static String dir() {
-        String path = System.getProperty("user.dir") + File.separator + "src" + File.separator;
-        String classDir = TaskB.class.getName()
-                .replace(TaskB.class.getSimpleName(), "")
-                .replace(".", File.separator);
-        return path + classDir;
+    public static final String TEXT_TXT = "text.txt";
+    public static final String RESULT_TASK_B_TXT = "resultTaskB.txt";
+
+    private static String getPath() {
+        String packageName = TaskB.class
+                .getPackage()
+                .getName()
+                .replace(".", File.separator)
+                .concat(File.separator);
+        String root = System.getProperty("user.dir");
+        return root + File.separator + "src" + File.separator + packageName;
     }
 
     public static void main(String[] args) {
-        File fr = new File(dir() + "text.txt");
-        File fw = new File(dir() + "resultTaskB.txt");
-        FileWriter os = null;
-        FileReader is = null;
-        int b;
-        int countSigns = 0;
-        int countWords = 0;
-        StringBuilder line = new StringBuilder();
-        try {
-            is = new FileReader(fr);
-            while ((b = is.read()) != -1) {
-                line.append((char) b);
+        String filename = getPath() + TEXT_TXT;
+        String resultantly = getPath() + RESULT_TASK_B_TXT;
+        try (BufferedReader reader = new BufferedReader(new FileReader(filename))) {
+            int sumMars = 0;
+            int sumWord = 0;
+            String line = reader.readLine();
+            while (line != null) {
+                line = line.replaceAll("(\\.{3})", ".");
+                Pattern patternWord = Pattern.compile("[А-Яа-яЁё]+");
+                Matcher matcherWord = patternWord.matcher(line);
+                Pattern patternMark = Pattern.compile("[?!,;:.-]");
+                Matcher matcherMark = patternMark.matcher(line);
+                while (matcherWord.find()) {
+                    sumWord++;
+                }
+                while (matcherMark.find()) {
+                    sumMars++;
+                }
+                line = reader.readLine();
             }
-            Pattern patternSigns;
-            patternSigns = Pattern.compile("[,.!;?:-]+");
-            Pattern patternWords = Pattern.compile("[ёЁа-яА-Я]+");
-            Matcher matcher = patternSigns.matcher(line);
-            while (matcher.find()) {
-                countSigns++;
-            }
-            matcher = patternWords.matcher(line);
-            while (matcher.find()) {
-                countWords++;
-            }
-            line.delete(0, line.length())
-                    .append("words=")
-                    .append(countWords)
-                    .append(",punctuation marks=")
-                    .append(countSigns);
-            System.out.println(line);
-            fw.createNewFile();
-            os = new FileWriter(fw);
-            os.write(line.toString());
-
+            System.out.printf("words=%d, punctuation marks=%d", sumWord, sumMars);
+            printToFile(resultantly, sumWord, sumMars);
         } catch (IOException e) {
             e.printStackTrace();
+        }
+    }
+
+    private static void printToFile(String resultantly, int sumWord, int sumMars) {
+        PrintWriter printWriter = null;
+        try {
+            printWriter = new PrintWriter(resultantly);
+            printWriter.printf("words=%d, punctuation marks=%d", sumWord, sumMars);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
         } finally {
-            if (is != null) {
-                try {
-                    is.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            if (os != null) {
-                try {
-                    os.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            if (Objects.nonNull(printWriter)) {
+                printWriter.close();
             }
         }
     }

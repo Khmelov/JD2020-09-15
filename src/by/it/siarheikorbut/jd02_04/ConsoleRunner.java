@@ -1,25 +1,33 @@
 package by.it.siarheikorbut.jd02_04;
 
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.util.Scanner;
 
 public class ConsoleRunner {
     public static void main(String[] args) throws CalcException {
-        Scanner scanner = new Scanner(System.in);
+        Scanner sc = new Scanner(System.in);
         Parser parser = new Parser();
         Printer printer = new Printer();
-
+        try {
+            Var.load();
+        } catch (CalcException e) {
+            e.printStackTrace();
+        }
         for (; ; ) {
-            String line = scanner.nextLine();
-            saveLogToTxt(line);
-            if (line.equals("end"))
+            String expression = sc.nextLine();
+            saveLogToTxt(expression);
+            if (expression.equals("print var")) {
+                System.out.println(Var.vars);
+            }
+            if (expression.equals("sort var")) {
+                System.out.println(Var.sortMap());
+            }
+            if (expression.equals("end")) {
                 break;
+            }
             Var result = null;
             try {
-                result = parser.calc(line);
+                result = parser.calc(expression);
                 saveLogToTxt(String.valueOf(result));
             } catch (CalcException e) {
                 System.out.println(e.getMessage());
@@ -29,11 +37,20 @@ public class ConsoleRunner {
         }
     }
 
-    private static void saveLogToTxt(String log) throws CalcException {
+    private static <e> void saveLogToTxt(String log) throws CalcException {
         String path = getPath() + "log.txt";
-        try (PrintWriter writer = new PrintWriter(new FileWriter(path, true))) {
+        int rowNumberInLog = 0;
+        boolean flag = true;
+        try (BufferedReader bf = new LineNumberReader(new FileReader(path))) {
+            while (bf.readLine() != null) {
+                rowNumberInLog++;
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        if (rowNumberInLog > 50) flag = false;
+        try (PrintWriter writer = new PrintWriter(new FileWriter(path, flag))) {
             writer.println(log);
-
         } catch (IOException e) {
             throw new CalcException(e);
         }

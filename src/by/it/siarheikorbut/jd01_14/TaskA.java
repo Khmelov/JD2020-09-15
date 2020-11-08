@@ -5,16 +5,20 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * @author Siarhei Korbut
+ * @see <a href="https://drive.google.com/file/d/1HyLarqxY-TWlB5f_c1_zolEUaMh5gd7T/view?usp=sharing">Задание JD01_14</a>
+ */
+
 public class TaskA {
 
-    private static final String FILE_DATA = "dataTaskA.bin";
-    private static final String SRC = "src";
     private static final String USER_DIR = "user.dir";
+    private static final String SRC = "src";
+    public static final String FILE_DATA = "dataTaskA.bin";
     private static final String RESULT_TASK_A = "resultTaskA.txt";
 
-    @SuppressWarnings("SameParameterValue")
-    private static String getPath(Class<?> aClass) {
-        String packageName = aClass
+    private static String getPath() {
+        String packageName = TaskA.class
                 .getPackage()
                 .getName()
                 .replace(".", File.separator)
@@ -24,12 +28,12 @@ public class TaskA {
     }
 
     public static void main(String[] args) {
-        String filename = getPath(TaskA.class) + FILE_DATA;
+        String filename = getPath() + FILE_DATA;
         writeRandomInt(filename);
         List<Integer> list = new ArrayList<>();
         readInt(filename, list);
         printToConsole(list);
-        String filenameTxt = getPath(TaskA.class) + RESULT_TASK_A;
+        String filenameTxt = getPath() + RESULT_TASK_A;
         printToFile(list, filenameTxt);
     }
 
@@ -43,21 +47,17 @@ public class TaskA {
         ) {
             for (int i = 0; i < 20; i++) {
                 int n = -12345 / 2 + (int) (Math.random() * 12345);
-                dataOutputStream.writeInt(n);
+                dataOutputStream.write(n);
             }
             dataOutputStream.writeInt(90 + (89 << 8) + (88 << 16) + 87 * 256 * 256 * 256);
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
 
     private static void readInt(String filename, List<Integer> list) {
-        try (
-                DataInputStream dataInputStream = new DataInputStream(
-                        new BufferedInputStream(new FileInputStream(filename)
-                        )
-                )
-        ) {
+        try (DataInputStream dataInputStream = new DataInputStream(new BufferedInputStream(new FileInputStream(filename)))) {
             while (dataInputStream.available() > 0) {
                 list.add(dataInputStream.readInt());
             }

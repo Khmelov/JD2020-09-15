@@ -1,5 +1,10 @@
 package by.it.siarheikorbut.jd01_08;
 
+/**
+ * @author Siarhei Korbut
+ * @see <a href="https://drive.google.com/file/d/1jYVzPAxyV5XrFvrWvf-DEkSx9feVHEDz/view?usp=sharing">Задание JD01_08</a>
+ */
+
 public class Runner {
     private static void print(Var var) {
         System.out.println(var);

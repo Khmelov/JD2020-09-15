@@ -5,30 +5,33 @@ import java.util.regex.Pattern;
 
 /**
  * @author Siarhei Korbut
- * @see <a href="https://drive.google.com/file/d/1C-wHpUcHtxb-Qq0lfyExNQsYeKr3yIPh/view?usp=sharing">Задание JD01_09 ( A, B, C )</a>
+ * @see <a href="https://drive.google.com/file/d/1C-wHpUcHtxb-Qq0lfyExNQsYeKr3yIPh/view?usp=sharing">Задание JD01_09</a>
  */
 
-public class Parser {
+class Parser {
     Var calc(String expression) {
-        String[] operands = expression.split(Patterns.OPERATION);
-        Var leftOperand = Var.createVar(operands[0]);
-        Var rightOperand = Var.createVar(operands[1]);
-        if (leftOperand == null || rightOperand == null)
-            return null; //TODO
-        Pattern pattern = Pattern.compile(Patterns.OPERATION);
-        Matcher matcher = pattern.matcher(expression);
-        if (matcher.find()) {
-            String operation = matcher.group();
-            switch (operation) {
-                case "+":
-                    return leftOperand.add(rightOperand);
-                case "-":
-                    return leftOperand.sub(rightOperand);
-                case "*":
-                    return leftOperand.mul(rightOperand);
-                case "/":
-                    return leftOperand.div(rightOperand);
-            }
+        String[] parts = expression.split(Patterns.OPERATIONS, 2);
+        if (parts.length != 2) {
+            //TODO expression
+            return null;
+        }
+        Var left = Var.createVar(parts[0]);
+        Var right = Var.createVar(parts[1]);
+        if (left == null || right == null) {
+            return null;
+        }
+
+        Pattern patternOperation = Pattern.compile(Patterns.OPERATIONS);
+        Matcher matcherOperation = patternOperation.matcher(expression);
+        if (matcherOperation.find()) {
+            String operation = matcherOperation.group();
+            return switch (operation) {
+                case "+" -> left.add(right);
+                case "-" -> left.sub(right);
+                case "*" -> left.mul(right);
+                case "/" -> left.div(right);
+                default -> null;
+            };
         }
         return null;
     }

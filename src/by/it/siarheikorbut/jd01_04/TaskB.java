@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * @author Siarhei Korbut
- * @see <a href="https://drive.google.com/file/d/1BZ7AGComLlo0VPQTnmOJxWjrZpv6hLzo/view?usp=sharing">Задание JD01_04 ( B )</a>
+ * @see <a href="https://drive.google.com/file/d/1hLOOxXWbCfr8iQZagfAMMBrUG-_0-yr4/view?usp=sharing">Задания JD01_04</a>
  */
 
 public class TaskB {

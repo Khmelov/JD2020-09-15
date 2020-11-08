@@ -2,15 +2,19 @@ package by.it.siarheikorbut.jd01_04;
 
 import java.util.Arrays;
 
+/**
+ * @author Siarhei Korbut
+ * @see <a href="https://drive.google.com/file/d/1hLOOxXWbCfr8iQZagfAMMBrUG-_0-yr4/view?usp=sharing">Задания JD01_04</a>
+ */
 
 public class Helper {
 
     //Поиск минимального значения в одномерном массиве типа double.
     static double findMin(double[] arr) {
         double minValue = arr[0];
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] < minValue) {
-                minValue = arr[i];
+        for (double v : arr) {
+            if (v < minValue) {
+                minValue = v;
             }
         }
         return minValue;
@@ -19,9 +23,9 @@ public class Helper {
     //Поиск максимального значения в одномерном массиве типа double.
     static double findMax(double[] arr) {
         double maxValue = arr[0];
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] > maxValue) {
-                maxValue = arr[i];
+        for (double v : arr) {
+            if (v > maxValue) {
+                maxValue = v;
             }
         }
         return maxValue;
@@ -31,9 +35,9 @@ public class Helper {
     static void sort(double[] arr) {
         double arrSort = arr[0];
         Arrays.sort(arr);
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] < arrSort) {
-                arrSort = arr[i];
+        for (double v : arr) {
+            if (v < arrSort) {
+                arrSort = v;
             }
         }
     }

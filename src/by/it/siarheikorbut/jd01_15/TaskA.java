@@ -3,6 +3,11 @@ package by.it.siarheikorbut.jd01_15;
 import java.io.*;
 import java.util.Random;
 
+/**
+ * @author Siarhei Korbut
+ * @see <a href="https://drive.google.com/file/d/1fFm7gNQmkZDkGzNKxCvW1mcL5un0ceFg/view?usp=sharing">Задание JD01_15</a>
+ */
+
 public class TaskA {
     public static void main(String[] args) {
         int[][] array = new int[6][4];

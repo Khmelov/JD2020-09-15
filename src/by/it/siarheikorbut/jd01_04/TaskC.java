@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  * @author Siarhei Korbut
- * @see <a href="https://drive.google.com/file/d/1BZ7AGComLlo0VPQTnmOJxWjrZpv6hLzo/view?usp=sharing">Задание JD01_04 ( С )</a>
+ * @see <a href="https://drive.google.com/file/d/1hLOOxXWbCfr8iQZagfAMMBrUG-_0-yr4/view?usp=sharing">Задания JD01_04</a>
  */
 
 public class TaskC {
@@ -18,9 +18,9 @@ public class TaskC {
         double[] array = InOut.getArray(line);
         double firstArray = array[0];
         double lastArray = array[array.length - 1];
-        InOut.printArray(array, "V", 5);
+        InOut.printArray(array, 5);
         mergeSort(array);
-        InOut.printArray(array, "V", 4);
+        InOut.printArray(array, 4);
         int firstIndex = binarySearch(array, firstArray);
         int lastIndex = binarySearch(array, lastArray);
         System.out.printf("Index of first element=%d" + "\n" +

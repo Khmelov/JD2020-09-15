@@ -4,51 +4,35 @@ import java.util.*;
 
 /**
  * @author Siarhei Korbut
- * @see <a href="https://drive.google.com/file/d/1Dtmq3a65M1AIORy_S6eC7CHwxX6PCQGB/view?usp=sharing">Задание JD01_11 ( A )</a>
+ * @see <a href="https://drive.google.com/file/d/1Dtmq3a65M1AIORy_S6eC7CHwxX6PCQGB/view?usp=sharing">Задание JD01_11</a>
  */
 
 public class ListA<T> implements List<T> {
 
-    @SuppressWarnings("unchecked")
-    private T[] elements = (T[]) new Object[0];
+    private T[] elements = (T[]) new Object[]{};
     private int size = 0;
 
-    //Реализация метода add из интерфейса List<T>.
     @Override
-    public boolean add(T t) {
-        if (elements.length == size) {
+    public boolean add(T element) {
+        if (size == elements.length) {
             elements = Arrays.copyOf(elements, elements.length * 3 / 2 + 1);
         }
-        elements[size++] = t;
+        elements[size++] = element;
         return true;
     }
 
-    //Реализация метода remove из интерфейса List<T>.
     @Override
     public T remove(int index) {
         T element = elements[index];
         System.arraycopy(elements, index + 1, elements, index, size - index - 1);
-        elements[--size] = null; //for GC
+        size--;
         return element;
     }
 
-    //Реализация метода get из интерфейса List<T>.
     @Override
     public T get(int index) {
-        return elements[index];
-    }
 
-    //Реализация метода toString как в ArrayList.
-    @Override
-    public String toString() {
-        StringBuilder out = new StringBuilder("[");
-        String delimiter = "";
-        for (int i = 0; i < size; i++) {
-            out.append(delimiter).append(elements[i]);
-            delimiter = ", ";
-        }
-        out.append("]");
-        return out.toString();
+        return elements[index];
     }
 
     @Override
@@ -57,8 +41,22 @@ public class ListA<T> implements List<T> {
     }
 
     @Override
+    public String toString() {
+        StringBuilder out = new StringBuilder();
+        out.append("[");
+        for (int i = 0; i < size; i++) {
+            if (i > 0) {
+                out.append(", ");
+            }
+            out.append(elements[i]);
+        }
+        out.append("]");
+        return out.toString();
+    }
+
+    @Override
     public boolean isEmpty() {
-        return size == 0;
+        return false;
     }
 
     @Override
@@ -77,7 +75,7 @@ public class ListA<T> implements List<T> {
     }
 
     @Override
-    public <T1> T1[] toArray(T1[] a) {
+    public <T> T[] toArray(T[] a) {
         return null;
     }
 

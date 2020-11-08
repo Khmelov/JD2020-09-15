@@ -4,17 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+/**
+ * @author Siarhei Korbut
+ * @see <a href="https://drive.google.com/file/d/18ZAKGDaiKvwF1U0V06VUm6cKMQASZCRc/view?usp=sharing">Задание JD01_01</a>
+ */
 
-/* Нужно написать программу, которая вводит два числа с клавиатуры
-и выводит их сумму на экран в виде
-
-Ввод (это вы вводите с клавиатуры):
-34 26
-
-Вывод (это должна появится в консоли, обратите внимание на пробелы и слово Sum:
-Sum = 60
-
-*/
 class TaskC1 {
     public static void main(String[] args) throws IOException {
 

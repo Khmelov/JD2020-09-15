@@ -4,19 +4,11 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-/* Нужно написать программу, которая вводит два числа с клавиатуры
-и 4 раза выводит их сумму с обозначением системы счисления на экран в
-ДЕСЯТИЧНОМ ДВОИЧНОМ ШЕСТНАДЦАТИРИЧНОМ ВОСЬМИРИЧНОМ виде
+/**
+ * @author Siarhei Korbut
+ * @see <a href="https://drive.google.com/file/d/18ZAKGDaiKvwF1U0V06VUm6cKMQASZCRc/view?usp=sharing">Задание JD01_01</a>
+ */
 
-Вот пример ввода с клавиатуры:
-34 26
-
-Тогда вывод ожидается такой (обратите внимание на регистр букв):
-DEC:34+26=60
-BIN:100010+11010=111100
-HEX:22+1a=3c
-OCT:42+32=74
-*/
 class TaskC2 {
     public static void main(String[] args) throws IOException {
 

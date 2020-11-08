@@ -2,47 +2,45 @@ package by.it.siarheikorbut.jd01_13;
 
 import java.util.Scanner;
 
-import static java.lang.StrictMath.sqrt;
+/**
+ * @author Siarhei Korbut
+ * @see <a href="https://drive.google.com/file/d/1iSvqfSRLpPRwyPEKEaOLIa3-qSPVhXv5/view?usp=sharing">Задание JD01_13</a>
+ */
 
 public class TaskB {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        double sum = 0;
-        double parseDouble;
-        double sqrtSum;
-        for (; ; ) {
-            String input = sc.next();
-            if (input.equals("END")) {
-                break;
+        try {
+            double sum = 0;
+            for (; ; ) {
+                String s = sc.nextLine();
+                if (s.equals("END")) {
+                    break;
+                }
+                double v = Double.parseDouble(s);
+                System.out.println(v);
+                sum = sum + v;
+                if (sum <= 0) {
+                    throw new ArithmeticException();
+                }
+                double sqrt;
+                sqrt = Math.sqrt(sum);
+                System.out.println(sqrt);
             }
-            try {
-                parseDouble = Double.parseDouble(input);
-                sum += parseDouble;
-            } catch (NumberFormatException e) {
-                printException(e);
-                break;
-            }
-            try {
-                if (sum > 0) {
-                    sqrtSum = sqrt(sum);
-                    System.out.print("Our number = " + parseDouble + " sqrt(sum) = " + sqrtSum + "\n");
-                } else throw new ArithmeticException();
-            } catch (ArithmeticException e) {
-                printException(e);
-            }
+        } catch (NumberFormatException | ArithmeticException e) {
+            printException(e);
         }
     }
 
     private static void printException(Exception e) {
-        String s = e.toString().replaceAll("java.lang.", "");
-        for (StackTraceElement element : e.getStackTrace()) {
-
-            if (element.getMethodName().equals("main")) {
+        StackTraceElement[] stackTrace = e.getStackTrace();
+        String nameException = e.getClass().getName();
+        for (StackTraceElement element : stackTrace) {
+            String methodName = element.getMethodName();
+            if (methodName.equals("main")) {
                 String className = element.getClassName();
                 int lineNumber = element.getLineNumber();
-
-                System.out.printf("  name: %s\n class: %s\n  line: %d \n",
-                        s, className, lineNumber);
+                System.out.printf("  name: %s\n class: %s\n  line: %d", nameException, className, lineNumber);
                 break;
             }
         }

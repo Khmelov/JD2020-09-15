@@ -6,7 +6,7 @@ import static java.lang.Math.*;
 
 /**
  * @author Siarhei Korbut
- * @see <a href="https://drive.google.com/file/d/1KNBofHHOxyARzccIFNqRvxU8ks8NY0n4/view?usp=sharing">Задание JD01_05 ( C )</a>
+ * @see <a href="https://drive.google.com/file/d/1KNBofHHOxyARzccIFNqRvxU8ks8NY0n4/view?usp=sharing">Задание JD01_05</a>
  */
 
 public class TaskC {
@@ -41,7 +41,6 @@ public class TaskC {
                     System.out.print("╚════════════╩════════════╩════════════╝\n");
                 }
             }
-
             if (a.length == 2) {
                 if (i == 0) System.out.print("╔════════════╦════════════╗\n");
                 System.out.printf("║ A[ %-2d]=%d ", i, a[i]);
@@ -56,7 +55,6 @@ public class TaskC {
                 System.out.print("║\n");
                 System.out.print("╚════════════╝\n");
             }
-
             if (a.length > 4) {
                 if (i == 0) {
                     System.out.print("╔════════════╦════════════╦════════════╦════════════╦════════════╗\n");

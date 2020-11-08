@@ -4,7 +4,7 @@ import static java.lang.Math.*;
 
 /**
  * @author Siarhei Korbut
- * @see <a href="https://drive.google.com/file/d/1KNBofHHOxyARzccIFNqRvxU8ks8NY0n4/view?usp=sharing">Задание JD01_05 ( B )</a>
+ * @see <a href="https://drive.google.com/file/d/1KNBofHHOxyARzccIFNqRvxU8ks8NY0n4/view?usp=sharing">Задание JD01_05</a>
  */
 
 public class TaskB {

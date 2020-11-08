@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 /**
  * @author Siarhei Korbut
- * @see <a href="https://drive.google.com/file/d/1L5Z3U4Iv8EyTak0vgQ3IvNlZMXvPONAH/view?usp=sharing">Задания JD01_03 ( B, C )</a>
+ * @see <a href="https://drive.google.com/file/d/1L5Z3U4Iv8EyTak0vgQ3IvNlZMXvPONAH/view?usp=sharing">Задания JD01_03</a>
  */
 
 public class Helper {
