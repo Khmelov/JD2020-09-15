@@ -32,7 +32,7 @@ public class Runner {
                 {25, 26, 27}};
         double[] mulMatrixOnVector = Helper.mul(matrix, vector);
         System.out.println(Arrays.toString(mulMatrixOnVector));
-        double[][] mulMatrixOnMatrix = Helper.mul(matrixLeft,matrixRight);
-        System.out.println(Arrays.deepToString(mulMatrixOnMatrix));
+//        double[][] mulMatrixOnMatrix = Helper.mul(matrixLeft,matrixRight);
+//        System.out.println(Arrays.deepToString(mulMatrixOnMatrix));
     }
 }
