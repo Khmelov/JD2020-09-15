@@ -5,9 +5,12 @@ import java.util.regex.Pattern;
 
 public class Parser {
     Var calc(String expression){
-        String[] operand = expression.split(Patterns.OPERATION,2);
-        Var one = Var.createVar(operand[0]);
-        Var two = Var.createVar(operand[1]);
+        String[] operands = expression.split(Patterns.OPERATION,2);
+        Var two = Var.createVar(operands[1]);
+        if (expression.contains("=")){
+            return Var.saveVar(operands[0],two);
+        }
+        Var one = Var.createVar(operands[0]);
         if (one == null || two == null){
             return null;
         }

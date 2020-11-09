@@ -1,17 +1,30 @@
 package by.it.zubovich.calc;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public abstract class Var implements Operation {
 
-    static Var createVar(String operand){
+    private static Map<String,Var> vars = new HashMap<>();
 
-        if (operand.matches(Patterns.SCALAR)){
-            return new Scalar(operand);
+    static Var saveVar(String name, Var var){
+        vars.put(name, var);
+        return var;
+    }
+
+    static Var createVar(String operandVar){
+
+        if (operandVar.matches(Patterns.SCALAR)){
+            return new Scalar(operandVar);
         }
-        if (operand.matches(Patterns.VECTOR)){
-            return new Vector(operand);
+        else if (operandVar.matches(Patterns.VECTOR)){
+            return new Vector(operandVar);
         }
-        if (operand.matches(Patterns.MATRIX)){
-            return new Matrix(operand);
+        else if (operandVar.matches(Patterns.MATRIX)){
+            return new Matrix(operandVar);
+        }
+        else if (vars.containsKey(operandVar)){
+            return vars.get(operandVar);
         }
         return null;
     }
