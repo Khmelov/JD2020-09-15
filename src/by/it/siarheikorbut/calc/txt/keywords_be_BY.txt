@@ -1,0 +1,12 @@
+error.err=Памылка:
+error.divNull=дзяленне на нуль.
+error.twoVector=недапушчальны памер вектараў.
+error.twoMatrix=недапушчальны памер матрыц.
+error.matrixAndVector=недапушчальны памер матрыцы і вектара.
+error.unknownOperation=невядомая аперацыя:
+error.impossibleAdd=Аперацыя %s + %s немагчымы\n
+error.impossibleSub=Аперацыя %s - %s немагчымы\n
+error.impossibleMul=Аперацыя %s * %s немагчымы\n
+error.impossibleDiv=Аперацыя %s / %s немагчымы\n
+error.unknownVariable=невядомая пераменная
+error.read=Памылка чытання файла var.txt\n

@@ -3,8 +3,11 @@ package by.it.siarheikorbut.jd02_01;
 import java.util.Random;
 
 public class Helper {
+    private static final Random rnd;
 
-    private static final Random rnd = new Random();
+    static {
+        rnd = new Random();
+    }
 
     static int getRandom(int start, int stop) {
         return start + rnd.nextInt(stop - start + 1);

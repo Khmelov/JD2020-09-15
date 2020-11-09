@@ -1,9 +1,16 @@
 package by.it.siarheikorbut.jd02_04;
 
-public class Printer {
-    void print(Var variable) {
-        if(variable!=null) {
-            System.out.println(variable);
+class Printer {
+    void print(Var var) {
+        if (var != null) {
+            System.out.println(var);
         }
+    }
+
+    String printTool(Var var) throws CalcException {
+        if (var != null) {
+            return var.toString();
+        }
+        throw new CalcException();
     }
 }

@@ -1,5 +1,10 @@
 package by.it.siarheikorbut.jd01_04;
 
+/**
+ * @author Siarhei Korbut
+ * @see <a href="https://drive.google.com/file/d/1hLOOxXWbCfr8iQZagfAMMBrUG-_0-yr4/view?usp=sharing">Задания JD01_04</a>
+ */
+
 public class InOut {
 
     //Ввод одномерного массива.
@@ -22,9 +27,9 @@ public class InOut {
     }
 
     //Форматный вывод одномерного массива.
-    static void printArray(double[] arr, String name, int columnCount) {
+    static void printArray(double[] arr, int columnCount) {
         for (int i = 0; i < arr.length; i++) {
-            System.out.printf("%s[% -3d]=%-8.3f   ", name, i, arr[i]);
+            System.out.printf("%s[% -3d]=%-8.3f   ", "V", i, arr[i]);
             if ((i + 1) % columnCount == 0 || i == arr.length - 1) {
                 System.out.println();
             }

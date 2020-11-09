@@ -1,0 +1,12 @@
+error.err=ОШИБКА:
+error.divNull=деление на ноль.
+error.twoVector=недопустимый размер векторов.
+error.twoMatrix=недопустимый размер матриц.
+error.matrixAndVector=недопустимый размер матрицы и вектора.
+error.unknownOperation=неизвестная операция:
+error.impossibleAdd=Операция %s + %s невозможна\n
+error.impossibleSub=Операция %s - %s невозможна\n
+error.impossibleMul=Операция %s * %s невозможна\n
+error.impossibleDiv=Операция %s / %s невозможна\n
+error.unknownVariable=Незвестная переменная
+error.read=Ошибка чтения файла var.txt\n

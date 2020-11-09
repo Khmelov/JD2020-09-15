@@ -4,14 +4,14 @@ import static java.lang.Math.*;
 
 /**
  * @author Siarhei Korbut
- * @see <a href="https://drive.google.com/file/d/1KNBofHHOxyARzccIFNqRvxU8ks8NY0n4/view?usp=sharing">Задание JD01_05 ( A )</a>
+ * @see <a href="https://drive.google.com/file/d/1KNBofHHOxyARzccIFNqRvxU8ks8NY0n4/view?usp=sharing">Задание JD01_05</a>
  */
+
 public class TaskA {
     public static void main(String[] args) {
         step1();
         step2();
         step3();
-
     }
 
     //Запись арифметического выражения.
@@ -40,6 +40,5 @@ public class TaskA {
             double f = exp(a * x) - 3.45 * a;
             System.out.printf("При a=%6.2f f=%g\n", a, f);
         }
-
     }
 }

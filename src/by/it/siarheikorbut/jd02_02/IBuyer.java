@@ -1,11 +1,11 @@
 package by.it.siarheikorbut.jd02_02;
 
 public interface IBuyer {
-    void enterStore();
+    void enterToMarket(); //вошел в магазин (мгновенно)
 
-    void chooseGoods();
+    void chooseGoods(); //выбрал товар (от 0,5 до 2 секунд)
 
-    void goToQueue();
+    void goToQueue(); //покупатель становится в очередь
 
-    void leaveStore();
+    void goOut(); //отправился на выход(мгновенно)
 }

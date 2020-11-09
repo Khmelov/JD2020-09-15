@@ -1,12 +1,19 @@
 package by.it.siarheikorbut.jd02_06;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Date;
 
 public class Logger {
+
+    private final static String fileName = "log.txt";
 
     private static volatile Logger logger;
 
     private Logger() {
+
     }
 
     static Logger getInstance() {
@@ -22,19 +29,21 @@ public class Logger {
         return localLogger;
     }
 
-    private static String dir(String simpleName) {
-        String path = System.getProperty("user.dir") + File.separator + "src" + File.separator;
-        String classDir = Logger.class.getName().replace(Logger.class.getSimpleName(), "").replace(".", File.separator);
-        return path + classDir + simpleName;
-    }
+    public static void log(String text) {
 
-    public void log(String line) {
-        String filename = "log.txt";
-        String fileName = dir(filename);
-        try (PrintWriter writer = new PrintWriter(new FileWriter(fileName, true))) {
-            writer.println(line);
+        try (PrintWriter writer = new PrintWriter(new FileWriter(getFileName(), true))) {
+            Date date = new Date();
+            writer.println(date.toString() + " " + text);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    private static String getFileName() {
+        String rootProject = System.getProperty("user.dir");
+        String path = Logger.class.getName().
+                replace(Logger.class.getSimpleName(), "").
+                replace(".", File.separator);
+        return rootProject + File.separator + "src" + File.separator + path + Logger.fileName;
     }
 }

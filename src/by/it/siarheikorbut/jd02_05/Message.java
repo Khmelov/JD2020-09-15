@@ -1,6 +1,6 @@
-package by.it.siarheikorbut.jd02_05.txt;
+package by.it.siarheikorbut.jd02_05;
 
-public interface IMessage {
+public interface Message {
     String WELCOME = "message.welcome";
     String QUESTION = "message.question";
 }

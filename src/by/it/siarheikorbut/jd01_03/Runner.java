@@ -6,7 +6,7 @@ import static by.it.siarheikorbut.jd01_03.InOut.*;
 
 /**
  * @author Siarhei Korbut
- * @see <a href="https://drive.google.com/file/d/1L5Z3U4Iv8EyTak0vgQ3IvNlZMXvPONAH/view?usp=sharing">Проверка методов заданий JD01_03 ( A, B, C )</a>
+ * @see <a href="https://drive.google.com/file/d/1L5Z3U4Iv8EyTak0vgQ3IvNlZMXvPONAH/view?usp=sharing">Задания JD01_03</a>
  */
 
 public class Runner {

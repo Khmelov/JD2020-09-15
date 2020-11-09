@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 /**
  * @author Siarhei Korbut
- * @see <a href="https://drive.google.com/file/d/1BZ7AGComLlo0VPQTnmOJxWjrZpv6hLzo/view?usp=sharing">Задание JD01_04 ( A )</a>
+ * @see <a href="https://drive.google.com/file/d/1hLOOxXWbCfr8iQZagfAMMBrUG-_0-yr4/view?usp=sharing">Задания JD01_04</a>
  */
 
 public class TaskA {
@@ -26,7 +26,7 @@ public class TaskA {
         double[] array = InOut.getArray(line);
 
         //Вывод массива в пять колонок.
-        InOut.printArray(array, "V", 5);
+        InOut.printArray(array, 5);
         double first = array[0];
         double last = array[array.length - 1];
 
@@ -34,7 +34,7 @@ public class TaskA {
         Helper.sort(array);
 
         //Вывод массива в четыре колонки
-        InOut.printArray(array, "V", 4);
+        InOut.printArray(array, 4);
 
         //Вычисление после сортировки новых индексов первого и последнего элементов и вывод их в консоль.
         int indexFirst = Arrays.binarySearch(array, first);

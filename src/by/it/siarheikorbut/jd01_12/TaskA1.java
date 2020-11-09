@@ -4,25 +4,23 @@ import java.util.*;
 
 /**
  * @author Siarhei Korbut
- * @see <a href="https://drive.google.com/file/d/1Ryp9d5F9tODmNRVG6-eStmPl4TFplV3-/view?usp=sharing">Задание JD01_12 ( A1 )</a>
+ * @see <a href="https://drive.google.com/file/d/1Ryp9d5F9tODmNRVG6-eStmPl4TFplV3-/view?usp=sharing">Задание JD01_12</a>
  */
 
 public class TaskA1 {
+    void clearBad(List<Integer> grades) {
+        grades.removeIf(next -> next <= 3);
+    }
 
     public static void main(String[] args) {
         Random rnd = new Random();
-        int n = 10 + (int) (Math.random() * 15);
-        List<Integer> grades = new ArrayList<>(n);
+        List<Integer> list = new ArrayList<>();
+        int n = 10 + rnd.nextInt(20);
         for (int i = 0; i < n; i++) {
-            grades.add(rnd.nextInt(10) + 1);
+            list.add(1 + rnd.nextInt(10));
         }
-        System.out.println(grades);
-        TaskA1 instance = new TaskA1();
-        instance.clearBad(grades);
-        System.out.println(grades);
-    }
-
-    private void clearBad(List<Integer> gr2) {
-        gr2.removeIf(grade -> grade < 4);
+        System.out.println(list);
+        new TaskA1().clearBad(list);
+        System.out.println(list);
     }
 }

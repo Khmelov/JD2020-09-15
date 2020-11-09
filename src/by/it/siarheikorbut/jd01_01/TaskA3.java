@@ -1,8 +1,8 @@
 package by.it.siarheikorbut.jd01_01;
-/*
-Измените переменные и строку вывода в программе так,
-чтобы она рассчитывала и печатала следующее выражение
-3*3+4*4=25
+
+/**
+ * @author Siarhei Korbut
+ * @see <a href="https://drive.google.com/file/d/18ZAKGDaiKvwF1U0V06VUm6cKMQASZCRc/view?usp=sharing">Задание JD01_01</a>
  */
 
 class TaskA3 {

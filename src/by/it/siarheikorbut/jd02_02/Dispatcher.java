@@ -1,10 +1,13 @@
 package by.it.siarheikorbut.jd02_02;
 
 public class Dispatcher {
-    static final int K_SPEED = 10;
+    static final int K_SPEED = 1000;
+
     private volatile static int countEnterToMarket = 0;
+
     private volatile static int countOutFromMarket = 0;
-    volatile static int countBuyersInQueue = 0;
+
+    private static final int PLAN = 100;
 
     static synchronized void buyerEnterToMarket() {
         countEnterToMarket++;
@@ -12,14 +15,6 @@ public class Dispatcher {
 
     static synchronized void buyerLeaveMarket() {
         countOutFromMarket++;
-    }
-
-    static synchronized void increaseCountBuyersInQueue() {
-        countBuyersInQueue++;
-    }
-
-    static synchronized void decreaseCountBuyersInQueue() {
-        countBuyersInQueue--;
     }
 
     static boolean marketIsOpenedForNewBuyer() {
@@ -30,5 +25,11 @@ public class Dispatcher {
         return countOutFromMarket == PLAN;
     }
 
-    static int PLAN = 100;
+    public synchronized static int getCountEnterToMarket() {
+        return countEnterToMarket;
+    }
+
+    public synchronized static int getCountOutFromMarket() {
+        return countOutFromMarket;
+    }
 }
