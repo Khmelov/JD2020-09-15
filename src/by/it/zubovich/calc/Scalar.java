@@ -26,7 +26,7 @@ public class Scalar extends Var {
     }
 
     @Override
-    public Var add(Var other) throws CalcException{
+    public Var add(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double sum = this.value + otherScalar.value;
@@ -55,7 +55,7 @@ public class Scalar extends Var {
     @Override
     public Var div(Var other) throws CalcException {
         if (other instanceof Scalar) {
-            if (((Scalar) other).value == 0){
+            if (((Scalar) other).value == 0) {
                 throw new CalcException("Division on zero ");
             }
             Scalar otherScalar = (Scalar) other;

@@ -6,12 +6,12 @@ public class GetFileName {
     private static final String USER_DIR = "user.dir";
     private static final String SRC = "src";
 
-    private static final String FILENAME = getPath(Var.class) ;
+    private static final String FILENAME = getPath() ;
 
     static String getFilename(){return FILENAME;}
 
-    private static String getPath(Class<?> aClass) {
-        String packageName = aClass
+    private static String getPath() {
+        String packageName = Var.class
                 .getPackage()
                 .getName()
                 .replace(".", File.separator)

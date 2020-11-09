@@ -10,14 +10,15 @@ public class Vector extends Var {
     }
 
     public Vector(double[] value) {
-    this.value = Arrays.copyOf(value, value.length);
-}
+        this.value = Arrays.copyOf(value, value.length);
+    }
 
     public Vector(Vector vector) {
-    double[] newValue = vector.value;
-    this.value = Arrays.copyOf(newValue, newValue.length);
+        double[] newValue = vector.value;
+        this.value = Arrays.copyOf(newValue, newValue.length);
 
     }
+
     public Vector(String strVector) {
         String[] result = strVector
                 .replace("{", "")
@@ -37,7 +38,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var add(Var other) throws CalcException{
+    public Var add(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double[] sumScalar = Arrays.copyOf(this.value, this.value.length);
@@ -57,7 +58,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var sub(Var other) throws CalcException{
+    public Var sub(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double[] subScalar = Arrays.copyOf(this.value, this.value.length);
@@ -77,7 +78,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var mul(Var other) throws CalcException{
+    public Var mul(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double[] mulScalar = Arrays.copyOf(this.value, this.value.length);
@@ -99,7 +100,7 @@ public class Vector extends Var {
     }
 
     @Override
-    public Var div(Var other) throws CalcException{
+    public Var div(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double[] divScalar = Arrays.copyOf(this.value, this.value.length);

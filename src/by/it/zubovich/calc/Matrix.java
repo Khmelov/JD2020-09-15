@@ -31,6 +31,7 @@ public class Matrix extends Var {
         }
         this.value = arrMatrix;
     }
+
     @Override
     public String toString() {
         return (Arrays.deepToString(this.value)
@@ -39,7 +40,7 @@ public class Matrix extends Var {
     }
 
     @Override
-    public Var add(Var other) throws CalcException{
+    public Var add(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double[][] matrixAdd = new double[this.value.length][this.value[0].length];
@@ -64,17 +65,15 @@ public class Matrix extends Var {
                 }
             }
             return new Matrix(matrixAdd);
-        }
-        else return super.add(other);
+        } else return super.add(other);
     }
 
     @Override
-    public Var sub(Var other) throws CalcException{
+    public Var sub(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double[][] matrixSub = new double[this.value.length][this.value[0].length];
-            for (int i = 0; i < this.value.length; i++)
-            {
+            for (int i = 0; i < this.value.length; i++) {
                 matrixSub[i] = Arrays.copyOf(this.value[i], this.value[i].length);
             }
             for (int i = 0; i < matrixSub.length; i++) {
@@ -95,12 +94,11 @@ public class Matrix extends Var {
                 }
             }
             return new Matrix(matrixSub);
-        }
-        else return super.sub(other);
+        } else return super.sub(other);
     }
 
     @Override
-    public Var mul(Var other) throws CalcException{
+    public Var mul(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double[][] matrixSub = new double[this.value.length][this.value[0].length];
@@ -140,12 +138,11 @@ public class Matrix extends Var {
                 }
             }
             return new Matrix(resMul);
-        }
-        else return super.mul(other);
+        } else return super.mul(other);
     }
 
     @Override
-    public Var div(Var other) throws CalcException{
+    public Var div(Var other) throws CalcException {
         if (other instanceof Scalar) {
             Scalar otherScalar = (Scalar) other;
             double[][] matrixDiv = new double[this.value.length][this.value[0].length];
@@ -158,7 +155,6 @@ public class Matrix extends Var {
                 }
             }
             return new Matrix(matrixDiv);
-        }
-        else return super.add(other);
+        } else return super.add(other);
     }
 }
