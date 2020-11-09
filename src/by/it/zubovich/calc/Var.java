@@ -10,18 +10,20 @@ import java.util.stream.Collectors;
 
 public abstract class Var implements Operation {
 
-    private static Map<String,Var> vars = new HashMap<>();
+    private static final Map<String, Var> vars = new HashMap<>();
+
     public static Map<String, Var> getVarMap() {
         return vars;
     }
-    static Var saveVar(String name, Var var){
+
+    public static Var saveVar(String name, Var var) throws CalcException {
         vars.put(name, var);
+        SaveForDataValues.saveDataMap();
         return var;
     }
 
     static void load() throws CalcException {
         try {
-
             List<String> lines = Files
                     .lines(Paths.get(GetFileName.getFilename()))
                     .collect(Collectors.toList());
@@ -33,21 +35,19 @@ public abstract class Var implements Operation {
             throw new CalcException(e);
         }
     }
-    static Var createVar(String operandVar) throws CalcException{
 
-        if (operandVar.matches(Patterns.SCALAR)){
+    static Var createVar(String operandVar) throws CalcException {
+
+        if (operandVar.matches(Patterns.SCALAR)) {
             return new Scalar(operandVar);
-        }
-        else if (operandVar.matches(Patterns.VECTOR)){
+        } else if (operandVar.matches(Patterns.VECTOR)) {
             return new Vector(operandVar);
-        }
-        else if (operandVar.matches(Patterns.MATRIX)){
+        } else if (operandVar.matches(Patterns.MATRIX)) {
             return new Matrix(operandVar);
-        }
-        else if (vars.containsKey(operandVar)){
+        } else if (vars.containsKey(operandVar)) {
             return vars.get(operandVar);
         }
-        throw  new CalcException("Impossible create " + operandVar);
+        throw new CalcException("Impossible create " + operandVar);
     }
 
     @Override
@@ -61,17 +61,17 @@ public abstract class Var implements Operation {
     }
 
     @Override
-    public Var sub(Var other) throws CalcException{
+    public Var sub(Var other) throws CalcException {
         throw new CalcException("Operation %s - %s impossible\n", this, other);
     }
 
     @Override
-    public Var mul(Var other) throws CalcException{
+    public Var mul(Var other) throws CalcException {
         throw new CalcException("Operation %s * %s impossible\n", this, other);
     }
 
     @Override
-    public Var div(Var other) throws CalcException{
+    public Var div(Var other) throws CalcException {
         throw new CalcException("Operation %s / %s impossible\n", this, other);
     }
 }
