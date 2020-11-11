@@ -22,19 +22,19 @@ public abstract class Var implements Operation {
         return var;
     }
 
-//    static void load() throws CalcException {
-//        try {
-//            List<String> lines = Files
-//                    .lines(Paths.get(GetFileName.getFilename()))
-//                    .collect(Collectors.toList());
-//            Parser parser = new Parser();
-//            for (String line : lines) {
-//                parser.calc(line);
-//            }
-//        } catch (IOException e) {
-//            throw new CalcException(e);
-//        }
-//    }
+    static void load() throws CalcException {
+        try {
+            List<String> lines = Files
+                    .lines(Paths.get(GetFileName.getFilename()))
+                    .collect(Collectors.toList());
+            Parser parser = new Parser();
+            for (String line : lines) {
+                parser.calc(line);
+            }
+        } catch (IOException e) {
+            throw new CalcException(e);
+        }
+    }
 
     static Var createVar(String operandVar) throws CalcException {
 
@@ -47,6 +47,7 @@ public abstract class Var implements Operation {
         } else if (vars.containsKey(operandVar)) {
             return vars.get(operandVar);
         }
+        //throw new CalcException("Impossible create " + operandVar);
         throw new CalcException("Impossible create " + operandVar);
     }
 

@@ -12,6 +12,10 @@ public class CalcTest {
         assertArrayEquals(7,res,0.001);
     }
 
+    private void assertArrayEquals(int i, double res, double v) {
+
+    }
+
     @Test
     public void sub() throws Exception{
     }

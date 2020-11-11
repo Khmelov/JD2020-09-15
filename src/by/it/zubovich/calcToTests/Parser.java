@@ -31,6 +31,7 @@ public class Parser {
         //operands -2 3 -4 -2
         //operations = + * /
         while (operations.size() > 0) {
+//        while (!operations.isEmpty()) {
             int index = getIndexCurrentOperationP(operations);
             String operation = operations.remove(index);
             String left = operands.remove(index);

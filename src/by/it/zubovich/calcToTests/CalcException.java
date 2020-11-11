@@ -1,6 +1,10 @@
 package by.it.zubovich.calcToTests;
 
 public class CalcException extends Exception {
+
+    public CalcException() {
+        super();}
+
     public CalcException(String s, Var var, Var other) {
     }
 
