@@ -16,13 +16,13 @@ public class TaskA {
                 if (TaskA.class.getName().equals(element.getClassName())){
                     System.out.println(element);
                     String name = e.getClass().getName();
-                    String className = element.getClassName();
-                    int numberLine = element.getLineNumber();
+                    String clName = element.getClassName();
+                    int numLine = element.getLineNumber();
                     System.out.printf(
-                            " name: %s\n" +
-                            "class: %s\n" +
-                            " line: %d\n",
-                            name, className, numberLine);
+                            " name: %s%n" +
+                            "class: %s%n" +
+                            " line: %d%n",
+                            name, clName, numLine);
                     break;
                 }
             }

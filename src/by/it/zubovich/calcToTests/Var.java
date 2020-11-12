@@ -1,4 +1,4 @@
-package by.it.zubovich.calc;
+package by.it.zubovich.calcToTests;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -47,6 +47,7 @@ public abstract class Var implements Operation {
         } else if (vars.containsKey(operandVar)) {
             return vars.get(operandVar);
         }
+        //throw new CalcException("Impossible create " + operandVar);
         throw new CalcException("Impossible create " + operandVar);
     }
 

@@ -56,7 +56,7 @@ public class Helper {
         double[][] arr = new double[matrixLeft.length][matrixRight[0].length];
         for (int i = 0; i < matrixLeft.length; i++) {
             for (int j = 0; j < matrixRight[0].length; j++) {
-                for (int k = 0; k < matrixRight.length; k++) {
+                for (int k = 0; k < matrixRight.length; ++k) {
                     arr[i][j] = arr[i][j] + matrixLeft[i][k] * matrixRight[k][j];
                 }
             }

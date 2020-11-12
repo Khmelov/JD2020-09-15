@@ -1,11 +1,11 @@
-package by.it.zubovich.calc;
+package by.it.zubovich.calcToTests;
 
 import java.util.Arrays;
 
 public class Vector extends Var {
     private final double[] value;
 
-    public double[] getValue() {
+    double[] getValue() {
         return value;
     }
 

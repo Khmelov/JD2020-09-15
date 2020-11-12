@@ -1,4 +1,4 @@
-package by.it.zubovich.calc;
+package by.it.zubovich.calcToTests;
 
 import java.util.Arrays;
 

@@ -1,4 +1,4 @@
-package by.it.zubovich.calc;
+package by.it.zubovich.calcToTests;
 
 public class Scalar extends Var {
 
