@@ -4,7 +4,20 @@ import java.util.Scanner;
 
 public class ConsoleRunner {
 
+    static class Th extends Thread {
+        public Th(String name) {
+            super(name);
+        }
+
+        @Override
+        public void run() {
+            Logger logger = Logger.getInstance();
+            logger.log(getName());
+        }
+    }
+
     public static void main(String[] args) {
+
         System.out.print(
                 "For examples for calculations in console, also division on 0\n" +
                         "3.8+26.2  " +
@@ -38,9 +51,13 @@ public class ConsoleRunner {
             } catch (CalcException e) {
                 String message = e.getMessage();
                 System.out.println(message);
-                //System.out.println(e.getMessage());
-
             }
+        }
+
+        Logger logger = Logger.getInstance();
+        logger.log("one");
+        for (int i = 0; i < 10; i++) {
+            new Th("th" + i).start();
         }
     }
 }
