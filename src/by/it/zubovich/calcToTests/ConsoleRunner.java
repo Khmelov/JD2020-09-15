@@ -12,11 +12,15 @@ public class ConsoleRunner {
         @Override
         public void run() {
             Logger logger = Logger.getInstance();
-            logger.log(getName());
+            try {
+                logger.log(getName());
+            } catch (CalcException e) {
+                e.printStackTrace();
+            }
         }
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CalcException {
 
         System.out.print(
                 "For examples for calculations in console, also division on 0\n" +
@@ -56,8 +60,22 @@ public class ConsoleRunner {
 
         Logger logger = Logger.getInstance();
         logger.log("one");
+        Report report = new Report();
         for (int i = 0; i < 10; i++) {
             new Th("th" + i).start();
+            try {
+                String expression = sc.nextLine();
+                expression = expression.trim();
+                report.reportExpression(expression);
+                Var result = parser.calc(expression);
+                printer.print(result);
+                report.reportExpression(result.toString());
+            } catch (CalcException e) {
+                String message = e.getMessage();
+                System.out.println(message);
+                logger.log(message);
+                report.reportExpression(message);
+            }
         }
     }
 }

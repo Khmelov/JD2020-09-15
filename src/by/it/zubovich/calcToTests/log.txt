@@ -1,0 +1,68 @@
+Date&time: 2020-11-12T14:57:45.343 one
+Date&time: 2020-11-12T14:57:45.349 th1
+Date&time: 2020-11-12T14:57:45.349 th0
+Date&time: 2020-11-12T14:57:45.350 th3
+Date&time: 2020-11-12T14:57:45.351 th2
+Date&time: 2020-11-12T14:57:45.351 th6
+Date&time: 2020-11-12T14:57:45.353 th9
+Date&time: 2020-11-12T14:57:45.353 th8
+Date&time: 2020-11-12T14:57:45.353 th5
+Date&time: 2020-11-12T14:57:45.353 th4
+Date&time: 2020-11-12T14:57:45.353 th7
+Date&time: 2020-11-12T15:23:14.456 oneclass by.it.zubovich.calcToTests.CalcException
+Date&time: 2020-11-12T15:23:14.462 th1class by.it.zubovich.calcToTests.CalcException
+Date&time: 2020-11-12T15:23:14.462 th0class by.it.zubovich.calcToTests.CalcException
+Date&time: 2020-11-12T15:23:14.462 th2class by.it.zubovich.calcToTests.CalcException
+Date&time: 2020-11-12T15:23:14.465 th3class by.it.zubovich.calcToTests.CalcException
+Date&time: 2020-11-12T15:23:14.466 th9class by.it.zubovich.calcToTests.CalcException
+Date&time: 2020-11-12T15:23:14.466 th7class by.it.zubovich.calcToTests.CalcException
+Date&time: 2020-11-12T15:23:14.466 th8class by.it.zubovich.calcToTests.CalcException
+Date&time: 2020-11-12T15:23:14.466 th6class by.it.zubovich.calcToTests.CalcException
+Date&time: 2020-11-12T15:23:14.467 th5class by.it.zubovich.calcToTests.CalcException
+Date&time: 2020-11-12T15:23:14.467 th4class by.it.zubovich.calcToTests.CalcException
+Date&time: 2020-11-12T15:32:23.488 one
+Date&time: 2020-11-12T15:32:23.498 th0
+Date&time: 2020-11-12T15:32:28.862 one
+Date&time: 2020-11-12T15:32:28.866 th0
+Date&time: 2020-11-12T15:32:28.887 one
+Date&time: 2020-11-12T15:32:28.897 th0
+Date&time: 2020-11-12T15:32:28.912 one
+Date&time: 2020-11-12T15:32:28.914 th0
+Date&time: 2020-11-12T15:32:34.683 one
+Date&time: 2020-11-12T15:32:34.691 th0
+Date&time: 2020-11-12T15:32:34.717 one
+Date&time: 2020-11-12T15:32:34.744 th0
+Date&time: 2020-11-12T15:32:34.766 one
+Date&time: 2020-11-12T15:32:34.773 th0
+Date&time: 2020-11-12T15:32:34.793 one
+Date&time: 2020-11-12T15:32:34.905 one
+Date&time: 2020-11-12T15:36:47.014 one
+Date&time: 2020-11-12T15:36:47.047 th0
+Date&time: 2020-11-12T15:36:47.063 one
+Date&time: 2020-11-12T15:36:47.075 th0
+Date&time: 2020-11-12T15:36:47.097 one
+Date&time: 2020-11-12T15:36:47.101 th0
+Date&time: 2020-11-12T15:36:52.776 one
+Date&time: 2020-11-12T15:36:52.783 th0
+Date&time: 2020-11-12T15:36:52.801 one
+Date&time: 2020-11-12T15:36:52.804 th0
+Date&time: 2020-11-12T15:36:52.822 one
+Date&time: 2020-11-12T15:36:52.837 one
+Date&time: 2020-11-12T15:36:52.841 th0
+Date&time: 2020-11-12T15:36:52.856 th0
+Date&time: 2020-11-12T15:36:52.869 one
+Date&time: 2020-11-12T15:44:42.599 one
+Date&time: 2020-11-12T15:44:42.608 th0
+Date&time: 2020-11-12T15:44:42.650 one
+Date&time: 2020-11-12T15:44:42.657 th0
+Date&time: 2020-11-12T15:44:42.690 one
+Date&time: 2020-11-12T15:44:42.694 th0
+Date&time: 2020-11-12T15:44:48.950 one
+Date&time: 2020-11-12T15:44:48.955 th0
+Date&time: 2020-11-12T15:44:49.012 one
+Date&time: 2020-11-12T15:44:49.044 th0
+Date&time: 2020-11-12T15:44:49.045 one
+Date&time: 2020-11-12T15:44:49.062 one
+Date&time: 2020-11-12T15:44:49.116 th0
+Date&time: 2020-11-12T15:44:49.118 one
+Date&time: 2020-11-12T15:44:49.120 th0

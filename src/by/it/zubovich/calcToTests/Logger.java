@@ -27,14 +27,16 @@ class Logger {
         return localLogger;
     }
 
-    public void log(String text) {
+    public void log(String text) throws CalcException {
         String fn = getFileName(Logger.class, filename);
+
         try (PrintWriter writer = new PrintWriter(
                 new FileWriter(fn, true))
         ) {
             writer.println("Date&time: " + LocalDateTime.now() + " " + text);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            //throw new RuntimeException(e);
+            throw new CalcException("FILE ERROR: ", e);
         }
     }
 

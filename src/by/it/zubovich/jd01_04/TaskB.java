@@ -1,6 +1,7 @@
 package by.it.zubovich.jd01_04;
 
 import java.util.Scanner;
+import java.util.concurrent.atomic.AtomicIntegerArray;
 
 public class TaskB {
     public static void main(String[] args) {
@@ -12,20 +13,18 @@ public class TaskB {
 
         for (int i = 0; i < lastName.length; i++) {
             System.out.println("введите фамилию:");
-            Scanner scPeople = new Scanner(System.in);
-            lastName[i] = scPeople.nextLine();
+            lastName[i] = scNumber.next();
         }
         int[][] salary = new int[strNumber][4];
+        AtomicIntegerArray result = new AtomicIntegerArray(new int[strNumber]);
 
         for (int i = 0; i < strNumber; i++) {
             System.out.println("введите зарплату для " + lastName[i] + ":");
-            Scanner sc = new Scanner(System.in);
-            String[] arrForSalary = sc.nextLine().split(" ");
-            int[] arrSalaryPeople = new int[arrForSalary.length];
-            for (int j = 0; j < arrForSalary.length; j++) {
-                arrSalaryPeople[j] = Integer.parseInt(arrForSalary[j]);
+            for (int j = 0; j < 4; j++) {
+                salary[i][j] = scNumber.nextInt();
+                result.getAndAdd(i, (salary[i][j]));
             }
-            salary[i] = arrSalaryPeople;
+
         }
         //вывод квартальной зарплаты
         String fr = "---------------------------------------------------";
