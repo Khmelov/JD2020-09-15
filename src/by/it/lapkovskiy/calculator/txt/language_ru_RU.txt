@@ -1,9 +1,0 @@
-message.error=Ошибка
-message.bracket_error_not_found=Скобка не найдена
-message.unidentified_operation=Неизвестная операция
-message.division_by_zero=Деление на ноль
-message.length_not_equals=Длина не ровны
-message.unknown_variable=Неизвестная переменная
-message.operation=операция
-message.impossible=невозможно
-message.abstract_var=Абстрактная переменная

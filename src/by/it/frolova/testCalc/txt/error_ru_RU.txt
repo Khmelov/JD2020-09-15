@@ -1,3 +1,0 @@
-message.error = ОШИБКА:
-message.unknown = Неизвестная переменная:
-message.impossible = Операция невозможна

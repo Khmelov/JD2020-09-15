@@ -1,3 +1,0 @@
-message.error = ПАМЫЛКА:
-message.unknown = Невядомая зменная:
-message.impossible = Аперацыя немагчыма

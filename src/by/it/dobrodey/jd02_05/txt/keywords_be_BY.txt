@@ -1,8 +1,0 @@
-message.welcome=Прывiтанне!
-message.question=Як справы?
-user.firstName=Вольга
-user.lastName=Добродей
-language.country=be
-language.language=BY
-language.operassion=Беларуская мова
-message.data=Па сённяшні дата: %s\n

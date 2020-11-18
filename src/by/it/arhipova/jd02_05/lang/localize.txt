@@ -1,4 +1,0 @@
-user.firstName = Maria
-user.lastName = Arhipova
-message.welcome = Welcome!
-message.question = How are you?
